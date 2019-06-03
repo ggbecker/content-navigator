@@ -12,7 +12,7 @@ export function openContent(location: string) {
 			let selection = editor.selection;
 
 			// Get the word within the selection
-			let word = document.getText(document.getWordRangeAtPosition(selection.start));
+			let word = document.getText(document.getWordRangeAtPosition(selection.active));
 			vscode.workspace.findFiles('**/'+word+"/"+location).then(uries => {
 				if(uries.length > 0) {
 					uries.forEach(element => {
