@@ -36,6 +36,22 @@
 				"title": "Open Ansible"
 			}
 		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "extension.openRule"
+				},
+				{
+					"command": "extension.openOVAL"
+				},
+				{
+					"command": "extension.openBash"
+				},
+				{
+					"command": "extension.openAnsible"
+				}
+			]
+		},
 		"keybindings": [
 			{
 				"command": "extension.openRule",

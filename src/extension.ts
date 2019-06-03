@@ -1,9 +1,9 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { debuglog } from 'util';
 
-export function openArtifact(pattern: string) {
-
+export function openContent(location: string) {
 		// Get the active text editor
 		let editor = vscode.window.activeTextEditor;
 
@@ -13,14 +13,20 @@ export function openArtifact(pattern: string) {
 
 			// Get the word within the selection
 			let word = document.getText(document.getWordRangeAtPosition(selection.start));
-			vscode.workspace.findFiles('**/'+word+"/"+pattern).then(uries => {
-            	uries.forEach(element => {
-					let doc = vscode.workspace.openTextDocument(element);
-					vscode.window.showTextDocument(element, { preview: false });
-					return;
-				});
+			vscode.workspace.findFiles('**/'+word+"/"+location).then(uries => {
+				if(uries.length > 0) {
+					uries.forEach(element => {
+						let doc = vscode.workspace.openTextDocument(element);
+						vscode.window.showTextDocument(element, { preview: false });
+						return;
+					});
+				} else {
+					vscode.window.showInformationMessage("Unable to open content: "+word, "Is it a templated content?");
+					debuglog("Couldn't find any content with location: "+word+"/"+location);
+				}
 			});
 		}
+
 }
 
 export function activate(context: vscode.ExtensionContext) {
@@ -29,16 +35,16 @@ export function activate(context: vscode.ExtensionContext) {
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
 	let open_rule_command = vscode.commands.registerCommand('extension.openRule', () => {
-		openArtifact("rule.yml");
+		openContent("rule.yml");
 	});
-	let open_oval_command = vscode.commands.registerCommand('extension.openRule', () => {
-		openArtifact("oval/shared.xml");
+	let open_oval_command = vscode.commands.registerCommand('extension.openOVAL', () => {
+		openContent("oval/shared.xml");
 	});
-	let open_bash_command = vscode.commands.registerCommand('extension.openRule', () => {
-		openArtifact("bash/shared.sh");
+	let open_bash_command = vscode.commands.registerCommand('extension.openBash', () => {
+		openContent("bash/shared.sh");
 	});
-	let open_ansible_command = vscode.commands.registerCommand('extension.openRule', () => {
-		openArtifact("ansible/shared.yml");
+	let open_ansible_command = vscode.commands.registerCommand('extension.openAnsible', () => {
+		openContent("ansible/shared.yml");
 	});
 
 	context.subscriptions.push(open_rule_command);
