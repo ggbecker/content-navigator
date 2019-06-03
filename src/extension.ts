@@ -2,102 +2,49 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export function openArtifact(pattern: string) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-		console.log('Congratulations, your extension "content-navigator" is now active!');
+		// Get the active text editor
+		let editor = vscode.window.activeTextEditor;
+
+		if (editor) {
+			let document = editor.document;
+			let selection = editor.selection;
+
+			// Get the word within the selection
+			let word = document.getText(document.getWordRangeAtPosition(selection.start));
+			vscode.workspace.findFiles('**/'+word+"/"+pattern).then(uries => {
+            	uries.forEach(element => {
+					let doc = vscode.workspace.openTextDocument(element);
+					vscode.window.showTextDocument(element, { preview: false });
+					return;
+				});
+			});
+		}
+}
+
+export function activate(context: vscode.ExtensionContext) {
 	
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.openRule', () => {
-		// Get the active text editor
-		let editor = vscode.window.activeTextEditor;
-
-		if (editor) {
-			let document = editor.document;
-			let selection = editor.selection;
-
-			// Get the word within the selection
-			let word = document.getText(document.getWordRangeAtPosition(selection.start));
-			vscode.workspace.findFiles('**/'+word+'/rule.yml').then(uries => {
-            	uries.forEach(element => {
-					let doc = vscode.workspace.openTextDocument(element)
-					vscode.window.showTextDocument(element, { preview: false })
-				});
-			});
-		}
+	let open_rule_command = vscode.commands.registerCommand('extension.openRule', () => {
+		openArtifact("rule.yml");
+	});
+	let open_oval_command = vscode.commands.registerCommand('extension.openRule', () => {
+		openArtifact("oval/shared.xml");
+	});
+	let open_bash_command = vscode.commands.registerCommand('extension.openRule', () => {
+		openArtifact("bash/shared.sh");
+	});
+	let open_ansible_command = vscode.commands.registerCommand('extension.openRule', () => {
+		openArtifact("ansible/shared.yml");
 	});
 
-	let disposable1 = vscode.commands.registerCommand('extension.openOVAL', () => {
-		// Get the active text editor
-		let editor = vscode.window.activeTextEditor;
-
-		if (editor) {
-			let document = editor.document;
-			let selection = editor.selection;
-
-			// Get the word within the selection
-			let word = document.getText(document.getWordRangeAtPosition(selection.start));
-			vscode.workspace.findFiles('**/'+word+'/oval/shared.xml').then(uries => {
-            	uries.forEach(element => {
-					let doc = vscode.workspace.openTextDocument(element)
-					vscode.window.showTextDocument(element, { preview: false })
-				});
-			});
-		}
-	});
-
-	let disposable2 = vscode.commands.registerCommand('extension.openBash', () => {
-		// Get the active text editor
-		let editor = vscode.window.activeTextEditor;
-
-		if (editor) {
-			let document = editor.document;
-			let selection = editor.selection;
-
-			// Get the word within the selection
-			let word = document.getText(document.getWordRangeAtPosition(selection.start));
-			vscode.workspace.findFiles('**/'+word+'/bash/shared.sh').then(uries => {
-            	uries.forEach(element => {
-					let doc = vscode.workspace.openTextDocument(element)
-					vscode.window.showTextDocument(element, { preview: false })
-				});
-			});
-		}
-	});
-
-	let disposable3 = vscode.commands.registerCommand('extension.openAnsible', () => {
-		// Get the active text editor
-		let editor = vscode.window.activeTextEditor;
-
-		if (editor) {
-			let document = editor.document;
-			let selection = editor.selection;
-
-			// Get the word within the selection
-			let word = document.getText(document.getWordRangeAtPosition(selection.start));
-			vscode.workspace.findFiles('**/'+word+'/ansible/shared.yml').then(uries => {
-            	uries.forEach(element => {
-					let doc = vscode.workspace.openTextDocument(element)
-					vscode.window.showTextDocument(element, { preview: false })
-					return;
-				});
-			});
-
-			
-			// vscode.window.showInformationMessage(document.uri.toString());
-
-		}
-	});
-
-	context.subscriptions.push(disposable);
-	context.subscriptions.push(disposable1);
-	context.subscriptions.push(disposable2);
-	context.subscriptions.push(disposable3);
+	context.subscriptions.push(open_rule_command);
+	context.subscriptions.push(open_oval_command);
+	context.subscriptions.push(open_bash_command);
+	context.subscriptions.push(open_ansible_command);
 }
 
 // this method is called when your extension is deactivated
