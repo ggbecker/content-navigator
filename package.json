@@ -14,7 +14,8 @@
 		"onCommand:extension.openRule",
 		"onCommand:extension.openOVAL",
 		"onCommand:extension.openBash",
-		"onCommand:extension.openAnsible"
+		"onCommand:extension.openAnsible",
+		"onCommand:extension.copyRuleId"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -34,6 +35,10 @@
 			{
 				"command": "extension.openAnsible",
 				"title": "Open Ansible"
+			},
+			{
+				"command": "extension.copyRuleId",
+				"title": "Copy Rule ID"
 			}
 		],
 		"menus": {
@@ -49,6 +54,14 @@
 				},
 				{
 					"command": "extension.openAnsible"
+				},
+				{
+					"command": "extension.copyRuleId"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "extension.copyRuleId"
 				}
 			]
 		},

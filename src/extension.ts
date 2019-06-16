@@ -30,10 +30,6 @@ export function openContent(location: string) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-	
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
 	let open_rule_command = vscode.commands.registerCommand('extension.openRule', () => {
 		openContent("rule.yml");
 	});
@@ -47,10 +43,19 @@ export function activate(context: vscode.ExtensionContext) {
 		openContent("ansible/shared.yml");
 	});
 
+	let copy_rule_id_command = vscode.commands.registerCommand('extension.copyRuleId', async (fileUri) => {
+		if( fileUri.toString().indexOf('rule.yml') >= 0){
+			let paths:string[] = fileUri.toString().split("/")
+			vscode.window.showInformationMessage("Rule ID copied to Clipboard: "+paths[paths.length-2])
+			vscode.env.clipboard.writeText(paths[paths.length-2])
+		  }
+	});
+
 	context.subscriptions.push(open_rule_command);
 	context.subscriptions.push(open_oval_command);
 	context.subscriptions.push(open_bash_command);
 	context.subscriptions.push(open_ansible_command);
+	context.subscriptions.push(copy_rule_id_command);
 }
 
 // this method is called when your extension is deactivated
