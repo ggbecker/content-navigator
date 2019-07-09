@@ -16,13 +16,30 @@ export function openContent(location: string) {
 			vscode.workspace.findFiles('**/'+word+"/"+location).then(uries => {
 				if(uries.length > 0) {
 					uries.forEach(element => {
+						vscode.window.showInformationMessage("Resource: "+location+" found", word);
 						let doc = vscode.workspace.openTextDocument(element);
 						vscode.window.showTextDocument(element, { preview: false });
 						return;
 					});
 				} else {
-					vscode.window.showInformationMessage("Unable to open content: "+word, "Is it a templated content?");
+					vscode.window.showInformationMessage("Unable to open content: "+word+ ". Using clipboard content to find resource");
 					debuglog("Couldn't find any content with location: "+word+"/"+location);
+
+					vscode.env.clipboard.readText().then((word) => {
+						vscode.workspace.findFiles('**/'+word+"/"+location).then(uries => {
+							if(uries.length > 0) {
+								uries.forEach(element => {
+									vscode.window.showInformationMessage("Resource: "+location+" found using clipboard content", word);
+									let doc = vscode.workspace.openTextDocument(element);
+									vscode.window.showTextDocument(element, { preview: false });
+									return;
+								});
+							} else {
+								vscode.window.showInformationMessage("Unable to open requested content: "+word+ ". Is it a templated content?");
+								debuglog("Couldn't find any content with location: "+word+"/"+location);
+							}
+						})
+					});
 				}
 			});
 		}
