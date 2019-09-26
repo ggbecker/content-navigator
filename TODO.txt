@@ -1,0 +1,16 @@
+Known bugs:
+ -Return inside function which opens the resource does not return from the function properly. It uses then() from premise which is async.
+
+TODO:
+
+-Navigate between content when inside of rule,oval,ansible,bash
+-Template (bash, ansible, oval) - show template file associated
+-If inside of a resource, try to identify and allow navigate between the content (ansible, bash, OVAL, rule)
+-Support prefix when navigating to resource, for example: xccdf_org.ssgcontent.content_rule_...
+-Auto completion of existing rules
+-Detect which profiles a rule is part of
+
+Done
+-When file not found - throw info message
+-Add option to copy name of rule to directory structure
+-Support going to resource from rule selected in the clipboard
