@@ -9,6 +9,7 @@ TODO:
 -Support prefix when navigating to resource, for example: xccdf_org.ssgcontent.content_rule_...
 -Auto completion of existing rules
 -Detect which profiles a rule is part of
+-Detect that rule.yml contains `template:` tag (use name: to identify templated file) and show respective template file according to requested content
 
 Done
 -When file not found - throw info message
