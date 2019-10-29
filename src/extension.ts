@@ -66,6 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
 			vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + paths[paths.length - 2])
 			vscode.env.clipboard.writeText(paths[paths.length - 2])
 		}
+
 	});
 
 	context.subscriptions.push(open_rule_command);
@@ -73,6 +74,31 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_bash_command);
 	context.subscriptions.push(open_ansible_command);
 	context.subscriptions.push(copy_rule_id_command);
+
+	let completionList: vscode.CompletionItem[] = [];
+
+	vscode.workspace.findFiles('**/rule.yml').then(uries => {
+		uries.forEach(element => {
+			let paths: string[] = element.toString().split("/")
+			// let item: vscode.CompletionItem;
+			// item = new vscode.CompletionItem(paths[paths.length - 2]);
+			// vscode.workspace.openTextDocument(element).then(text => {
+			// 	item.documentation = new vscode.MarkdownString(text.getText())
+			// });
+			// item.documentation = new vscode.MarkdownString("Hello world")
+			// completionList.push(item);
+			completionList.push(new vscode.CompletionItem(paths[paths.length - 2]));
+		});
+	});
+
+	let provider1 = vscode.languages.registerCompletionItemProvider({pattern: '**/*.profile'}, {
+
+		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+			return completionList;
+		}
+	});
+
+	context.subscriptions.push(provider1);
 }
 
 // this method is called when your extension is deactivated
