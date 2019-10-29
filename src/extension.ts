@@ -48,16 +48,16 @@ export function openContent(location: string) {
 
 export function activate(context: vscode.ExtensionContext) {
 	let open_rule_command = vscode.commands.registerCommand('extension.openRule', () => {
-		openContent("rule.yml");
+		return openContent("rule.yml");
 	});
 	let open_oval_command = vscode.commands.registerCommand('extension.openOVAL', () => {
-		openContent("oval/shared.xml");
+		return openContent("oval/shared.xml");
 	});
 	let open_bash_command = vscode.commands.registerCommand('extension.openBash', () => {
-		openContent("bash/shared.sh");
+		return openContent("bash/shared.sh");
 	});
 	let open_ansible_command = vscode.commands.registerCommand('extension.openAnsible', () => {
-		openContent("ansible/shared.yml");
+		return openContent("ansible/shared.yml");
 	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('extension.copyRuleId', async (fileUri) => {
