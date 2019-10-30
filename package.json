@@ -19,7 +19,8 @@
 		"onCommand:extension.openOVAL",
 		"onCommand:extension.openBash",
 		"onCommand:extension.openAnsible",
-		"onCommand:extension.copyRuleId"
+		"onCommand:extension.copyRuleId",
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
