@@ -1,3 +1,5 @@
+Content-Navigator is Visual Studio Code extension which improves creation of content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files and by providing awareness on existent content within the project.
+
 ## How to install
 
 Download the .vsix file from releases page and load it manually into Visual Studio Code by pressing `Ctrl+Shift+P` and typing `Install from VSIX...`.
