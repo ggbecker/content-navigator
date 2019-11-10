@@ -2,6 +2,8 @@ Content-Navigator is a Visual Studio Code extension which helps to navigate and 
 
 ## How to install
 
+Install through Visual Studio Code Extensions page search for `content-navigator` or,
+
 Download the .vsix file from releases page and load it manually into Visual Studio Code by pressing `Ctrl+Shift+P` and typing `Install from VSIX...`.
 
 ## Features
