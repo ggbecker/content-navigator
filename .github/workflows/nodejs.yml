@@ -22,5 +22,6 @@ jobs:
         npm install
         npm i -g vsce
         vsce package
+        vsce publish -p ${{ secrets.MARKETPLACE_TOKEN }}
       env:
         CI: true
