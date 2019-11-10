@@ -12,7 +12,7 @@
       "url": "https://github.com/ggbecker/content-navigator.git"
     },
 	"categories": [
-		"Others"
+		"Other"
 	],
 	"activationEvents": [
 		"onCommand:extension.openRule",
