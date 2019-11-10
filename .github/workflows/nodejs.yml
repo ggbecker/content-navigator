@@ -22,6 +22,7 @@ jobs:
         npm install
         npm i -g vsce
         vsce package
+        vsce login ggbecker -p ${{ secrets.MARKETPLACE_TOKEN }}
         vsce publish -p ${{ secrets.MARKETPLACE_TOKEN }}
       env:
         CI: true
