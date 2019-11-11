@@ -14,17 +14,21 @@ Load content by activating a hotkey or selecting the option through right clicki
 
 Press a key combination when the cursor is selecting a rule ID or when the clipboard contains a rule ID.
 
+#### Rule
+
+`Ctrl+Alt+R`
+
 #### OVAL
 
-`Ctrl+Shift+O`
+`Ctrl+Alt+O`
 
 #### Bash
 
-`Ctrl+Shift+B`
+`Ctrl+Alt+B`
 
 #### Ansible
 
-`Ctrl+Shift+A`
+`Ctrl+Alt+A`
 
 ### Copy Rule ID
 
