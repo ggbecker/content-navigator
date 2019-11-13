@@ -59,6 +59,12 @@ export function activate(context: vscode.ExtensionContext) {
 	let open_ansible_command = vscode.commands.registerCommand('extension.openAnsible', () => {
 		return openContent("ansible/shared.yml");
 	});
+	let open_anaconda_command = vscode.commands.registerCommand('extension.openAnaconda', () => {
+		return openContent("anaconda/shared.anaconda");
+	});
+	let open_puppet_command = vscode.commands.registerCommand('extension.openPuppet', () => {
+		return openContent("puppet/shared.pp");
+	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('extension.copyRuleId', async (fileUri) => {
 		if (fileUri.toString().indexOf('rule.yml') >= 0) {
@@ -73,6 +79,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_oval_command);
 	context.subscriptions.push(open_bash_command);
 	context.subscriptions.push(open_ansible_command);
+	context.subscriptions.push(open_anaconda_command);
+	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(copy_rule_id_command);
 
 	let completionList: vscode.CompletionItem[] = [];

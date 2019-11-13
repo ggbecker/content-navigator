@@ -30,6 +30,14 @@ Press a key combination when the cursor is selecting a rule ID or when the clipb
 
 `Ctrl+Alt+A`
 
+#### Anaconda
+
+`Ctrl+Alt+N`
+
+#### Puppet
+
+`Ctrl+Alt+P`
+
 ### Copy Rule ID
 
 When editing a rule.yml file you can right click and activate `Copy Rule ID` option to copy the rule ID.

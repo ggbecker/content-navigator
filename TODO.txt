@@ -1,6 +1,6 @@
 TODO:
 
--Navigate between content when inside of rule,oval,ansible,bash
+-Navigate between content when inside of rule,oval,ansible,bash,anaconda,puppet
 -Template (bash, ansible, oval) - show template file associated
 -If inside of a resource, try to identify and allow navigate between the content (ansible, bash, OVAL, rule)
 -Support prefix when navigating to resource, for example: xccdf_org.ssgcontent.content_rule_...
@@ -9,6 +9,7 @@ TODO:
 -Create github pages.
 -Provide language support for .profiles files
 -Provide language support for .yaml files (e.g. template completion, snippet)
+-Support run configuration for SSG Test Suite for example. Test test scenario rules with a simple click.
 
 Done
 -When file not found - throw info message

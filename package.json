@@ -20,6 +20,8 @@
 		"onCommand:extension.openOVAL",
 		"onCommand:extension.openBash",
 		"onCommand:extension.openAnsible",
+		"onCommand:extension.openAnaconda",
+		"onCommand:extension.openPuppet",
 		"onCommand:extension.copyRuleId",
 		"*"
 	],
@@ -43,6 +45,14 @@
 				"title": "Open Ansible"
 			},
 			{
+				"command": "extension.openAnaconda",
+				"title": "Open Anaconda"
+			},
+			{
+				"command": "extension.openPuppet",
+				"title": "Open Puppet"
+			},
+			{
 				"command": "extension.copyRuleId",
 				"title": "Copy Rule ID"
 			}
@@ -60,6 +70,12 @@
 				},
 				{
 					"command": "extension.openAnsible"
+				},
+				{
+					"command": "extension.openAnaconda"
+				},
+				{
+					"command": "extension.openPuppet"
 				},
 				{
 					"command": "extension.copyRuleId"
@@ -91,6 +107,16 @@
 				"command": "extension.openAnsible",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+a"
+			},
+			{
+				"command": "extension.openAnaconda",
+				"when": "editorTextFocus",
+				"key": "ctrl+alt+n"
+			},
+			{
+				"command": "extension.openPuppet",
+				"when": "editorTextFocus",
+				"key": "ctrl+alt+p"
 			}
 		]
 	},
