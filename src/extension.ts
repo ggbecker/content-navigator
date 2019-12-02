@@ -106,6 +106,22 @@ export function openContent(location: string) {
 						} else {
 							vscode.window.showInformationMessage("Unable to open requested content: " + word + ". Is it a templated content?");
 							debuglog("Couldn't find any content with location: " + word + "/" + location);
+							vscode.workspace.findFiles('**/' + word + "/rule.yml").then(uries => {
+								if (uries.length > 0) {
+									uries.forEach(element => {
+										vscode.window.showInformationMessage("Resource: rule.yml found", word);
+										return vscode.workspace.openTextDocument(element).then(doc => {
+											let i = 0;
+											for (i = 0; i < doc.lineCount; i++) {
+												if(doc.lineAt(i).text.startsWith("template:")){
+													let range = new vscode.Range(new vscode.Position(i, 0), new vscode.Position(i, 0));
+													vscode.window.showTextDocument(doc, { preview: false, selection: range })
+												}
+											}
+										});
+									});
+								}
+							});
 						}
 					})
 				});
