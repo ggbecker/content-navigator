@@ -24,7 +24,3 @@ jobs:
         vsce package
       env:
         CI: true
-    - uses: actions/upload-artifact@master
-      with:
-        name: extension
-        path: .
