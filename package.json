@@ -27,6 +27,12 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"snippets": [
+			{
+				"language": "yaml",
+				"path": "./snippets.json"
+			}
+		],
 		"commands": [
 			{
 				"command": "extension.openRule",
