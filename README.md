@@ -47,3 +47,42 @@ When editing a rule.yml file you can right click and activate `Copy Rule ID` opt
 ### Auto completion of available rules
 
 When editing `*.profile` files it is possible to find all availables rules by using the standard auto complete system by pressing `Ctrl+Space`
+
+### Code Snippets
+
+When editing a Rule file (`rule.yml`), code snippets are available. You can simply press `Ctrl+Space` and type the desired snippet name and it will show more description. The available snippets are:
+
+- rule - Rule stub
+- ident - Identifier item
+- templates:
+  - template_accounts_password
+  - template_auditd_lineinfile
+  - template_audit_rules_dac_modification
+  - template_audit_rules_file_deletion_events
+  - template_audit_rules_login_events
+  - template_audit_rules_path_syscall
+  - template_audit_rules_privileged_commands
+  - template_audit_rules_unsuccessful_file_modification
+  - template_audit_rules_unsuccessful_file_modification_o_creat
+  - template_audit_rules_unsuccessful_file_modification_o_trunc_write
+  - template_audit_rules_unsuccessful_file_modification_rule_order
+  - template_audit_rules_usergroup_modification
+  - template_file_groupowner
+  - template_file_owner
+  - template_file_permissions
+  - template_grub2_bootloader_argument
+  - template_kernel_module_disabled
+  - template_mount
+  - template_mount_option
+  - template_mount_option_remote_filesystems
+  - template_mount_option_removable_partitions
+  - template_package_installed
+  - template_package_removed
+  - template_sebool
+  - template_service_disabled
+  - template_service_enabled
+  - template_sshd_lineinfile
+  - template_sysctl
+  - template_timer_enabled
+
+More details on templates you can find by activating the snippet on VSCode or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#73-templating)
