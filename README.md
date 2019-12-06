@@ -87,4 +87,4 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
   - template_sysctl
   - template_timer_enabled
 
-More details on templates you can find by activating the snippet on VSCode or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#73-templating)
+More details on templates you can find by activating the respective snippet on VSCode or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#732-list-of-available-templates)
