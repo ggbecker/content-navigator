@@ -123,6 +123,11 @@
 				"command": "extension.openPuppet",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+p"
+			},
+			{
+				"command": "extension.copyRuleId",
+				"when": "editorTextFocus || explorerViewletFocus || filesExplorerFocus",
+				"key": "ctrl+alt+shift+c"
 			}
 		]
 	},

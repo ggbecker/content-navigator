@@ -14,7 +14,7 @@ Load content by activating a hotkey or selecting the option through right clicki
 
 Press a key combination when the cursor is selecting a rule ID or when the clipboard contains a rule ID. It is also possible to navigate between content types when a content is opened. For example: is Ansible content is opened in the current editor and `Ctrl+Alt+R` is pressed, then the rule.yml file associated to the Ansible content will open.
 
-Note: When using clipboard, the extension is able to handle rule prefix such as: `xccdf_org.ssgproject.content_rule_` or `content_rule_`. It might be useful when copying rule ID directly from scanning results.
+Note: When using clipboard, the extension is able to handle rule prefixes such as: `xccdf_org.ssgproject.content_rule_` or `content_rule_`. It might be useful when copying rule ID directly from scanning results.
 
 #### Rule
 
@@ -42,7 +42,9 @@ Note: When using clipboard, the extension is able to handle rule prefix such as:
 
 ### Copy Rule ID
 
-When editing a rule.yml file you can right click and activate `Copy Rule ID` option to copy the rule ID.
+When editing a file (Rule, Ansible, Bash, Anaconda, Puppet) you can press `Ctrl+Alt+Shift+C` to copy the corresponding rule's ID.
+
+##### Note: All of above options can be also activated through right click menu.
 
 ### Auto completion of available rules
 
