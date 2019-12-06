@@ -3,27 +3,22 @@
 import * as vscode from 'vscode';
 import { debuglog } from 'util';
 
-function getRuleId(): string
+function getRuleId(uri: vscode.Uri): string
 {
-	let editor = vscode.window.activeTextEditor;
+	let uri_str = uri.toString()
 
-	if (editor) {
-		let document = editor.document;
-		let uri = document.uri.toString()
-
-		if (uri.indexOf('rule.yml') >= 0) {
-			let paths: string[] = uri.split("/")
-			vscode.window.showInformationMessage(paths[paths.length - 2])
-			return paths[paths.length - 2]
-		}
-		else if(uri.indexOf('bash/shared.sh') >= 0 ||
-				uri.indexOf('ansible/shared.yml') >= 0 ||
-				uri.indexOf('anaconda/shared.anaconda') >= 0 ||
-				uri.indexOf('puppet/shared.pp') >= 0){
-			let paths: string[] = uri.split("/");
-			vscode.window.showInformationMessage(paths[paths.length - 3]);
-			return paths[paths.length - 3];
-		}
+	if (uri_str.indexOf('rule.yml') >= 0) {
+		let paths: string[] = uri_str.split("/")
+		// vscode.window.showInformationMessage(paths[paths.length - 2])
+		return paths[paths.length - 2]
+	}
+	else if(uri_str.indexOf('bash/shared.sh') >= 0 ||
+			uri_str.indexOf('ansible/shared.yml') >= 0 ||
+			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
+			uri_str.indexOf('puppet/shared.pp') >= 0){
+		let paths: string[] = uri_str.split("/");
+		// vscode.window.showInformationMessage(paths[paths.length - 3]);
+		return paths[paths.length - 3];
 	}
 	// no rule was found with current opened file
 	return "";
@@ -64,7 +59,7 @@ export function openContent(location: string) {
 		let word : string;
 
 		// Try to fetch rule id
-		word = getRuleId()
+		word = getRuleId(document.uri)
 		// Get the word within the selection
 		if(word == "")
 		{
@@ -135,12 +130,11 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('extension.copyRuleId', async (fileUri) => {
-		if (fileUri.toString().indexOf('rule.yml') >= 0) {
-			let paths: string[] = fileUri.toString().split("/")
-			vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + paths[paths.length - 2])
-			vscode.env.clipboard.writeText(paths[paths.length - 2])
+		let word = getRuleId(fileUri);
+		if (word != "") {
+			vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
+			vscode.env.clipboard.writeText(word)
 		}
-
 	});
 
 	context.subscriptions.push(open_rule_command);
