@@ -1,7 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { debuglog } from 'util';
 
 function getRuleId(uri: vscode.Uri): string
 {
@@ -9,7 +8,6 @@ function getRuleId(uri: vscode.Uri): string
 
 	if (uri_str.indexOf('rule.yml') >= 0) {
 		let paths: string[] = uri_str.split("/")
-		// vscode.window.showInformationMessage(paths[paths.length - 2])
 		return paths[paths.length - 2]
 	}
 	else if(uri_str.indexOf('bash/shared.sh') >= 0 ||
@@ -17,7 +15,6 @@ function getRuleId(uri: vscode.Uri): string
 			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
-		// vscode.window.showInformationMessage(paths[paths.length - 3]);
 		return paths[paths.length - 3];
 	}
 	// no rule was found with current opened file
@@ -48,7 +45,36 @@ function anacondaAvailable(): boolean {
 	// }
 }
 
-export function openContent(location: string) {
+async function openFile(rule_id : string, location : string) : Promise<boolean> {
+	let uries = await vscode.workspace.findFiles('**/' + rule_id + "/" + location);
+	if(uries.length > 0)
+	{
+		// vscode.window.showInformationMessage("Resource: " + location + " found", rule_id);
+		let doc = vscode.workspace.openTextDocument(uries[0]);
+		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
+		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
+		return true;
+	}
+	else
+	{
+		uries = await vscode.workspace.findFiles('**/' + rule_id + "/rule.yml");
+		if(uries.length > 0)
+		{
+			let text = await vscode.workspace.openTextDocument(uries[0]);
+			let i = 0;
+			for (i = 0; i < text.lineCount; i++) {
+				if(text.lineAt(i).text.startsWith("template:")){
+					let range = new vscode.Range(new vscode.Position(i, 0), new vscode.Position(i, 0));
+					vscode.window.showTextDocument(uries[0], { preview: false, selection: range })
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
+export async function openContent(location: string) {
 	// Get the active text editor
 	let editor = vscode.window.activeTextEditor;
 
@@ -56,56 +82,45 @@ export function openContent(location: string) {
 		let document = editor.document;
 		let selection = editor.selection;
 
-		let word : string;
+		let rule_id: string;
 
-		// Try to fetch rule id
-		word = getRuleId(document.uri)
-		// Get the word within the selection
-		if(word == "")
+		// content from clipboard
+		rule_id = await vscode.env.clipboard.readText();
+		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+		if(rule_id.length > 0 && rule_id.length < 120)
 		{
-			word = document.getText(document.getWordRangeAtPosition(selection.active));
-		}
-		vscode.workspace.findFiles('**/' + word + "/" + location).then(uries => {
-			if (uries.length > 0) {
-				uries.forEach(element => {
-					vscode.window.showInformationMessage("Resource: " + location + " found", word);
-					let doc = vscode.workspace.openTextDocument(element);
-					vscode.window.showTextDocument(element, { preview: false });
-					return;
-				});
-			} else {
-				vscode.window.showInformationMessage("Unable to open content: " + word + ". Using clipboard content to find resource");
-				debuglog("Couldn't find any content with location: " + word + "/" + location);
-
-				vscode.env.clipboard.readText().then((word) => {
-					let index_full_prefix = word.indexOf('xccdf_org.ssgproject.content_rule_');
-					let index_short_prefix = word.indexOf('content_rule_');
-					let word_1 = word;
-					if(index_full_prefix == 0)
-					{
-						word_1 = word_1.slice('xccdf_org.ssgproject.content_rule_'.length)
-					}
-					else if(index_short_prefix == 0)
-					{
-						word_1 = word_1.slice('content_rule_'.length)
-					}
-
-					vscode.workspace.findFiles('**/' + word_1 + "/" + location).then(uries => {
-						if (uries.length > 0) {
-							uries.forEach(element => {
-								vscode.window.showInformationMessage("Resource: " + location + " found using clipboard content", word);
-								let doc = vscode.workspace.openTextDocument(element);
-								vscode.window.showTextDocument(element, { preview: false });
-								return;
-							});
-						} else {
-							vscode.window.showInformationMessage("Unable to open requested content: " + word + ". Is it a templated content?");
-							debuglog("Couldn't find any content with location: " + word + "/" + location);
-						}
-					})
-				});
+			let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');
+			let index_short_prefix = rule_id.indexOf('content_rule_');
+			if(index_full_prefix == 0)
+			{
+				rule_id = rule_id.slice('xccdf_org.ssgproject.content_rule_'.length)
 			}
-		});
+			else if(index_short_prefix == 0)
+			{
+				rule_id = rule_id.slice('content_rule_'.length)
+			}
+			if(await openFile(rule_id, location)){
+				return;
+			}
+		}
+
+		// rule id from current opened file
+		rule_id = getRuleId(document.uri);
+		if(rule_id != "")
+		{
+			if(await openFile(rule_id, location)){
+				return;
+			}
+		}
+
+		// selected word
+		rule_id = document.getText(document.getWordRangeAtPosition(selection.active));
+		if(rule_id != "")
+		{
+			if(await openFile(rule_id, location)){
+				return;
+			}
+		}
 	}
 }
 
@@ -130,10 +145,12 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('extension.copyRuleId', async (fileUri) => {
-		let word = getRuleId(fileUri);
-		if (word != "") {
-			vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
-			vscode.env.clipboard.writeText(word)
+		if(fileUri != null) {
+			let word = getRuleId(fileUri);
+			if (word != "") {
+				vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
+				vscode.env.clipboard.writeText(word)
+			}
 		}
 	});
 
