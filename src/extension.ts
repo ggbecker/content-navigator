@@ -46,13 +46,30 @@ function anacondaAvailable(): boolean {
 }
 
 async function openFile(rule_id : string, location : string) : Promise<boolean> {
-	let uries = await vscode.workspace.findFiles('**/' + rule_id + "/" + location)
+	let uries = await vscode.workspace.findFiles('**/' + rule_id + "/" + location);
 	if(uries.length > 0)
 	{
 		vscode.window.showInformationMessage("Resource: " + location + " found", rule_id);
 		let doc = vscode.workspace.openTextDocument(uries[0]);
-		vscode.window.showTextDocument(uries[0], { preview: false });
+		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
+		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
 		return true;
+	}
+	else
+	{
+		uries = await vscode.workspace.findFiles('**/' + rule_id + "/rule.yml");
+		if(uries.length > 0)
+		{
+			let text = await vscode.workspace.openTextDocument(uries[0]);
+			let i = 0;
+			for (i = 0; i < text.lineCount; i++) {
+				if(text.lineAt(i).text.startsWith("template:")){
+					let range = new vscode.Range(new vscode.Position(i, 0), new vscode.Position(i, 0));
+					vscode.window.showTextDocument(uries[0], { preview: false, selection: range })
+					return true
+				}
+			}
+		}
 	}
 	return false
 }
@@ -69,7 +86,8 @@ export async function openContent(location: string) {
 
 		// content from clipboard
 		rule_id = await vscode.env.clipboard.readText();
-		if(rule_id.length > 0)
+		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+		if(rule_id.length > 0 && rule_id.length < 120)
 		{
 			let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');
 			let index_short_prefix = rule_id.indexOf('content_rule_');
