@@ -49,7 +49,7 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 	let uries = await vscode.workspace.findFiles('**/' + rule_id + "/" + location);
 	if(uries.length > 0)
 	{
-		vscode.window.showInformationMessage("Resource: " + location + " found", rule_id);
+		// vscode.window.showInformationMessage("Resource: " + location + " found", rule_id);
 		let doc = vscode.workspace.openTextDocument(uries[0]);
 		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
 		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
