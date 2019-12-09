@@ -42,9 +42,7 @@ Note: When using clipboard, the extension is able to handle rule prefixes such a
 
 ### Copy Rule ID
 
-When editing a file (Rule, Ansible, Bash, Anaconda, Puppet) you can press `Ctrl+Alt+Shift+C` to copy the corresponding rule's ID.
-
-##### Note: All of above options can be also activated through right click menu.
+When editing a file (Rule, Ansible, Bash, Anaconda, Puppet) you can right click and activate `Copy Rule ID` to copy the corresponding rule's ID.
 
 ### Auto completion of available rules
 
