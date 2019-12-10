@@ -114,8 +114,8 @@ export async function openContent(location: string) {
 		}
 
 		// selected word
-		rule_id = document.getText(document.getWordRangeAtPosition(selection.active));
-		if(rule_id != "")
+		rule_id = document.getText(document.getWordRangeAtPosition(selection.active, RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)")));
+		if(rule_id.length > 0 && rule_id.length < 120)
 		{
 			if(await openFile(rule_id, location)){
 				return;
