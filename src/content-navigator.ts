@@ -27,7 +27,7 @@ function anacondaAvailable(): boolean {
 	// menu part
 	// TODO: enable presence of menu only when content is available
 	// {
-	// 	"command": "extension.openAnaconda",
+	// 	"command": "content-navigator.openAnaconda",
 	// 	"when": "anacondaAvailable"
 	// },
 
@@ -125,26 +125,26 @@ export async function openContent(location: string) {
 }
 
 export function activate(context: vscode.ExtensionContext) {
-	let open_rule_command = vscode.commands.registerCommand('extension.openRule', () => {
+	let open_rule_command = vscode.commands.registerCommand('content-navigator.openRule', () => {
 		return openContent("rule.yml");
 	});
-	let open_oval_command = vscode.commands.registerCommand('extension.openOVAL', () => {
+	let open_oval_command = vscode.commands.registerCommand('content-navigator.openOVAL', () => {
 		return openContent("oval/shared.xml");
 	});
-	let open_bash_command = vscode.commands.registerCommand('extension.openBash', () => {
+	let open_bash_command = vscode.commands.registerCommand('content-navigator.openBash', () => {
 		return openContent("bash/shared.sh");
 	});
-	let open_ansible_command = vscode.commands.registerCommand('extension.openAnsible', () => {
+	let open_ansible_command = vscode.commands.registerCommand('content-navigator.openAnsible', () => {
 		return openContent("ansible/shared.yml");
 	});
-	let open_anaconda_command = vscode.commands.registerCommand('extension.openAnaconda', () => {
+	let open_anaconda_command = vscode.commands.registerCommand('content-navigator.openAnaconda', () => {
 		return openContent("anaconda/shared.anaconda");
 	});
-	let open_puppet_command = vscode.commands.registerCommand('extension.openPuppet', () => {
+	let open_puppet_command = vscode.commands.registerCommand('content-navigator.openPuppet', () => {
 		return openContent("puppet/shared.pp");
 	});
 
-	let copy_rule_id_command = vscode.commands.registerCommand('extension.copyRuleId', async (fileUri) => {
+	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
 		if(fileUri != null) {
 			let word = getRuleId(fileUri);
 			if (word != "") {

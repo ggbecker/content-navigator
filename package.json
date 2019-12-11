@@ -16,16 +16,16 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.openRule",
-		"onCommand:extension.openOVAL",
-		"onCommand:extension.openBash",
-		"onCommand:extension.openAnsible",
-		"onCommand:extension.openAnaconda",
-		"onCommand:extension.openPuppet",
-		"onCommand:extension.copyRuleId",
+		"onCommand:content-navigator.openRule",
+		"onCommand:content-navigator.openOVAL",
+		"onCommand:content-navigator.openBash",
+		"onCommand:content-navigator.openAnsible",
+		"onCommand:content-navigator.openAnaconda",
+		"onCommand:content-navigator.openPuppet",
+		"onCommand:content-navigator.copyRuleId",
 		"*"
 	],
-	"main": "./out/extension.js",
+	"main": "./out/content-navigator.js",
 	"contributes": {
 		"snippets": [
 			{
@@ -35,92 +35,92 @@
 		],
 		"commands": [
 			{
-				"command": "extension.openRule",
+				"command": "content-navigator.openRule",
 				"title": "Open Rule"
 			},
 			{
-				"command": "extension.openOVAL",
+				"command": "content-navigator.openOVAL",
 				"title": "Open OVAL"
 			},
 			{
-				"command": "extension.openBash",
+				"command": "content-navigator.openBash",
 				"title": "Open Bash"
 			},
 			{
-				"command": "extension.openAnsible",
+				"command": "content-navigator.openAnsible",
 				"title": "Open Ansible"
 			},
 			{
-				"command": "extension.openAnaconda",
+				"command": "content-navigator.openAnaconda",
 				"title": "Open Anaconda"
 			},
 			{
-				"command": "extension.openPuppet",
+				"command": "content-navigator.openPuppet",
 				"title": "Open Puppet"
 			},
 			{
-				"command": "extension.copyRuleId",
+				"command": "content-navigator.copyRuleId",
 				"title": "Copy Rule ID"
 			}
 		],
 		"menus": {
 			"editor/context": [
 				{
-					"command": "extension.openRule"
+					"command": "content-navigator.openRule"
 				},
 				{
-					"command": "extension.openOVAL"
+					"command": "content-navigator.openOVAL"
 				},
 				{
-					"command": "extension.openBash"
+					"command": "content-navigator.openBash"
 				},
 				{
-					"command": "extension.openAnsible"
+					"command": "content-navigator.openAnsible"
 				},
 				{
-					"command": "extension.openAnaconda"
+					"command": "content-navigator.openAnaconda"
 				},
 				{
-					"command": "extension.openPuppet"
+					"command": "content-navigator.openPuppet"
 				},
 				{
-					"command": "extension.copyRuleId"
+					"command": "content-navigator.copyRuleId"
 				}
 			],
 			"explorer/context": [
 				{
-					"command": "extension.copyRuleId"
+					"command": "content-navigator.copyRuleId"
 				}
 			]
 		},
 		"keybindings": [
 			{
-				"command": "extension.openRule",
+				"command": "content-navigator.openRule",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+r"
 			},
 			{
-				"command": "extension.openOVAL",
+				"command": "content-navigator.openOVAL",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+o"
 			},
 			{
-				"command": "extension.openBash",
+				"command": "content-navigator.openBash",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+b"
 			},
 			{
-				"command": "extension.openAnsible",
+				"command": "content-navigator.openAnsible",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+a"
 			},
 			{
-				"command": "extension.openAnaconda",
+				"command": "content-navigator.openAnaconda",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+n"
 			},
 			{
-				"command": "extension.openPuppet",
+				"command": "content-navigator.openPuppet",
 				"when": "editorTextFocus",
 				"key": "ctrl+alt+p"
 			}
