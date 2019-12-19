@@ -10,7 +10,8 @@ function getRuleId(uri: vscode.Uri): string
 		let paths: string[] = uri_str.split("/")
 		return paths[paths.length - 2]
 	}
-	else if(uri_str.indexOf('bash/shared.sh') >= 0 ||
+	else if(uri_str.indexOf('oval/shared.xml') >= 0 ||
+			uri_str.indexOf('bash/shared.sh') >= 0 ||
 			uri_str.indexOf('ansible/shared.yml') >= 0 ||
 			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
