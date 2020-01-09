@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.8] - 2020-01-09
+### Fixed
+- Omission on detecting rule id when current opened file is an OVAL content (oval/shared.xml).
+
 ## [0.0.7] - 2019-10-11
 ### Changed
 - Word separator excludes dash character.
