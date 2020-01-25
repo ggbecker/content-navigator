@@ -155,6 +155,16 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	let copy_full_prefixed_rule_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedRuleId', async (fileUri) => {
+		if(fileUri != null) {
+			let word = getRuleId(fileUri);
+			if (word != "") {
+				vscode.window.showInformationMessage("Rule ID copied to Clipboard: xccdf_org.ssgproject.content_rule_" + word)
+				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_rule_" + word)
+			}
+		}
+	});
+
 	context.subscriptions.push(open_rule_command);
 	context.subscriptions.push(open_oval_command);
 	context.subscriptions.push(open_bash_command);
@@ -162,6 +172,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_anaconda_command);
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(copy_rule_id_command);
+	context.subscriptions.push(copy_full_prefixed_rule_id_command);
 
 	let completionList: vscode.CompletionItem[] = [];
 
