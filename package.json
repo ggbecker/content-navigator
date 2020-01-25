@@ -96,32 +96,26 @@
 		"keybindings": [
 			{
 				"command": "content-navigator.openRule",
-				"when": "editorTextFocus",
 				"key": "ctrl+alt+r"
 			},
 			{
 				"command": "content-navigator.openOVAL",
-				"when": "editorTextFocus",
 				"key": "ctrl+alt+o"
 			},
 			{
 				"command": "content-navigator.openBash",
-				"when": "editorTextFocus",
 				"key": "ctrl+alt+b"
 			},
 			{
 				"command": "content-navigator.openAnsible",
-				"when": "editorTextFocus",
 				"key": "ctrl+alt+a"
 			},
 			{
 				"command": "content-navigator.openAnaconda",
-				"when": "editorTextFocus",
 				"key": "ctrl+alt+n"
 			},
 			{
 				"command": "content-navigator.openPuppet",
-				"when": "editorTextFocus",
 				"key": "ctrl+alt+p"
 			}
 		]
