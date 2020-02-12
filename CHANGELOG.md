@@ -1,5 +1,16 @@
 # Change Log
 
+## [Unreleased]
+
+## [0.0.9] - 2020-02-12
+### Added
+- Option to copy full prefixed rule ID.
+- Instructions on how to install the extension through VSCode Marketplace webpage.
+### Fixed
+- Content now opens from every context VSCode is. For example, there is no need to have an active opened editor to activate the shortcuts.
+### Removed
+- Instructions on how to install using VSIX files.
+
 ## [0.0.8] - 2020-01-09
 ### Fixed
 - Omission on detecting rule id when current opened file is an OVAL content (oval/shared.xml).
