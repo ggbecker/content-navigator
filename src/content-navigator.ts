@@ -14,6 +14,7 @@ function getRuleId(uri: vscode.Uri): string
 	else if(uri_str.indexOf('oval/shared.xml') >= 0 ||
 			uri_str.indexOf('bash/shared.sh') >= 0 ||
 			uri_str.indexOf('ansible/shared.yml') >= 0 ||
+			uri_str.indexOf('ignition/shared.yml') >= 0 ||
 			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
@@ -142,6 +143,9 @@ export function activate(context: vscode.ExtensionContext) {
 	let open_ansible_command = vscode.commands.registerCommand('content-navigator.openAnsible', () => {
 		return openContent("ansible/shared.yml");
 	});
+	let open_ignition_command = vscode.commands.registerCommand('content-navigator.openIgnition', () => {
+		return openContent("ignition/shared.yml");
+	});
 	let open_anaconda_command = vscode.commands.registerCommand('content-navigator.openAnaconda', () => {
 		return openContent("anaconda/shared.anaconda");
 	});
@@ -173,6 +177,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_oval_command);
 	context.subscriptions.push(open_bash_command);
 	context.subscriptions.push(open_ansible_command);
+	context.subscriptions.push(open_ignition_command);
 	context.subscriptions.push(open_anaconda_command);
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(copy_rule_id_command);

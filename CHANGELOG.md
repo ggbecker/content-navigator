@@ -4,6 +4,7 @@
 
 ## [0.0.9] - 2020-02-12
 ### Added
+- Support to new type of content called Ignition.
 - Option to copy full prefixed rule ID.
 - Instructions on how to install the extension through VSCode Marketplace webpage.
 ### Fixed
