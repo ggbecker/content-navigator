@@ -42,7 +42,7 @@ Note: When using clipboard, the extension is able to handle rule prefixes such a
 
 ### Copy Rule ID
 
-When editing a file (Rule, Ansible, Bash, Anaconda, Puppet) you can right click and activate `Copy Rule ID` to copy the corresponding rule's ID.
+When editing a file (Rule, Ansible, Bash, Anaconda, Puppet) you can right click and activate `Copy Rule ID` to copy the corresponding rule's ID. There is also an option to copy the full prefixed rule ID. You can right click and activate `Copy Full Prefixed Rule ID` to copy the rule's ID prefixed with `xccdf_org.ssgproject.content_rule_`.
 
 ### Auto completion of available rules
 
