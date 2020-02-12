@@ -20,6 +20,7 @@
 		"onCommand:content-navigator.openOVAL",
 		"onCommand:content-navigator.openBash",
 		"onCommand:content-navigator.openAnsible",
+		"onCommand:content-navigator.openIgnition",
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.copyRuleId",
@@ -52,6 +53,10 @@
 				"title": "Open Ansible"
 			},
 			{
+				"command": "content-navigator.openIgnition",
+				"title": "Open Ignition"
+			},
+			{
 				"command": "content-navigator.openAnaconda",
 				"title": "Open Anaconda"
 			},
@@ -81,6 +86,9 @@
 				},
 				{
 					"command": "content-navigator.openAnsible"
+				},
+				{
+					"command": "content-navigator.openIgnition"
 				},
 				{
 					"command": "content-navigator.openAnaconda"
@@ -120,6 +128,10 @@
 			{
 				"command": "content-navigator.openAnsible",
 				"key": "ctrl+alt+a"
+			},
+			{
+				"command": "content-navigator.openIgnition",
+				"key": "ctrl+alt+i"
 			},
 			{
 				"command": "content-navigator.openAnaconda",
