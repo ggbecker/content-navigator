@@ -23,6 +23,7 @@
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.copyRuleId",
+		"onCommand:content-navigator.copyFullPrefixedRuleId",
 		"*"
 	],
 	"main": "./out/content-navigator.js",
@@ -61,6 +62,10 @@
 			{
 				"command": "content-navigator.copyRuleId",
 				"title": "Copy Rule ID"
+			},
+			{
+				"command": "content-navigator.copyFullPrefixedRuleId",
+				"title": "Copy Full Prefixed Rule ID"
 			}
 		],
 		"menus": {
@@ -85,11 +90,17 @@
 				},
 				{
 					"command": "content-navigator.copyRuleId"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedRuleId"
 				}
 			],
 			"explorer/context": [
 				{
 					"command": "content-navigator.copyRuleId"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedRuleId"
 				}
 			]
 		},
