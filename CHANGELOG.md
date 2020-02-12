@@ -7,6 +7,7 @@
 - Support to new type of content called Ignition.
 - Option to copy full prefixed rule ID.
 - Instructions on how to install the extension through VSCode Marketplace webpage.
+- Snippet for `shell_lineinfile` template.
 ### Fixed
 - Content now opens from every context VSCode is. For example, there is no need to have an active opened editor to activate the shortcuts.
 ### Removed

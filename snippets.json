@@ -330,6 +330,21 @@
 		],
 		"description": "Checks if a system service is enabled. Uses either systemd or SysV init based on the product configuration in 'product.yml'.\n\nLanguages: Ansible, Bash, OVAL, Puppet\n\n"
 	},
+
+	"Template shell_lineinfile": {
+		"prefix": "template_shell_lineinfile",
+		"body": [
+			"template:",
+			"\tname: shell_lineinfile",
+			"\tvars:",
+			"\t\tpath: ${1:What file to check}",
+			"\t\tparameter: ${2:name of the shell variable, eg. SHELL.}",
+			"\t\tvalue: ${3:value of the SSH configuration option specified by parameter, eg. \"/bin/bash\". Don’t pass extra shell quoting - that will be handled on the lower level.}",
+			"\t\tno_quotes: ${4:If set to \"true\", the assigned value has to be without quotes during the check and remediation doesn’t quote assignments either.}",
+			"\t\tmissing_parameter_pass: ${5:If set to \"true\" the OVAL check will pass if the parameter is not present in the target file.}"
+		],
+		"description": "Checks shell variable assignments in files. Remediations will paste assignments with single shell quotes unless there is the dollar sign in the value string, in which case double quotes are administered. The OVAL checks for a match with either of no quotes, single quoted string, or double quoted string.\n\nLanguages: Ansible, Bash, OVAL\n\nExample: A template invocation specifying that parameter HISTSIZE should be set to value 500 in /etc/profile will produce a check that passes if any of the following lines are present in /etc/profile:\n\nHISTSIZE=500\n\nHISTSIZE=\"500\"\n\nHISTSIZE='500'\n\nThe remediation would insert one of the quoted forms if the line was not present.\n\nIf the no_quotes would be set in the template, only the first form would be checked for, and the unquoted assignment would be inserted to the file by the remediation if not present."
+	},
 	"Template sshd_lineinfile": {
 		"prefix": "template_sshd_lineinfile",
 		"body": [

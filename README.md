@@ -81,6 +81,7 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
   - template_sebool
   - template_service_disabled
   - template_service_enabled
+  - template_shell_lineinfile
   - template_sshd_lineinfile
   - template_sysctl
   - template_timer_enabled
