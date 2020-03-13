@@ -1,4 +1,4 @@
-Content-Navigator is a Visual Studio Code extension which helps to navigate and create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files and by providing awareness of existent content.
+Content-Navigator is a Visual Studio Code extension which helps to navigate and create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files and by providing awareness of existent content. Check this [post](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html) out in the official ComplianceAsCode/content [blog](https://complianceascode.github.io/).
 
 ## How to install
 
