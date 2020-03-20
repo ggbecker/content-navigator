@@ -127,7 +127,7 @@ export async function openContent(location: string) {
 		}
 	}
 
-	vscode.window.showInformationMessage("Could not find any matching file for: " + location);
+	vscode.window.showInformationMessage("Could not find any matching file (" + location + ") with: " + rule_id);
 }
 
 export function activate(context: vscode.ExtensionContext) {
