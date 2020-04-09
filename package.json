@@ -25,6 +25,7 @@
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
+		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
 	"main": "./out/content-navigator.js",
@@ -36,6 +37,10 @@
 			}
 		],
 		"commands": [
+			{
+				"command": "content-navigator.getRuleId",
+				"title": "Get rule ID"
+			},
 			{
 				"command": "content-navigator.openRule",
 				"title": "Open Rule"
@@ -141,7 +146,77 @@
 				"command": "content-navigator.openPuppet",
 				"key": "ctrl+alt+p"
 			}
-		]
+		],
+		"debuggers": [
+			{
+				"type": "content-navigator",
+				"label": "ComplianceAsCode/content test suite",
+				"languages": [
+					"python"
+				],
+				"configurationSnippets": [
+					{
+						"label": "Content Navigator Test Suite Setup",
+						"description": "A new configuration for setup of ComplianceAsCode/content test suite",
+						"body": {
+							"name" : "ComplianceAsCode/content Test Suite", 
+							"type": "python",
+							"request": "launch",
+							"console": "integratedTerminal",
+							"program": "^\"\\${workspaceFolder}/tests/test_suite.py\"",
+							"args": [
+								"rule",
+								"--libvirt",
+								"session",
+								"^\"\\${config:content-navigator.ssgts.domainName}\"",
+								"--datastream",
+								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
+								"--remediate-using",
+								"^\"\\${config:content-navigator.testSuite.remediationType}\"",
+								"^\"\\${command:content-navigator.getRuleId}\""
+							]
+						}
+					}
+				]
+			}
+		],
+		"configuration": {
+            "type": "object",
+            "title": "Content Navigator",
+            "properties": {
+                "content-navigator.testSuite.domainName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Virtual Machine's Domain Name",
+                    "scope": "application"
+                },
+                "content-navigator.testSuite.remediationType": {
+                    "type": "string",
+					"default": "oscap",
+					"enum": [
+						"oscap",
+                        "bash",
+                        "ansible"
+                    ],
+                    "description": "Remediation Type",
+                    "scope": "application"
+				},
+                "content-navigator.testSuite.productName": {
+                    "type": "string",
+					"default": "rhel8",
+					"enum": [
+						"rhel6",
+                        "rhel7",
+						"rhel8",
+						"fedora",
+						"sle12",
+						"sle15"
+                    ],
+                    "description": "Product to be Tested",
+                    "scope": "application"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

@@ -2,8 +2,18 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+export function getRuleId(): string
+{
+	let editor = vscode.window.activeTextEditor;
+	if(editor) {
+		return _getRuleId(editor.document.uri);
+	}
+	else {
+		return "";
+	}
+}
 
-function getRuleId(uri: vscode.Uri): string
+function _getRuleId(uri: vscode.Uri): string
 {
 	let uri_str = uri.toString()
 
@@ -109,7 +119,7 @@ export async function openContent(location: string) {
 		let selection = editor.selection;
 
 		// rule id from current opened file
-		rule_id = getRuleId(document.uri);
+		rule_id = _getRuleId(document.uri);
 		if(rule_id != "")
 		{
 			if(await openFile(rule_id, location)){
@@ -155,7 +165,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
 		if(fileUri != null) {
-			let word = getRuleId(fileUri);
+			let word = _getRuleId(fileUri);
 			if (word != "") {
 				vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
 				vscode.env.clipboard.writeText(word)
@@ -163,14 +173,19 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+
 	let copy_full_prefixed_rule_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedRuleId', async (fileUri) => {
 		if(fileUri != null) {
-			let word = getRuleId(fileUri);
+			let word = _getRuleId(fileUri);
 			if (word != "") {
 				vscode.window.showInformationMessage("Rule ID copied to Clipboard: xccdf_org.ssgproject.content_rule_" + word)
 				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_rule_" + word)
 			}
 		}
+	});
+
+	let get_rule_id = vscode.commands.registerCommand('content-navigator.getRuleId', () => {
+		return getRuleId();
 	});
 
 	context.subscriptions.push(open_rule_command);
@@ -182,6 +197,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(copy_rule_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);
+	context.subscriptions.push(get_rule_id);
 
 	let completionList: vscode.CompletionItem[] = [];
 
