@@ -92,7 +92,7 @@ More details on templates you can find by activating the respective snippet on V
 
 Content-Navigator provides a launch configuration template for the [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) Test Suite.
 
-When editing a `launch.json` configuration file, you can hit `Ctrl+Space` and select the item `Content Navigator Test Suite Setup`. It will create a launch configuration which can be used to run test scenarios using a Virtual Machine. After creating the launch configuration, you need to set Content Navigator properties, such as Domain Name of the Virtual Machine you are using for testing, remediation type and which product is desired to be tested (it will select the appropriate datastream).
+When editing a `launch.json` configuration file, you can hit `Ctrl+Space` and select the item `Content Navigator Test Suite Setup`. It will create a launch configuration which can be used to run test scenarios using a Virtual Machine. After creating the launch configuration, you need to set Content Navigator properties, such as Domain Name of the Virtual Machine you are using for testing, remediation type and which product is desired to be tested (it will select the appropriated datastream automatically).
 
 Those configuration items can be updated under VSCode preferences. Go to `File->Preferences->Settings` and search for Content Navigator. Configure the fields with desired information and now you can run desired test scenarios by simply launching the newly created configuration when editing a resource of a rule. If the resource you are editing belongs to a [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) rule then it will automatically detect the rule id and run the existent test scenarios for it.
 
