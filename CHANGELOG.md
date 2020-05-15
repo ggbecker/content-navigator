@@ -1,6 +1,12 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Launch configuration template for ComplianceAsCode Test Suite
+- VSCode properties to control the launch configuration for ComplianceAsCode Test Suite
+- Detect rule id when editing a test scenario using the pattern `*.pass.sh` and `*.fail.sh`
+### Fixed
+- Do not print selected/clipboard text when failing to open content.
 
 ## [0.0.9] - 2020-02-12
 ### Added

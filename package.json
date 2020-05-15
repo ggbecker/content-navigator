@@ -3,7 +3,7 @@
 	"publisher": "ggbecker",
 	"displayName": "content-navigator",
 	"description": "Content-Navigator is a Visual Studio Code extension which helps to navigate and create content for https://github.com/ComplianceAsCode/content/",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"license" : "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.34.0"
@@ -25,6 +25,7 @@
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
+		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
 	"main": "./out/content-navigator.js",
@@ -36,6 +37,10 @@
 			}
 		],
 		"commands": [
+			{
+				"command": "content-navigator.getRuleId",
+				"title": "Get rule ID"
+			},
 			{
 				"command": "content-navigator.openRule",
 				"title": "Open Rule"
@@ -149,7 +154,89 @@
 				"command": "content-navigator.openPuppet",
 				"key": "ctrl+alt+p"
 			}
-		]
+		],
+		"debuggers": [
+			{
+				"type": "content-navigator",
+				"label": "ComplianceAsCode/content test suite",
+				"languages": [
+					"python"
+				],
+				"configurationSnippets": [
+					{
+						"label": "Content Navigator Test Suite Setup",
+						"description": "A new configuration for setup of ComplianceAsCode/content test suite using VSCode properties",
+						"body": {
+							"name" : "ComplianceAsCode/content Test Suite using VSCode properties", 
+							"type": "python",
+							"request": "launch",
+							"console": "integratedTerminal",
+							"program": "^\"\\${workspaceFolder}/tests/test_suite.py\"",
+							"args": [
+								"rule",
+								"--libvirt",
+								"session",
+								"^\"\\${config:content-navigator.testSuite.domainName}\"",
+								"--datastream",
+								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
+								"--remediate-using",
+								"^\"\\${config:content-navigator.testSuite.remediationType}\"",
+								"^\"\\${command:content-navigator.getRuleId}\""
+							]
+						}
+					}
+				]
+			}
+		],
+		"configuration": {
+            "type": "object",
+            "title": "Content Navigator",
+            "properties": {
+                "content-navigator.testSuite.domainName": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Virtual Machine's Domain Name",
+                    "scope": "application"
+                },
+                "content-navigator.testSuite.remediationType": {
+                    "type": "string",
+					"default": "oscap",
+					"enum": [
+						"oscap",
+                        "bash",
+                        "ansible"
+                    ],
+                    "description": "Remediation Type",
+                    "scope": "application"
+				},
+                "content-navigator.testSuite.productName": {
+                    "type": "string",
+					"default": "fedora",
+					"enum": [
+						"chromium",
+						"debian8", "debian9", "debian10",
+						"eap6",
+						"example",
+						"fedora",
+						"firefox",
+						"fuse6",
+						"jre",
+						"macos1015",
+						"ocp3", "ocp4",
+						"ol7", "ol8",
+						"opensuse",
+						"rhel6", "rhel7", "rhel8",
+						"rhosp10", "rhosp13",
+						"rhv4",
+						"sle11", "sle12", "sle15",
+						"ubuntu1404", "ubuntu1604", "ubuntu1804",
+						"wrlinux8", "wrlinux1019"
+                    ],
+                    "description": "Product to be Tested",
+                    "scope": "application"
+				}
+			}
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
