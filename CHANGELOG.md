@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [0.0.11] - 2020-05-15
+### Added
+- New Icon based on ComplianceAsCode/content icon with a fancy arrow.
+- Display Name is now Content Navigator.
+
 ## [0.0.10] - 2020-05-15
 ### Added
 - Launch configuration template for ComplianceAsCode Test Suite.
