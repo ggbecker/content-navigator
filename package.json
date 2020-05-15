@@ -103,6 +103,14 @@
 					"command": "content-navigator.copyFullPrefixedRuleId"
 				}
 			],
+			"editor/title/context": [
+				{
+					"command": "content-navigator.copyRuleId"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedRuleId"
+				}
+			],
 			"explorer/context": [
 				{
 					"command": "content-navigator.copyRuleId"
