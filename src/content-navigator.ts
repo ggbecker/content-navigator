@@ -90,6 +90,26 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 	return false
 }
 
+export async function listProfilesRuleIsSelected() : Promise<boolean> {
+	let rule_id = getRuleId();
+
+	if(rule_id != "")
+	{
+		let profiles = await vscode.workspace.findFiles('**/*.profile');
+		if(profiles.length > 0)
+		{
+			profiles.forEach(async element => {
+				let text = await vscode.workspace.openTextDocument(element);
+				let i = 0;
+				if(text.getText().indexOf(rule_id)){
+					vscode.window.showInformationMessage(element.toString());
+				}
+			});
+		}
+	}
+	return true
+}
+
 export async function openContent(location: string) {
 	// Get the active text editor
 
@@ -191,6 +211,10 @@ export function activate(context: vscode.ExtensionContext) {
 		return getRuleId();
 	});
 
+	let list_profiles_command = vscode.commands.registerCommand('content-navigator.listProfilesRuleIsSelected', () => {
+		return listProfilesRuleIsSelected();
+	});
+
 	context.subscriptions.push(open_rule_command);
 	context.subscriptions.push(open_oval_command);
 	context.subscriptions.push(open_bash_command);
@@ -201,6 +225,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(copy_rule_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);
 	context.subscriptions.push(get_rule_id);
+	context.subscriptions.push(list_profiles_command);
 
 	let completionList: vscode.CompletionItem[] = [];
 
