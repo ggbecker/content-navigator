@@ -168,7 +168,7 @@
 								"rule",
 								"--libvirt",
 								"session",
-								"^\"\\${config:content-navigator.ssgts.domainName}\"",
+								"^\"\\${config:content-navigator.testSuite.domainName}\"",
 								"--datastream",
 								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
 								"--remediate-using",
