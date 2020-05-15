@@ -3,7 +3,7 @@
 	"publisher": "ggbecker",
 	"displayName": "content-navigator",
 	"description": "Content-Navigator is a Visual Studio Code extension which helps to navigate and create content for https://github.com/ComplianceAsCode/content/",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"license" : "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.34.0"
@@ -157,9 +157,9 @@
 				"configurationSnippets": [
 					{
 						"label": "Content Navigator Test Suite Setup",
-						"description": "A new configuration for setup of ComplianceAsCode/content test suite",
+						"description": "A new configuration for setup of ComplianceAsCode/content test suite using VSCode properties",
 						"body": {
-							"name" : "ComplianceAsCode/content Test Suite", 
+							"name" : "ComplianceAsCode/content Test Suite using VSCode properties", 
 							"type": "python",
 							"request": "launch",
 							"console": "integratedTerminal",
@@ -203,14 +203,26 @@
 				},
                 "content-navigator.testSuite.productName": {
                     "type": "string",
-					"default": "rhel8",
+					"default": "fedora",
 					"enum": [
-						"rhel6",
-                        "rhel7",
-						"rhel8",
+						"chromium",
+						"debian8", "debian9", "debian10",
+						"eap6",
+						"example",
 						"fedora",
-						"sle12",
-						"sle15"
+						"firefox",
+						"fuse6",
+						"jre",
+						"macos1015",
+						"ocp3", "ocp4",
+						"ol7", "ol8",
+						"opensuse",
+						"rhel6", "rhel7", "rhel8",
+						"rhosp10", "rhosp13",
+						"rhv4",
+						"sle11", "sle12", "sle15",
+						"ubuntu1404", "ubuntu1604", "ubuntu1804",
+						"wrlinux8", "wrlinux1019"
                     ],
                     "description": "Product to be Tested",
                     "scope": "application"
