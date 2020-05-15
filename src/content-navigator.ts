@@ -26,6 +26,9 @@ function _getRuleId(uri: vscode.Uri): string
 			uri_str.indexOf('ansible/shared.yml') >= 0 ||
 			uri_str.indexOf('ignition/shared.yml') >= 0 ||
 			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
+			uri_str.indexOf('.pass.sh') >= 0 ||
+			uri_str.indexOf('.fail.sh') >= 0 ||
+			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
 		return paths[paths.length - 3];
@@ -137,7 +140,7 @@ export async function openContent(location: string) {
 		}
 	}
 
-	vscode.window.showInformationMessage("Could not find any matching file (" + location + ") with: " + rule_id);
+	vscode.window.showInformationMessage("Could not find any matching file with following pattern: " + location + "");
 }
 
 export function activate(context: vscode.ExtensionContext) {
