@@ -1,6 +1,7 @@
 # Change Log
 
 ## [Unreleased]
+- Fix launch configuration template.
 
 ## [0.0.11] - 2020-05-15
 ### Added
