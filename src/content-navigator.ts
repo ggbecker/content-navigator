@@ -90,6 +90,62 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 	return false
 }
 
+async function __openFile(file : string) : Promise<boolean> {
+
+	let uries = await vscode.workspace.findFiles('**/' + file);
+	if(uries.length > 0)
+	{
+		let doc = vscode.workspace.openTextDocument(uries[0]);
+		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
+		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
+		return true;
+	}
+	return false
+}
+
+export async function openVariableFile() {
+	// Get the active text editor
+
+	let selectedText: string;
+
+	// content from clipboard
+	selectedText = await vscode.env.clipboard.readText();
+	// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+	if(selectedText.length > 0 && selectedText.length < 120)
+	{
+		if(await __openFile(selectedText + ".var")){
+			return;
+		}
+	}
+
+	let editor = vscode.window.activeTextEditor;
+
+	if (editor) {
+		let document = editor.document;
+		let selection = editor.selection;
+
+		// rule id from current opened file
+		selectedText = _getRuleId(document.uri);
+		if(selectedText != "")
+		{
+			if(await __openFile(selectedText + ".var")){
+				return;
+			}
+		}
+
+		// selected word
+		selectedText = document.getText(document.getWordRangeAtPosition(selection.active, RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)")));
+		if(selectedText.length > 0 && selectedText.length < 120)
+		{
+			if(await __openFile(selectedText + ".var")){
+				return;
+			}
+		}
+	}
+
+	vscode.window.showInformationMessage("Could not find any variable file with the following text: " + selectedText + "");
+}
+
 export async function openContent(location: string) {
 	// Get the active text editor
 
@@ -165,6 +221,9 @@ export function activate(context: vscode.ExtensionContext) {
 	let open_puppet_command = vscode.commands.registerCommand('content-navigator.openPuppet', () => {
 		return openContent("puppet/shared.pp");
 	});
+	let open_variable_command = vscode.commands.registerCommand('content-navigator.openVariable', () => {
+		return openVariableFile();
+	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
 		if(fileUri != null) {
@@ -198,6 +257,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_ignition_command);
 	context.subscriptions.push(open_anaconda_command);
 	context.subscriptions.push(open_puppet_command);
+	context.subscriptions.push(open_variable_command);
 	context.subscriptions.push(copy_rule_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);
 	context.subscriptions.push(get_rule_id);
