@@ -77,6 +77,10 @@
 			{
 				"command": "content-navigator.copyFullPrefixedRuleId",
 				"title": "Copy Full Prefixed Rule ID"
+			},
+			{
+				"command": "content-navigator.listProfilesRuleIsSelected",
+				"title": "List profiles"
 			}
 		],
 		"menus": {
@@ -104,6 +108,9 @@
 				},
 				{
 					"command": "content-navigator.copyRuleId"
+				},
+				{
+					"command": "content-navigator.listProfilesRuleIsSelected"
 				},
 				{
 					"command": "content-navigator.copyFullPrefixedRuleId"
