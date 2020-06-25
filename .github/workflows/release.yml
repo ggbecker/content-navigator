@@ -19,11 +19,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build
+    - name: Build and publish on VSCode Marketplace
       run: |
         npm install
         npm i -g vsce
         vsce package
         vsce publish -p ${{ secrets.MARKETPLACE_TOKEN }}
+    - name: Build and publish on Open VSX Registry
+      run: |
+        npm install
+        npm i -g ovsx
+        npx ovsx publish -p ${{ secrets.OPEN_VSX_TOKEN }}
       env:
         CI: true
