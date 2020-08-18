@@ -176,7 +176,7 @@
 							"args": [
 								"rule",
 								"--libvirt",
-								"session",
+								"qemu:///session",
 								"^\"\\${config:content-navigator.testSuite.domainName}\"",
 								"--datastream",
 								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
