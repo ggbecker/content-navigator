@@ -4,7 +4,7 @@
 	"displayName": "Content Navigator",
 	"description": "Content Navigator is a Visual Studio Code extension which helps to navigate and create content for https://github.com/ComplianceAsCode/content/",
 	"icon": "icon.png",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"license" : "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.34.0"
