@@ -24,6 +24,7 @@
 		"onCommand:content-navigator.openIgnition",
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
+		"onCommand:content-navigator.openKubernetes",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
 		"onCommand:content-navigator.getRuleId",
@@ -71,6 +72,10 @@
 				"title": "Open Puppet"
 			},
 			{
+				"command": "content-navigator.openKubernetes",
+				"title": "Open Kubernetes"
+			},
+			{
 				"command": "content-navigator.copyRuleId",
 				"title": "Copy Rule ID"
 			},
@@ -101,6 +106,9 @@
 				},
 				{
 					"command": "content-navigator.openPuppet"
+				},
+				{
+					"command": "content-navigator.openKubernetes"
 				},
 				{
 					"command": "content-navigator.copyRuleId"
@@ -154,6 +162,10 @@
 			{
 				"command": "content-navigator.openPuppet",
 				"key": "ctrl+alt+p"
+			},
+			{
+				"command": "content-navigator.openKubernetes",
+				"key": "ctrl+alt+k"
 			}
 		],
 		"debuggers": [

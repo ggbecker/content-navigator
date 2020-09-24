@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Support to new type of content called Kubernetes.
 
 ## [0.0.11] - 2020-05-15
 ### Added
