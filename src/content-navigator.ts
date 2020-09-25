@@ -28,7 +28,10 @@ function _getRuleId(uri: vscode.Uri): string
 			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
 			uri_str.indexOf('.pass.sh') >= 0 ||
 			uri_str.indexOf('.fail.sh') >= 0 ||
+			uri_str.indexOf('.notapplicable.sh') >= 0 ||
+			uri_str.indexOf('.error.sh') >= 0 ||
 			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
+			uri_str.indexOf('kubernetes/shared.yml') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
 		return paths[paths.length - 3];
@@ -165,6 +168,9 @@ export function activate(context: vscode.ExtensionContext) {
 	let open_puppet_command = vscode.commands.registerCommand('content-navigator.openPuppet', () => {
 		return openContent("puppet/shared.pp");
 	});
+	let open_kubernetes_command = vscode.commands.registerCommand('content-navigator.openKubernetes', () => {
+		return openContent("kubernetes/shared.yml");
+	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
 		if(fileUri != null) {
@@ -198,6 +204,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_ignition_command);
 	context.subscriptions.push(open_anaconda_command);
 	context.subscriptions.push(open_puppet_command);
+	context.subscriptions.push(open_kubernetes_command);
 	context.subscriptions.push(copy_rule_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);
 	context.subscriptions.push(get_rule_id);

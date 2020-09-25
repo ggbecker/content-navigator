@@ -4,7 +4,7 @@
 	"displayName": "Content Navigator",
 	"description": "Content Navigator is a Visual Studio Code extension which helps to navigate and create content for https://github.com/ComplianceAsCode/content/",
 	"icon": "icon.png",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"license" : "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.34.0"
@@ -24,6 +24,7 @@
 		"onCommand:content-navigator.openIgnition",
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
+		"onCommand:content-navigator.openKubernetes",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
 		"onCommand:content-navigator.getRuleId",
@@ -71,6 +72,10 @@
 				"title": "Open Puppet"
 			},
 			{
+				"command": "content-navigator.openKubernetes",
+				"title": "Open Kubernetes"
+			},
+			{
 				"command": "content-navigator.copyRuleId",
 				"title": "Copy Rule ID"
 			},
@@ -101,6 +106,9 @@
 				},
 				{
 					"command": "content-navigator.openPuppet"
+				},
+				{
+					"command": "content-navigator.openKubernetes"
 				},
 				{
 					"command": "content-navigator.copyRuleId"
@@ -154,6 +162,10 @@
 			{
 				"command": "content-navigator.openPuppet",
 				"key": "ctrl+alt+p"
+			},
+			{
+				"command": "content-navigator.openKubernetes",
+				"key": "ctrl+alt+k"
 			}
 		],
 		"debuggers": [
