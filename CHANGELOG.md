@@ -5,7 +5,9 @@
 - Support to new type of content called Kubernetes.
 - Snippet for `bls_bootloader_option` template.
 - Snippet for `yamlfile_value` template.
-
+- Severity supported values in the `rule` snippet.
+### Fixed
+- Templates with regard to latest version from the developer guide.
 
 ## [0.0.11] - 2020-05-15
 ### Added

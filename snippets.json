@@ -10,7 +10,7 @@
 			"",
 			"rationale: $4",
 			"",
-			"severity: $5",
+			"severity: ${5|low,medium,high,unknown|}",
 			"",
 			"identifiers:",
 			"\t${6:use ident snippet}\t",
