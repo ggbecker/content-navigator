@@ -181,7 +181,7 @@
 			"\tvars:",
 			"\t\tfilepath: ${1:File path to be checked. If the file path ends with '/' it describes a directory.}",
 			"\t\tmissing_file_pass: ${2:If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
-			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory.}",
+			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
 			"\t\tfilegid: ${4:group ID (GID)}"
 		],
 		"description": "Check group that owns the given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
@@ -194,7 +194,7 @@
 			"\tvars:",
 			"\t\tfilepath: ${1:File path to be checked. If the file path ends with '/' it describes a directory.}",
 			"\t\tmissing_file_pass: ${2:If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
-			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory.}",
+			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
 			"\t\tfileuid: ${4:user ID (UID)}"
 		],
 		"description": "Check user that owns the given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
@@ -207,7 +207,7 @@
 			"\tvars:",
 			"\t\tfilepath: ${1:File path to be checked. If the file path ends with '/' it describes a directory.}",
 			"\t\tmissing_file_pass: ${2:If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
-			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory.}",
+			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
 			"\t\tfilemode: ${4:File permissions in a hexadecimal format, eg. 0640'.}"
 		],
 		"description": "Checks permissions (mode) on a given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
