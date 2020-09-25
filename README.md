@@ -32,6 +32,14 @@ Note: When using clipboard, the extension is able to handle rule prefixes such a
 
 `Ctrl+Alt+A`
 
+#### Ignition
+
+`Ctrl+Alt+I`
+
+#### Kubernetes
+
+`Ctrl+Alt+K`
+
 #### Anaconda
 
 `Ctrl+Alt+N`
@@ -67,6 +75,7 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
   - template_audit_rules_unsuccessful_file_modification_o_trunc_write
   - template_audit_rules_unsuccessful_file_modification_rule_order
   - template_audit_rules_usergroup_modification
+  - template_bls_bootloader_option
   - template_file_groupowner
   - template_file_owner
   - template_file_permissions
@@ -85,6 +94,7 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
   - template_sshd_lineinfile
   - template_sysctl
   - template_timer_enabled
+  - template_yamlfile_value
 
 More details on templates you can find by activating the respective snippet on VSCode or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#732-list-of-available-templates)
 
