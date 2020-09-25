@@ -162,6 +162,17 @@
 		],
 		"description": "Check if Audit is configured to record events that modify account changes.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
+	"Template bls_bootloader_option": {
+		"prefix": "template_bls_bootloader_option",
+		"body": [
+			"template:",
+			"\tname: bls_bootloader_option",
+			"\tvars:",
+			"\t\targ_name: ${1:argument name, eg. audit}",
+			"\t\targ_value: ${2:argument value, eg. '1'}"
+		],
+		"description": "Checks kernel command line arguments in BLS-compatible (Boot Loader Specification) boot loader configuration.\n\nLanguages: OVAL\n\n"
+	},
 	"Template file_groupowner": {
 		"prefix": "template_file_groupowner",
 		"body": [
