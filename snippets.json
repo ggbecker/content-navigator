@@ -379,5 +379,22 @@
 			"\t\tpackagename: ${2:name of the RPM package which provides the SystemD timer unit. This parameter is optional, if it is not provided it is assumed that the name of the RPM package is the same as the name of the SystemD timer unit.}"
 		],
 		"description": "Checks if a SystemD timer unit is enabled.\n\nLanguages: Ansible, Bash, OVAL\n\n"
+	},
+	"Template yamlfile_value": {
+		"prefix": "template_yamlfile_value",
+		"body": [
+			"template:",
+			"\tname: yamlfile_value",
+			"\tvars:",
+			"\t\tfilepath: ${1:full path to the file to check}",
+			"\t\tyamlpath: ${2:OVAL's https://github.com/OpenSCAP/yaml-filter/wiki/YAML-Path-Definition expression.}",
+			"\t\tvalue: ${3:the value to check.}",
+			"\t\ttype: ${4:(SimpleDatatypeEnumeration) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'.}",
+			"\t\tentity_check: ${5:(CheckEnumeration) - entity_check value for state's value_of, optional. If omitted, entity_check attribute would not be set and will be treated by OVAL as 'all'.}",
+			"\t\toperation: ${6:(OperationEnumeration) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'.}",
+			"\t\tnegate: ${7:if set to \"true\" the meaning of the value check criterion would be inverted, optional.}",
+			"\t\tocp_data: ${8:if set to \"true\" then the filepath would be treated as a part of the dump of OCP configuration with the 'ocp_data_root' prefix; optional.}"
+		],
+		"description": "Check if value(s) of certain type is (are) present in a YAML (or JSON) file at a given path.\n\nLanguages: OVAL\n\n"
 	}
 }
