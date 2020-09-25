@@ -1,10 +1,14 @@
-Content-Navigator is a Visual Studio Code extension which helps to navigate and create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files and by providing awareness of existent content. Check this [post](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html) out in the official ComplianceAsCode/content [blog](https://complianceascode.github.io/).
+Content Navigator is a VSCode/Codium extension which helps to navigate and create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files and by providing awareness of existent content. Check this [post](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html) out in the official ComplianceAsCode/content [blog](https://complianceascode.github.io/).
 
 ## How to install
 
-Install through Visual Studio Code Extensions page search for `content-navigator` or,
+Install through VSCode/Codium Extensions page search for `content-navigator` or, go to one the following pages and check the instructions:
 
-Go to [Content Navigator Page](https://marketplace.visualstudio.com/items?itemName=ggbecker.content-navigator) and follow the instructions.
+VSCode:
+  - [VSCode Content Navigator Page](https://marketplace.visualstudio.com/items?itemName=ggbecker.content-navigator).
+
+Codium:
+  - [Codium Content Navigator Page](https://open-vsx.org/extension/ggbecker/content-navigator).
 
 ## Features
 
@@ -96,7 +100,7 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
   - template_timer_enabled
   - template_yamlfile_value
 
-More details on templates you can find by activating the respective snippet on VSCode or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#732-list-of-available-templates)
+More details on templates you can find by activating the respective snippet on VSCode/Codium or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#732-list-of-available-templates)
 
 ### Test Suite Launch Configuration
 
@@ -104,6 +108,6 @@ Content-Navigator provides a launch configuration template for the [ComplianceAs
 
 When editing a `launch.json` configuration file, you can hit `Ctrl+Space` and select the item `Content Navigator Test Suite Setup`. It will create a launch configuration which can be used to run test scenarios using a Virtual Machine. After creating the launch configuration, you need to set Content Navigator properties, such as Domain Name of the Virtual Machine you are using for testing, remediation type and which product is desired to be tested (it will select the appropriated datastream automatically).
 
-Those configuration items can be updated under VSCode preferences. Go to `File->Preferences->Settings` and search for Content Navigator. Configure the fields with desired information and now you can run desired test scenarios by simply launching the newly created configuration when editing a resource of a rule. If the resource you are editing belongs to a [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) rule then it will automatically detect the rule id and run the existent test scenarios for it.
+Those configuration items can be updated under VSCode/Codium preferences. Go to `File->Preferences->Settings` and search for Content Navigator. Configure the fields with desired information and now you can run desired test scenarios by simply launching the newly created configuration when editing a resource of a rule. If the resource you are editing belongs to a [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) rule then it will automatically detect the rule id and run the existent test scenarios for it.
 
 A Virtual Machine is required to use this feature. For more information on how to setup your own testing Virtual Machine, check the official documentation on: [How to prepare a backend for testing](https://github.com/ComplianceAsCode/content/tree/master/tests#how-to-prepare-a-backend-for-testing)
