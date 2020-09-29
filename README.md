@@ -1,4 +1,4 @@
-Content Navigator is a VSCode/VSCodium extension which helps to navigate and create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files and by providing awareness of existent content. Check this [post](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html) out in the official ComplianceAsCode/content [blog](https://complianceascode.github.io/).
+Content Navigator is a VSCode/VSCodium extension which helps security content authors to create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files, by providing awareness of existent content and snippets to reduce boilerplate. Check this [post](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html) out in the official ComplianceAsCode/content [blog](https://complianceascode.github.io/).
 
 ## How to install
 
