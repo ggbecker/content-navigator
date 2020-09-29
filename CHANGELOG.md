@@ -6,7 +6,7 @@
 - Snippet for `bls_bootloader_option` template.
 - Snippet for `yamlfile_value` template.
 - Severity supported values in the `rule` snippet.
-- Installing instructions for Codium.
+- Installation instructions for VSCodium.
 ### Fixed
 - Templates with regard to latest version from the developer guide.
 
