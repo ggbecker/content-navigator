@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [0.0.12] - 2020-09-29
 ### Added
 - Support to new type of content called Kubernetes.
 - Snippet for `bls_bootloader_option` template.
