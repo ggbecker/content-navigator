@@ -98,23 +98,28 @@ export async function openContent(location: string) {
 
 	let rule_id: string;
 
+	const config = vscode.workspace.getConfiguration('content-navigator')
+
 	// content from clipboard
-	rule_id = await vscode.env.clipboard.readText();
-	// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
-	if(rule_id.length > 0 && rule_id.length < 120)
+	if(config.get('useClipboard'))
 	{
-		let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');
-		let index_short_prefix = rule_id.indexOf('content_rule_');
-		if(index_full_prefix == 0)
+		rule_id = await vscode.env.clipboard.readText();
+		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+		if(rule_id.length > 0 && rule_id.length < 120)
 		{
-			rule_id = rule_id.slice('xccdf_org.ssgproject.content_rule_'.length)
-		}
-		else if(index_short_prefix == 0)
-		{
-			rule_id = rule_id.slice('content_rule_'.length)
-		}
-		if(await openFile(rule_id, location)){
-			return;
+			let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');
+			let index_short_prefix = rule_id.indexOf('content_rule_');
+			if(index_full_prefix == 0)
+			{
+				rule_id = rule_id.slice('xccdf_org.ssgproject.content_rule_'.length)
+			}
+			else if(index_short_prefix == 0)
+			{
+				rule_id = rule_id.slice('content_rule_'.length)
+			}
+			if(await openFile(rule_id, location)){
+				return;
+			}
 		}
 	}
 

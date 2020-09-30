@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.0.13] - 2020-09-30
+### Added
+- Option to enable/disable using data from clipboard when opening content files.
+
 ## [0.0.12] - 2020-09-29
 ### Added
 - Support to new type of content called Kubernetes.

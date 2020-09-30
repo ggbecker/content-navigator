@@ -247,6 +247,12 @@
                     ],
                     "description": "Product to be Tested",
                     "scope": "application"
+				},
+                "content-navigator.useClipboard": {
+                    "type": "boolean",
+					"default": true,
+                    "description": "Use data from clipboard when opening content files",
+                    "scope": "application"
 				}
 			}
 		}
