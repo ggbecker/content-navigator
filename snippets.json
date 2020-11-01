@@ -35,7 +35,7 @@
 		"description": "Identifier"
 	},
 	"Template accounts_password": {
-		"prefix": "template_accounts_password",
+		"prefix": "t_accounts_password",
 		"body": [
 			"template:",
 			"\tname: accounts_password",
@@ -46,7 +46,7 @@
 		"description": "Checks if PAM enforces password quality requirements. Checks the configuration in:\n\n'/etc/pam.d/system-auth' (for RHEL 6 systems)\n\nor\n\n'/etc/security/pwquality.conf' (on other systems).\n\nLanguages: OVAL\n\n"
 	},
 	"Template auditd_lineinfile": {
-		"prefix": "template_auditd_lineinfile",
+		"prefix": "t_auditd_lineinfile",
 		"body": [
 			"template:",
 			"\tname: auditd_lineinfile",
@@ -58,7 +58,7 @@
 		"description": "Checks configuration options of the Audit Daemon in:\n\n/etc/audit/auditd.conf.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_dac_modification": {
-		"prefix": "template_audit_rules_dac_modification",
+		"prefix": "t_audit_rules_dac_modification",
 		"body": [
 			"template:",
 			"\tname: audit_rules_dac_modification",
@@ -68,7 +68,7 @@
 		"description": "Checks Audit Discretionary Access Control rules.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_file_deletion_events": {
-		"prefix": "template_audit_rules_file_deletion_events",
+		"prefix": "t_audit_rules_file_deletion_events",
 		"body": [
 			"template:",
 			"\tname: audit_rules_file_deletion_events",
@@ -78,7 +78,7 @@
 		"description": "Ensure auditd Collects file deletion events.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_login_events": {
-		"prefix": "template_audit_rules_login_events",
+		"prefix": "t_audit_rules_login_events",
 		"body": [
 			"template:",
 			"\tname: audit_rules_login_events",
@@ -88,7 +88,7 @@
 		"description": "Checks if there are Audit rules that record attempts to alter logon and logout events.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_path_syscall": {
-		"prefix": "template_audit_rules_path_syscall",
+		"prefix": "t_audit_rules_path_syscall",
 		"body": [
 			"template:",
 			"\tname: audit_rules_path_syscall",
@@ -100,7 +100,7 @@
 		"description": "Check if there are Audit rules to record events that modify user/group information via a syscall on a specific file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_privileged_commands": {
-		"prefix": "template_audit_rules_privileged_commands",
+		"prefix": "t_audit_rules_privileged_commands",
 		"body": [
 			"template:",
 			"\tname: audit_rules_privileged_commands",
@@ -110,7 +110,7 @@
 		"description": "Ensure Auditd collects information on the use of specified privileged command.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification",
+		"prefix": "t_audit_rules_unsuccessful_file_modification",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification",
@@ -120,7 +120,7 @@
 		"description": "Ensure there is an Audit rule to record unsuccessful attempts to access files.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification_o_creat": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification_o_creat",
+		"prefix": "t_audit_rules_unsuccessful_file_modification_o_creat",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification_o_creat",
@@ -131,7 +131,7 @@
 		"description": "Ensure there is an Audit rule to record unsuccessful attempts to access files when O_CREAT flag is specified.\n\nLanguages: OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification_o_trunc_write": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification_o_trunc_write",
+		"prefix": "t_audit_rules_unsuccessful_file_modification_o_trunc_write",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification_o_trunc_write",
@@ -142,7 +142,7 @@
 		"description": "Ensure there is an Audit rule to record unsuccessful attempts to access files when O_TRUNC_WRITE flag is specified.\n\nLanguages: OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification_rule_order": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification_rule_order",
+		"prefix": "t_audit_rules_unsuccessful_file_modification_rule_order",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification_rule_order",
@@ -153,7 +153,7 @@
 		"description": "Ensure that Audit rules for unauthorized attempts to use a specific system call are ordered correctly.\n\nLanguages: OVAL\n\n"
 	},
 	"Template audit_rules_usergroup_modification": {
-		"prefix": "template_audit_rules_usergroup_modification",
+		"prefix": "t_audit_rules_usergroup_modification",
 		"body": [
 			"template:",
 			"\tname: audit_rules_usergroup_modification",
@@ -163,7 +163,7 @@
 		"description": "Check if Audit is configured to record events that modify account changes.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template bls_bootloader_option": {
-		"prefix": "template_bls_bootloader_option",
+		"prefix": "t_bls_bootloader_option",
 		"body": [
 			"template:",
 			"\tname: bls_bootloader_option",
@@ -174,7 +174,7 @@
 		"description": "Checks kernel command line arguments in BLS-compatible (Boot Loader Specification) boot loader configuration.\n\nLanguages: OVAL\n\n"
 	},
 	"Template file_groupowner": {
-		"prefix": "template_file_groupowner",
+		"prefix": "t_file_groupowner",
 		"body": [
 			"template:",
 			"\tname: file_groupowner",
@@ -187,7 +187,7 @@
 		"description": "Check group that owns the given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template file_owner": {
-		"prefix": "template_file_owner",
+		"prefix": "t_file_owner",
 		"body": [
 			"template:",
 			"\tname: file_owner",
@@ -200,7 +200,7 @@
 		"description": "Check user that owns the given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template file_permissions": {
-		"prefix": "template_file_permissions",
+		"prefix": "t_file_permissions",
 		"body": [
 			"template:",
 			"\tname: file_permissions",
@@ -213,7 +213,7 @@
 		"description": "Checks permissions (mode) on a given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template grub2_bootloader_argument": {
-		"prefix": "template_grub2_bootloader_argument",
+		"prefix": "t_grub2_bootloader_argument",
 		"body": [
 			"template:",
 			"\tname: grub2_bootloader_argument",
@@ -224,7 +224,7 @@
 		"description": "Checks kernel command line arguments in GRUB 2 configuration.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template kernel_module_disabled": {
-		"prefix": "template_kernel_module_disabled",
+		"prefix": "t_kernel_module_disabled",
 		"body": [
 			"template:",
 			"\tname: kernel_module_disabled",
@@ -234,7 +234,7 @@
 		"description": "Checks if the given Linux kernel module is disabled.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template mount": {
-		"prefix": "template_mount",
+		"prefix": "t_mount",
 		"body": [
 			"template:",
 			"\tname: mount",
@@ -244,7 +244,7 @@
 		"description": "Checks that a given mount point is located on a separate partition.\n\nLanguages: Anaconda, OVAL\n\n"
 	},
 	"Template mount_option": {
-		"prefix": "template_mount_option",
+		"prefix": "t_mount_option",
 		"body": [
 			"template:",
 			"\tname: mount_option",
@@ -258,7 +258,7 @@
 		"description": "Checks if a given partition is mounted with a specific option such as \"nosuid\".\n\nLanguages: Anaconda, Ansible, Bash, OVAL\n\n"
 	},
 	"Template mount_option_remote_filesystems": {
-		"prefix": "template_mount_option_remote_filesystems",
+		"prefix": "t_mount_option_remote_filesystems",
 		"body": [
 			"template:",
 			"\tname: mount_option_remote_filesystems",
@@ -271,7 +271,7 @@
 		"description": "Checks if all remote filesystems (NFS mounts in '/etc/fstab') are mounted with a specific option.\n\nLanguages: Anaconda, Ansible, Bash, OVAL\n\n"
 	},
 	"Template mount_option_removable_partitions": {
-		"prefix": "template_mount_option_removable_partitions",
+		"prefix": "t_mount_option_removable_partitions",
 		"body": [
 			"template:",
 			"\tname: mount_option_removable_partitions",
@@ -284,7 +284,7 @@
 		"description": "Checks if all removable media mounts are mounted with a specific option.\n\nLanguages: Anaconda, Ansible, Bash, OVAL\n\n"
 	},
 	"Template package_installed": {
-		"prefix": "template_package_installed",
+		"prefix": "t_package_installed",
 		"body": [
 			"template:",
 			"\tname: package_installed",
@@ -295,7 +295,7 @@
 		"description": "Checks if a given package is installed. Optionally, it can also check whether a specific version or newer is installed.\n\nLanguages: Anaconda, Ansible, Bash, OVAL, Puppet\n\n"
 	},
 	"Template package_removed": {
-		"prefix": "template_package_removed",
+		"prefix": "t_package_removed",
 		"body": [
 			"template:",
 			"\tname: package_removed",
@@ -305,7 +305,7 @@
 		"description": "Checks if the given package is not installed.\n\nLanguages: Anaconda, Ansible, Bash, OVAL, Puppet\n\n"
 	},
 	"Template sebool": {
-		"prefix": "template_sebool",
+		"prefix": "t_sebool",
 		"body": [
 			"template:",
 			"\tname: sebool",
@@ -316,7 +316,7 @@
 		"description": "Checks values of SELinux booleans.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template service_disabled": {
-		"prefix": "template_service_disabled",
+		"prefix": "t_service_disabled",
 		"body": [
 			"template:",
 			"\tname: service_disabled",
@@ -329,7 +329,7 @@
 		"description": "Checks if a service is disabled. Uses either systemd or SysV init based on the product configuration in 'product.yml'.\n\nLanguages: Ansible, Bash, OVAL, Puppet\n\n"
 	},
 	"Template service_enabled": {
-		"prefix": "template_service_enabled",
+		"prefix": "t_service_enabled",
 		"body": [
 			"template:",
 			"\tname: service_enabled",
@@ -343,7 +343,7 @@
 	},
 
 	"Template shell_lineinfile": {
-		"prefix": "template_shell_lineinfile",
+		"prefix": "t_shell_lineinfile",
 		"body": [
 			"template:",
 			"\tname: shell_lineinfile",
@@ -357,7 +357,7 @@
 		"description": "Checks shell variable assignments in files. Remediations will paste assignments with single shell quotes unless there is the dollar sign in the value string, in which case double quotes are administered. The OVAL checks for a match with either of no quotes, single quoted string, or double quoted string.\n\nLanguages: Ansible, Bash, OVAL\n\nExample: A template invocation specifying that parameter HISTSIZE should be set to value 500 in /etc/profile will produce a check that passes if any of the following lines are present in /etc/profile:\n\nHISTSIZE=500\n\nHISTSIZE=\"500\"\n\nHISTSIZE='500'\n\nThe remediation would insert one of the quoted forms if the line was not present.\n\nIf the no_quotes would be set in the template, only the first form would be checked for, and the unquoted assignment would be inserted to the file by the remediation if not present."
 	},
 	"Template sshd_lineinfile": {
-		"prefix": "template_sshd_lineinfile",
+		"prefix": "t_sshd_lineinfile",
 		"body": [
 			"template:",
 			"\tname: sshd_lineinfile",
@@ -369,7 +369,7 @@
 		"description": "Checks SSH server configuration items in '/etc/ssh/sshd_config'.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template sysctl": {
-		"prefix": "template_sysctl",
+		"prefix": "t_sysctl",
 		"body": [
 			"template:",
 			"\tname: sysctl",
@@ -381,7 +381,7 @@
 		"description": "Checks sysctl parameters. The OVAL definition checks both configuration and runtime settings and require both of them to be set to the desired value to return true.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template timer_enabled": {
-		"prefix": "template_timer_enabled",
+		"prefix": "t_timer_enabled",
 		"body": [
 			"template:",
 			"\tname: timer_enabled",
@@ -392,7 +392,7 @@
 		"description": "Checks if a SystemD timer unit is enabled.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template yamlfile_value": {
-		"prefix": "template_yamlfile_value",
+		"prefix": "t_yamlfile_value",
 		"body": [
 			"template:",
 			"\tname: yamlfile_value",
