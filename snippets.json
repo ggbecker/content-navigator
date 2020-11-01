@@ -13,7 +13,7 @@
 			"severity: ${5|low,medium,high,unknown|}",
 			"",
 			"identifiers:",
-			"\t${6:use ident snippet}\t",
+			"\t${6:# use ident snippet}\t",
 			"",
 			"references:",
 			"\t$7: $8",
@@ -35,376 +35,378 @@
 		"description": "Identifier"
 	},
 	"Template accounts_password": {
-		"prefix": "template_accounts_password",
+		"prefix": "t_accounts_password",
 		"body": [
 			"template:",
 			"\tname: accounts_password",
 			"\tvars:",
-			"\t\tvariable: ${1:PAM 'pam_cracklib' (on RHEL 6) or 'pam_pwquality' (on other systems) module name, eg. 'ucredit', 'ocredit'}",
-			"\t\toperation: ${2:OVAL operation, eg. 'less than or equal'}"
+			"\t\tvariable: ${1:# PAM 'pam_cracklib' (on RHEL 6) or 'pam_pwquality' (on other systems) module name, eg. 'ucredit', 'ocredit'}",
+			"\t\toperation: ${2:# OVAL operation, eg. 'less than or equal'}"
 		],
 		"description": "Checks if PAM enforces password quality requirements. Checks the configuration in:\n\n'/etc/pam.d/system-auth' (for RHEL 6 systems)\n\nor\n\n'/etc/security/pwquality.conf' (on other systems).\n\nLanguages: OVAL\n\n"
 	},
 	"Template auditd_lineinfile": {
-		"prefix": "template_auditd_lineinfile",
+		"prefix": "t_auditd_lineinfile",
 		"body": [
 			"template:",
 			"\tname: auditd_lineinfile",
 			"\tvars:",
-			"\t\tparameter: ${1:auditd configuration item}",
-			"\t\tvalue: ${2:the value of configuration item specified by parameter}",
-			"\t\tmissing_parameter_pass: ${3:effective only in OVAL checks, if set to \"true\" and the parameter is not present in the configuration file the OVAL check will return true.}"
+			"\t\tparameter: ${1:# auditd configuration item}",
+			"\t\tvalue: ${2:# the value of configuration item specified by parameter}",
+			"\t\tmissing_parameter_pass: ${3:# effective only in OVAL checks, if set to \"true\" and the parameter is not present in the configuration file the OVAL check will return true.}"
 		],
 		"description": "Checks configuration options of the Audit Daemon in:\n\n/etc/audit/auditd.conf.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_dac_modification": {
-		"prefix": "template_audit_rules_dac_modification",
+		"prefix": "t_audit_rules_dac_modification",
 		"body": [
 			"template:",
 			"\tname: audit_rules_dac_modification",
 			"\tvars:",
-			"\t\tattr: ${1:value of '-S' argument in Audit rule, eg. 'chmod'}"
+			"\t\tattr: ${1:# value of '-S' argument in Audit rule, eg. 'chmod'}"
 		],
 		"description": "Checks Audit Discretionary Access Control rules.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_file_deletion_events": {
-		"prefix": "template_audit_rules_file_deletion_events",
+		"prefix": "t_audit_rules_file_deletion_events",
 		"body": [
 			"template:",
 			"\tname: audit_rules_file_deletion_events",
 			"\tvars:",
-			"\t\tname: ${1:value of '-S' argument in Audit rule, eg. 'unlink'}"
+			"\t\tname: ${1:# value of '-S' argument in Audit rule, eg. 'unlink'}"
 		],
 		"description": "Ensure auditd Collects file deletion events.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_login_events": {
-		"prefix": "template_audit_rules_login_events",
+		"prefix": "t_audit_rules_login_events",
 		"body": [
 			"template:",
 			"\tname: audit_rules_login_events",
 			"\tvars:",
-			"\t\tpath: ${1:value of '-w' in the Audit rule, eg. '/var/run/faillock'}"
+			"\t\tpath: ${1:# value of '-w' in the Audit rule, eg. '/var/run/faillock'}"
 		],
 		"description": "Checks if there are Audit rules that record attempts to alter logon and logout events.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_path_syscall": {
-		"prefix": "template_audit_rules_path_syscall",
+		"prefix": "t_audit_rules_path_syscall",
 		"body": [
 			"template:",
 			"\tname: audit_rules_path_syscall",
 			"\tvars:",
-			"\t\tpath: ${1:path of the protected file, eg. '/etc/shadow'}",
-			"\t\tpos: ${2:position of argument, eg. 'a2'}",
-			"\t\tsyscall: ${3:name of the system call, eg. 'openat'}"
+			"\t\tpath: ${1:# path of the protected file, eg. '/etc/shadow'}",
+			"\t\tpos: ${2:# position of argument, eg. 'a2'}",
+			"\t\tsyscall: ${3:# name of the system call, eg. 'openat'}"
 		],
 		"description": "Check if there are Audit rules to record events that modify user/group information via a syscall on a specific file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_privileged_commands": {
-		"prefix": "template_audit_rules_privileged_commands",
+		"prefix": "t_audit_rules_privileged_commands",
 		"body": [
 			"template:",
 			"\tname: audit_rules_privileged_commands",
 			"\tvars:",
-			"\t\tpath: ${1:the path of the privileged command - eg. '/usr/bin/mount'}"
+			"\t\tpath: ${1:# the path of the privileged command - eg. '/usr/bin/mount'}"
 		],
 		"description": "Ensure Auditd collects information on the use of specified privileged command.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification",
+		"prefix": "t_audit_rules_unsuccessful_file_modification",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification",
 			"\tvars:",
-			"\t\tname: ${1:name of the unsuccessful system call, eg. 'creat'}"
+			"\t\tname: ${1:# name of the unsuccessful system call, eg. 'creat'}"
 		],
 		"description": "Ensure there is an Audit rule to record unsuccessful attempts to access files.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification_o_creat": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification_o_creat",
+		"prefix": "t_audit_rules_unsuccessful_file_modification_o_creat",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification_o_creat",
 			"\tvars:",
-			"\t\tsyscall: ${1:name of the unsuccessful system call, eg. 'openat'}",
-			"\t\tpos: ${2:position of the O_CREAT argument in the syscall, as specified by '-F' audit rule argument, eg. 'a2'}"
+			"\t\tsyscall: ${1:# name of the unsuccessful system call, eg. 'openat'}",
+			"\t\tpos: ${2:# position of the O_CREAT argument in the syscall, as specified by '-F' audit rule argument, eg. 'a2'}"
 		],
 		"description": "Ensure there is an Audit rule to record unsuccessful attempts to access files when O_CREAT flag is specified.\n\nLanguages: OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification_o_trunc_write": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification_o_trunc_write",
+		"prefix": "t_audit_rules_unsuccessful_file_modification_o_trunc_write",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification_o_trunc_write",
 			"\tvars:",
-			"\t\tsyscall: ${1:name of the unsuccessful system call, eg. 'openat'}",
-			"\t\tpos: ${2:position of the O_TRUNC_WRITE argument in the syscall, as specified by '-F' audit rule argument, eg. 'a2'}"
+			"\t\tsyscall: ${1:# name of the unsuccessful system call, eg. 'openat'}",
+			"\t\tpos: ${2:# position of the O_TRUNC_WRITE argument in the syscall, as specified by '-F' audit rule argument, eg. 'a2'}"
 		],
 		"description": "Ensure there is an Audit rule to record unsuccessful attempts to access files when O_TRUNC_WRITE flag is specified.\n\nLanguages: OVAL\n\n"
 	},
 	"Template audit_rules_unsuccessful_file_modification_rule_order": {
-		"prefix": "template_audit_rules_unsuccessful_file_modification_rule_order",
+		"prefix": "t_audit_rules_unsuccessful_file_modification_rule_order",
 		"body": [
 			"template:",
 			"\tname: audit_rules_unsuccessful_file_modification_rule_order",
 			"\tvars:",
-			"\t\tsyscall: ${1:name of the unsuccessful system call, eg. 'openat'}",
-			"\t\tpos: ${2:position of the flag parameter in the syscall, as specified by '-F' audit rule argument, eg. 'a2'}"
+			"\t\tsyscall: ${1:# name of the unsuccessful system call, eg. 'openat'}",
+			"\t\tpos: ${2:# position of the flag parameter in the syscall, as specified by '-F' audit rule argument, eg. 'a2'}"
 		],
 		"description": "Ensure that Audit rules for unauthorized attempts to use a specific system call are ordered correctly.\n\nLanguages: OVAL\n\n"
 	},
 	"Template audit_rules_usergroup_modification": {
-		"prefix": "template_audit_rules_usergroup_modification",
+		"prefix": "t_audit_rules_usergroup_modification",
 		"body": [
 			"template:",
 			"\tname: audit_rules_usergroup_modification",
 			"\tvars:",
-			"\t\tpath: ${1:path that should be part of the audit rule as a value of '-w' argument, eg. '/etc/group'.}"
+			"\t\tpath: ${1:# path that should be part of the audit rule as a value of '-w' argument, eg. '/etc/group'.}"
 		],
 		"description": "Check if Audit is configured to record events that modify account changes.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template bls_bootloader_option": {
-		"prefix": "template_bls_bootloader_option",
+		"prefix": "t_bls_bootloader_option",
 		"body": [
 			"template:",
 			"\tname: bls_bootloader_option",
 			"\tvars:",
-			"\t\targ_name: ${1:argument name, eg. audit}",
-			"\t\targ_value: ${2:argument value, eg. '1'}"
+			"\t\targ_name: ${1:# argument name, eg. audit}",
+			"\t\targ_value: ${2:# argument value, eg. '1'}"
 		],
 		"description": "Checks kernel command line arguments in BLS-compatible (Boot Loader Specification) boot loader configuration.\n\nLanguages: OVAL\n\n"
 	},
 	"Template file_groupowner": {
-		"prefix": "template_file_groupowner",
+		"prefix": "t_file_groupowner",
 		"body": [
 			"template:",
 			"\tname: file_groupowner",
 			"\tvars:",
-			"\t\tfilepath: ${1:File path to be checked. If the file path ends with '/' it describes a directory.}",
-			"\t\tmissing_file_pass: ${2:If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
-			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
-			"\t\tfilegid: ${4:group ID (GID)}"
+			"\t\tfilepath: ${1:# File path to be checked. If the file path ends with '/' it describes a directory.}",
+			"\t\tmissing_file_pass: ${2:# If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
+			"\t\tfile_regex: ${3:# Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
+			"\t\tfilegid: ${4:# group ID (GID)}"
 		],
 		"description": "Check group that owns the given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template file_owner": {
-		"prefix": "template_file_owner",
+		"prefix": "t_file_owner",
 		"body": [
 			"template:",
 			"\tname: file_owner",
 			"\tvars:",
-			"\t\tfilepath: ${1:File path to be checked. If the file path ends with '/' it describes a directory.}",
-			"\t\tmissing_file_pass: ${2:If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
-			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
-			"\t\tfileuid: ${4:user ID (UID)}"
+			"\t\tfilepath: ${1:# File path to be checked. If the file path ends with '/' it describes a directory.}",
+			"\t\tmissing_file_pass: ${2:# If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
+			"\t\tfile_regex: ${3:# Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
+			"\t\tfileuid: ${4:# user ID (UID)}"
 		],
 		"description": "Check user that owns the given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template file_permissions": {
-		"prefix": "template_file_permissions",
+		"prefix": "t_file_permissions",
 		"body": [
 			"template:",
 			"\tname: file_permissions",
 			"\tvars:",
-			"\t\tfilepath: ${1:File path to be checked. If the file path ends with '/' it describes a directory.}",
-			"\t\tmissing_file_pass: ${2:If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
-			"\t\tfile_regex: ${3:Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
-			"\t\tfilemode: ${4:File permissions in a hexadecimal format, eg. 0640'.}"
+			"\t\tfilepath: ${1:# File path to be checked. If the file path ends with '/' it describes a directory.}",
+			"\t\tmissing_file_pass: ${2:# If set to \"true\" the OVAL check will pass when file is absent. Default value is \"false\".}",
+			"\t\tfile_regex: ${3:# Regular expression that matches file names in a directory specified by 'filepath'. Can be set only if 'filepath' parameter specifies a directory. Note: Applies to base name of files, so if a file '/foo/bar/file.txt' is processed, only 'file.txt' is tested against \"file_regex\".}",
+			"\t\tfilemode: ${4:# File permissions in a hexadecimal format, eg. 0640'.}"
 		],
 		"description": "Checks permissions (mode) on a given file.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template grub2_bootloader_argument": {
-		"prefix": "template_grub2_bootloader_argument",
+		"prefix": "t_grub2_bootloader_argument",
 		"body": [
 			"template:",
 			"\tname: grub2_bootloader_argument",
 			"\tvars:",
-			"\t\targ_name: ${1:argument name, eg. 'audit'}",
-			"\t\targ_value: ${2:argument value, eg. '1'}"
+			"\t\targ_name: ${1:# argument name, eg. 'audit'}",
+			"\t\targ_value: ${2:# argument value, eg. '1'}"
 		],
 		"description": "Checks kernel command line arguments in GRUB 2 configuration.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template kernel_module_disabled": {
-		"prefix": "template_kernel_module_disabled",
+		"prefix": "t_kernel_module_disabled",
 		"body": [
 			"template:",
 			"\tname: kernel_module_disabled",
 			"\tvars:",
-			"\t\tkernmodule: ${1:name of the Linux kernel module, eg. 'cramfs'}"
+			"\t\tkernmodule: ${1:# name of the Linux kernel module, eg. 'cramfs'}"
 		],
 		"description": "Checks if the given Linux kernel module is disabled.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template mount": {
-		"prefix": "template_mount",
+		"prefix": "t_mount",
 		"body": [
 			"template:",
 			"\tname: mount",
 			"\tvars:",
-			"\t\tmountpoint: ${1:path to the mount point, eg. '/var/tmp'}"
+			"\t\tmountpoint: ${1:# path to the mount point, eg. '/var/tmp'}"
 		],
 		"description": "Checks that a given mount point is located on a separate partition.\n\nLanguages: Anaconda, OVAL\n\n"
 	},
 	"Template mount_option": {
-		"prefix": "template_mount_option",
+		"prefix": "t_mount_option",
 		"body": [
 			"template:",
 			"\tname: mount_option",
 			"\tvars:",
-			"\t\tmountpoint: ${1:mount point on the filesystem eg. '/dev/shm'}",
-			"\t\tmountoption: ${2:mount option, eg. 'nosuid'}",
-			"\t\tfilesystem: ${3:filesystem in '/etc/fstab', eg. 'tmpfs'. Used only in Bash remediation.}",
-			"\t\ttype: ${4:filesystem type. Used only in Bash remediation.}",
-			"\t\tmount_has_to_exist: ${5:Used only in Bash remediation. Specifies if the 'mountpoint' entry has to exist in '/etc/fstab' before the remediation is executed. If set to 'yes' and the 'mountpoint' entry is not present in '/etc/fstab' the Bash remediation terminates. If set to 'no' the 'mountpoint' entry will be created in '/etc/fstab'.}"
+			"\t\tmountpoint: ${1:# mount point on the filesystem eg. '/dev/shm'}",
+			"\t\tmountoption: ${2:# mount option, eg. 'nosuid'}",
+			"\t\tfilesystem: ${3:# filesystem in '/etc/fstab', eg. 'tmpfs'. Used only in Bash remediation.}",
+			"\t\ttype: ${4:# filesystem type. Used only in Bash remediation.}",
+			"\t\tmount_has_to_exist: ${5:# Used only in Bash remediation. Specifies if the 'mountpoint' entry has to exist in '/etc/fstab' before the remediation is executed. If set to 'yes' and the 'mountpoint' entry is not present in '/etc/fstab' the Bash remediation terminates. If set to 'no' the 'mountpoint' entry will be created in '/etc/fstab'.}"
 		],
 		"description": "Checks if a given partition is mounted with a specific option such as \"nosuid\".\n\nLanguages: Anaconda, Ansible, Bash, OVAL\n\n"
 	},
 	"Template mount_option_remote_filesystems": {
-		"prefix": "template_mount_option_remote_filesystems",
+		"prefix": "t_mount_option_remote_filesystems",
 		"body": [
 			"template:",
 			"\tname: mount_option_remote_filesystems",
 			"\tvars:",
-			"\t\tmountpoint: ${1:always set to 'remote_filesystems'}",
-			"\t\tmountoption: ${2:mount option, eg. 'nodev'}",
-			"\t\tfilesystem: ${3:filesystem of new mount point (used when adding new entry in '/etc/fstab'), eg. 'tmpfs'. Used only in Bash remediation.}",
-			"\t\tmount_has_to_exist: ${4:Used only in Bash remediation. Specifies if the 'mountpoint' entry has to exist in '/etc/fstab' before the remediation is executed. If set to 'yes' and the 'mountpoint' entry is not present in '/etc/fstab' the Bash remediation terminates. If set to 'no' the 'mountpoint' entry will be created in '/etc/fstab'.}"
+			"\t\tmountpoint: ${1:# always set to 'remote_filesystems'}",
+			"\t\tmountoption: ${2:# mount option, eg. 'nodev'}",
+			"\t\tfilesystem: ${3:# filesystem of new mount point (used when adding new entry in '/etc/fstab'), eg. 'tmpfs'. Used only in Bash remediation.}",
+			"\t\tmount_has_to_exist: ${4:# Used only in Bash remediation. Specifies if the 'mountpoint' entry has to exist in '/etc/fstab' before the remediation is executed. If set to 'yes' and the 'mountpoint' entry is not present in '/etc/fstab' the Bash remediation terminates. If set to 'no' the 'mountpoint' entry will be created in '/etc/fstab'.}"
 		],
 		"description": "Checks if all remote filesystems (NFS mounts in '/etc/fstab') are mounted with a specific option.\n\nLanguages: Anaconda, Ansible, Bash, OVAL\n\n"
 	},
 	"Template mount_option_removable_partitions": {
-		"prefix": "template_mount_option_removable_partitions",
+		"prefix": "t_mount_option_removable_partitions",
 		"body": [
 			"template:",
 			"\tname: mount_option_removable_partitions",
 			"\tvars:",
-			"\t\tmountpoint: ${1:always set to 'var_removable_partition'. This is an XCCDF Value, defined in: https://github.com/ComplianceAsCode/content/blob/master/linux_os/guide/system/permissions/partitions/var_removable_partition.var}",
-			"\t\tmountoption: ${2:mount option, eg. 'nodev'}",
-			"\t\tfilesystem: ${3:filesystem of new mount point (used when adding new entry in '/etc/fstab'), eg. 'tmpfs'. Used only in Bash remediation.}",
-			"\t\tmount_has_to_exist: ${4:Used only in Bash remediation. Specifies if the 'mountpoint' entry has to exist in '/etc/fstab' before the remediation is executed. If set to 'yes' and the 'mountpoint' entry is not present in '/etc/fstab' the Bash remediation terminates. If set to 'no' the 'mountpoint' entry will be created in '/etc/fstab'.}"
+			"\t\tmountpoint: ${1:# always set to 'var_removable_partition'. This is an XCCDF Value, defined in: https://github.com/ComplianceAsCode/content/blob/master/linux_os/guide/system/permissions/partitions/var_removable_partition.var}",
+			"\t\tmountoption: ${2:# mount option, eg. 'nodev'}",
+			"\t\tfilesystem: ${3:# filesystem of new mount point (used when adding new entry in '/etc/fstab'), eg. 'tmpfs'. Used only in Bash remediation.}",
+			"\t\tmount_has_to_exist: ${4:# Used only in Bash remediation. Specifies if the 'mountpoint' entry has to exist in '/etc/fstab' before the remediation is executed. If set to 'yes' and the 'mountpoint' entry is not present in '/etc/fstab' the Bash remediation terminates. If set to 'no' the 'mountpoint' entry will be created in '/etc/fstab'.}"
 		],
 		"description": "Checks if all removable media mounts are mounted with a specific option.\n\nLanguages: Anaconda, Ansible, Bash, OVAL\n\n"
 	},
 	"Template package_installed": {
-		"prefix": "template_package_installed",
+		"prefix": "t_package_installed",
 		"body": [
 			"template:",
 			"\tname: package_installed",
 			"\tvars:",
-			"\t\tpkgname: ${1:name of the RPM or DEB package, eg. 'tmux'}",
-			"\t\tevr: ${2:Optional parameter. It can be used to check if the package is of a specific version or newer. Provide epoch, version, release in 'epoch:version-release' format, eg. '0:2.17-55.0.4.el7_0.3'. Used only in OVAL checks. The OVAL state uses operation \"greater than or equal\" to compare the collected package version with the version in the OVAL state.}"
+			"\t\tpkgname: ${1:# name of the RPM or DEB package, eg. 'tmux'}",
+			"\t\tevr: ${2:# Optional parameter. It can be used to check if the package is of a specific version or newer. Provide epoch, version, release in 'epoch:version-release' format, eg. '0:2.17-55.0.4.el7_0.3'. Used only in OVAL checks. The OVAL state uses operation \"greater than or equal\" to compare the collected package version with the version in the OVAL state.}"
 		],
 		"description": "Checks if a given package is installed. Optionally, it can also check whether a specific version or newer is installed.\n\nLanguages: Anaconda, Ansible, Bash, OVAL, Puppet\n\n"
 	},
 	"Template package_removed": {
-		"prefix": "template_package_removed",
+		"prefix": "t_package_removed",
 		"body": [
 			"template:",
 			"\tname: package_removed",
 			"\tvars:",
-			"\t\tpkgname: ${1:name of the RPM or DEB package, eg. 'tmux'}"
+			"\t\tpkgname: ${1:# name of the RPM or DEB package, eg. 'tmux'}"
 		],
 		"description": "Checks if the given package is not installed.\n\nLanguages: Anaconda, Ansible, Bash, OVAL, Puppet\n\n"
 	},
 	"Template sebool": {
-		"prefix": "template_sebool",
+		"prefix": "t_sebool",
 		"body": [
 			"template:",
 			"\tname: sebool",
 			"\tvars:",
-			"\t\tseboolid: ${1:name of SELinux boolean, eg. 'cron_userdomain_transition'}",
-			"\t\tsebool_bool: ${2:the value of the SELinux Boolean. Can be either \"true\" or \"false\". If this parameter is not specified, the rule will use XCCDF Value 'var_<seboolid>'. These XCCDF Values are usually defined in the same directory where the 'rule.yml' that describes the rule is located. The 'seboolid' will be replaced by a SELinux boolean, for example: 'selinuxuser_execheap' and in the profile you can use 'var_selinuxuser_execheap' to turn on or off the SELinux boolean.}"
+			"\t\tseboolid: ${1:# name of SELinux boolean, eg. 'cron_userdomain_transition'}",
+			"\t\tsebool_bool: ${2:# the value of the SELinux Boolean. Can be either \"true\" or \"false\". If this parameter is not specified, the rule will use XCCDF Value 'var_<seboolid>'. These XCCDF Values are usually defined in the same directory where the 'rule.yml' that describes the rule is located. The 'seboolid' will be replaced by a SELinux boolean, for example: 'selinuxuser_execheap' and in the profile you can use 'var_selinuxuser_execheap' to turn on or off the SELinux boolean.}"
 		],
 		"description": "Checks values of SELinux booleans.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template service_disabled": {
-		"prefix": "template_service_disabled",
+		"prefix": "t_service_disabled",
 		"body": [
 			"template:",
 			"\tname: service_disabled",
 			"\tvars:",
-			"\t\tservicename: ${1:name of the service.}",
-			"\t\tpackagename: ${2:name of the package that provides this service. This argument is optional. If 'packagename' is not specified it means the name of the package is the same as the name of service.}",
-			"\t\tdaemonname: ${3:name of the daemon. This argument is optional. If 'daemonname' is not specified it means the name of the daemon is the same as the name of service.}",
-			"\t\tmask_service: ${4:Check if the service should be masked to prevent it from running. This argument is optional. Implicit value is \"true\".}"
+			"\t\tservicename: ${1:# name of the service.}",
+			"\t\tpackagename: ${2:# name of the package that provides this service. This argument is optional. If 'packagename' is not specified it means the name of the package is the same as the name of service.}",
+			"\t\tdaemonname: ${3:# name of the daemon. This argument is optional. If 'daemonname' is not specified it means the name of the daemon is the same as the name of service.}",
+			"\t\tmask_service: ${4:# Check if the service should be masked to prevent it from running. This argument is optional. Implicit value is \"true\".}"
 		],
 		"description": "Checks if a service is disabled. Uses either systemd or SysV init based on the product configuration in 'product.yml'.\n\nLanguages: Ansible, Bash, OVAL, Puppet\n\n"
 	},
 	"Template service_enabled": {
-		"prefix": "template_service_enabled",
+		"prefix": "t_service_enabled",
 		"body": [
 			"template:",
 			"\tname: service_enabled",
 			"\tvars:",
-			"\t\tservicename: ${1:name of the service.}",
-			"\t\tpackagename: ${2:name of the package that provides this service. This argument is optional. If 'packagename' is not specified it means the name of the package is the same as the name of service.}",
-			"\t\tdaemonname: ${3:name of the daemon. This argument is optional. If 'daemonname' is not specified it means the name of the daemon is the same as the name of service.}",
-			"\t\tmask_service: ${4:Check if the service should be masked to prevent it from running. This argument is optional. Implicit value is \"true\".}"
+			"\t\tservicename: ${1:# name of the service.}",
+			"\t\tpackagename: ${2:# name of the package that provides this service. This argument is optional. If 'packagename' is not specified it means the name of the package is the same as the name of service.}",
+			"\t\tdaemonname: ${3:# name of the daemon. This argument is optional. If 'daemonname' is not specified it means the name of the daemon is the same as the name of service.}",
+			"\t\tmask_service: ${4:# Check if the service should be masked to prevent it from running. This argument is optional. Implicit value is \"true\".}"
 		],
 		"description": "Checks if a system service is enabled. Uses either systemd or SysV init based on the product configuration in 'product.yml'.\n\nLanguages: Ansible, Bash, OVAL, Puppet\n\n"
 	},
 
 	"Template shell_lineinfile": {
-		"prefix": "template_shell_lineinfile",
+		"prefix": "t_shell_lineinfile",
 		"body": [
 			"template:",
 			"\tname: shell_lineinfile",
 			"\tvars:",
-			"\t\tpath: ${1:What file to check}",
-			"\t\tparameter: ${2:name of the shell variable, eg. SHELL.}",
-			"\t\tvalue: ${3:value of the SSH configuration option specified by parameter, eg. \"/bin/bash\". Don’t pass extra shell quoting - that will be handled on the lower level.}",
-			"\t\tno_quotes: ${4:If set to \"true\", the assigned value has to be without quotes during the check and remediation doesn’t quote assignments either.}",
-			"\t\tmissing_parameter_pass: ${5:If set to \"true\" the OVAL check will pass if the parameter is not present in the target file.}"
+			"\t\tpath: ${1:# What file to check}",
+			"\t\tparameter: ${2:# name of the shell variable, eg. SHELL.}",
+			"\t\tvalue: ${3:# value of the SSH configuration option specified by parameter, eg. \"/bin/bash\". Don’t pass extra shell quoting - that will be handled on the lower level.}",
+			"\t\tno_quotes: ${4:# If set to \"true\", the assigned value has to be without quotes during the check and remediation doesn’t quote assignments either.}",
+			"\t\tmissing_parameter_pass: ${5:# If set to \"true\" the OVAL check will pass if the parameter is not present in the target file.}"
 		],
 		"description": "Checks shell variable assignments in files. Remediations will paste assignments with single shell quotes unless there is the dollar sign in the value string, in which case double quotes are administered. The OVAL checks for a match with either of no quotes, single quoted string, or double quoted string.\n\nLanguages: Ansible, Bash, OVAL\n\nExample: A template invocation specifying that parameter HISTSIZE should be set to value 500 in /etc/profile will produce a check that passes if any of the following lines are present in /etc/profile:\n\nHISTSIZE=500\n\nHISTSIZE=\"500\"\n\nHISTSIZE='500'\n\nThe remediation would insert one of the quoted forms if the line was not present.\n\nIf the no_quotes would be set in the template, only the first form would be checked for, and the unquoted assignment would be inserted to the file by the remediation if not present."
 	},
 	"Template sshd_lineinfile": {
-		"prefix": "template_sshd_lineinfile",
+		"prefix": "t_sshd_lineinfile",
 		"body": [
 			"template:",
 			"\tname: sshd_lineinfile",
 			"\tvars:",
-			"\t\tparameter: ${1:name of the SSH configuration option, eg. 'KerberosAuthentication'}",
-			"\t\tvalue: ${2:value of the SSH configuration option specified by 'parameter', eg. \"no\".}",
-			"\t\tmissing_parameter_pass: ${3:If set to \"true\" the OVAL check will pass if the parameter is not present in '/etc/ssh/sshd_config'.}"
+			"\t\tparameter: ${1:# name of the SSH configuration option, eg. 'KerberosAuthentication'}",
+			"\t\tvalue: ${2:# value of the SSH configuration option specified by 'parameter', eg. \"no\".}",
+			"\t\tmissing_parameter_pass: ${3:# If set to \"true\" the OVAL check will pass if the parameter is not present in '/etc/ssh/sshd_config'.}"
 		],
 		"description": "Checks SSH server configuration items in '/etc/ssh/sshd_config'.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template sysctl": {
-		"prefix": "template_sysctl",
+		"prefix": "t_sysctl",
 		"body": [
 			"template:",
 			"\tname: sysctl",
 			"\tvars:",
-			"\t\tsysctlvar: ${1:name of the sysctl value, eg. 'net.ipv4.conf.all.secure_redirects'.}",
-			"\t\tdatatype: ${2:data type of the sysctl value, eg. 'int'.}",
-			"\t\tsysctlval: ${3:value of the sysctl value, eg. '1'. If this parameter is not specified, XCCDF Value is used instead.}"
+			"\t\tsysctlvar: ${1:# name of the sysctl value, eg. 'net.ipv4.conf.all.secure_redirects'.}",
+			"\t\tdatatype: ${2:# data type of the sysctl value, eg. 'int'.}",
+			"\t\tsysctlval: ${3:# value of the sysctl value, eg. '1'. If this parameter is not specified, XCCDF Value is used instead.}"
 		],
 		"description": "Checks sysctl parameters. The OVAL definition checks both configuration and runtime settings and require both of them to be set to the desired value to return true.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template timer_enabled": {
-		"prefix": "template_timer_enabled",
+		"prefix": "t_timer_enabled",
 		"body": [
 			"template:",
 			"\tname: timer_enabled",
 			"\tvars:",
-			"\t\ttimername: ${1:name of the SystemD timer unit, without the 'timer' suffix, eg. 'dnf-automatic'.}",
-			"\t\tpackagename: ${2:name of the RPM package which provides the SystemD timer unit. This parameter is optional, if it is not provided it is assumed that the name of the RPM package is the same as the name of the SystemD timer unit.}"
+			"\t\ttimername: ${1:# name of the SystemD timer unit, without the 'timer' suffix, eg. 'dnf-automatic'.}",
+			"\t\tpackagename: ${2:# name of the RPM package which provides the SystemD timer unit. This parameter is optional, if it is not provided it is assumed that the name of the RPM package is the same as the name of the SystemD timer unit.}"
 		],
 		"description": "Checks if a SystemD timer unit is enabled.\n\nLanguages: Ansible, Bash, OVAL\n\n"
 	},
 	"Template yamlfile_value": {
-		"prefix": "template_yamlfile_value",
+		"prefix": "t_yamlfile_value",
 		"body": [
 			"template:",
 			"\tname: yamlfile_value",
 			"\tvars:",
-			"\t\tfilepath: ${1:full path to the file to check}",
-			"\t\tyamlpath: ${2:OVAL's https://github.com/OpenSCAP/yaml-filter/wiki/YAML-Path-Definition expression.}",
-			"\t\tvalue: ${3:the value to check.}",
-			"\t\ttype: ${4:(SimpleDatatypeEnumeration) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'.}",
-			"\t\tentity_check: ${5:(CheckEnumeration) - entity_check value for state's value_of, optional. If omitted, entity_check attribute would not be set and will be treated by OVAL as 'all'.}",
-			"\t\toperation: ${6:(OperationEnumeration) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'.}",
-			"\t\tnegate: ${7:if set to \"true\" the meaning of the value check criterion would be inverted, optional.}",
-			"\t\tocp_data: ${8:if set to \"true\" then the filepath would be treated as a part of the dump of OCP configuration with the 'ocp_data_root' prefix; optional.}"
+			"\t\tocp_data: ${1:# if set to \"true\" then the filepath would be treated as a part of the dump of OCP configuration with the 'ocp_data_root' prefix; optional.}",
+			"\t\tfilepath: ${2:# full path to the file to check}",
+			"\t\tyamlpath: ${3:# OVAL's https://github.com/OpenSCAP/yaml-filter/wiki/YAML-Path-Definition expression.}",
+			"\t\tentity_check: ${4:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#CheckEnumeration) - entity_check value for state’s value, optional. If omitted, entity_check attribute would not be set and will be treated by OVAL as 'all'. Possible options are 'all', 'at least one', 'none satisfy' and 'only one'.}",
+			"\t\tcheck_existence: ${5:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#ExistenceEnumeration) - 'check_existence' value for the 'yamlfilecontent_test', optional. If omitted, check_existence attribute will default to 'only_one_exists'. Possible options are 'all_exist', 'any_exist', 'at_least_one_exists', 'none_exist', 'only_one_exists'.}",
+			"\t\tvalues: # a list of dictionaries with values to check, where:",
+			"\t\t\tkey: ${6:# the yaml key to check, optional. Used when the yamlpath expression yields a map.}",
+			"\t\t\tvalue: ${7:# the value to check.}",
+			"\t\ttype: ${8:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---simpledatatypeenumeration---) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'. Most common datatypes are string and int. For complete list check reference link.}",
+			"\t\toperation: ${9:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---operationenumeration---) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'. Most common operations are 'equals', 'not equal', 'pattern match', 'greater than or equal' and 'less than or equal'. For complete list of operations check the reference link.}"
 		],
 		"description": "Check if value(s) of certain type is (are) present in a YAML (or JSON) file at a given path.\n\nLanguages: OVAL\n\n"
 	}
