@@ -397,14 +397,16 @@
 			"template:",
 			"\tname: yamlfile_value",
 			"\tvars:",
-			"\t\tfilepath: ${1:full path to the file to check}",
-			"\t\tyamlpath: ${2:OVAL's https://github.com/OpenSCAP/yaml-filter/wiki/YAML-Path-Definition expression.}",
-			"\t\tvalue: ${3:the value to check.}",
-			"\t\ttype: ${4:(SimpleDatatypeEnumeration) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'.}",
-			"\t\tentity_check: ${5:(CheckEnumeration) - entity_check value for state's value_of, optional. If omitted, entity_check attribute would not be set and will be treated by OVAL as 'all'.}",
-			"\t\toperation: ${6:(OperationEnumeration) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'.}",
-			"\t\tnegate: ${7:if set to \"true\" the meaning of the value check criterion would be inverted, optional.}",
-			"\t\tocp_data: ${8:if set to \"true\" then the filepath would be treated as a part of the dump of OCP configuration with the 'ocp_data_root' prefix; optional.}"
+			"\t\tocp_data: ${1:if set to \"true\" then the filepath would be treated as a part of the dump of OCP configuration with the 'ocp_data_root' prefix; optional.}",
+			"\t\tfilepath: ${2:full path to the file to check}",
+			"\t\tyamlpath: ${3:OVAL's https://github.com/OpenSCAP/yaml-filter/wiki/YAML-Path-Definition expression.}",
+			"\t\tentity_check: ${4:(https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#CheckEnumeration) - entity_check value for state’s value, optional. If omitted, entity_check attribute would not be set and will be treated by OVAL as 'all'. Possible options are 'all', 'at least one', 'none satisfy' and 'only one'.}",
+			"\t\tcheck_existence: ${5:(https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#ExistenceEnumeration) - 'check_existence' value for the 'yamlfilecontent_test', optional. If omitted, check_existence attribute will default to 'only_one_exists'. Possible options are 'all_exist', 'any_exist', 'at_least_one_exists', 'none_exist', 'only_one_exists'.}",
+			"\t\tvalues: # a list of dictionaries with values to check, where:",
+			"\t\t\tkey: ${7:the yaml key to check, optional. Used when the yamlpath expression yields a map.}",
+			"\t\t\tvalue: ${8:the value to check.}",
+			"\t\ttype: ${9:(https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---simpledatatypeenumeration---) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'. Most common datatypes are string and int. For complete list check reference link.}",
+			"\t\toperation: ${10:(https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---operationenumeration---) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'. Most common operations are 'equals', 'not equal', 'pattern match', 'greater than or equal' and 'less than or equal'. For complete list of operations check the reference link.}"
 		],
 		"description": "Check if value(s) of certain type is (are) present in a YAML (or JSON) file at a given path.\n\nLanguages: OVAL\n\n"
 	}
