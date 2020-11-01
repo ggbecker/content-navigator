@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.0.14] - 2020-11-01
+## [0.0.14] - 2020-11-02
 ### Fixed
 - Template snippet yamlfile_value is updated to latest documentation.
 - Template snippets now use "_t" prefix instead of "_template".
