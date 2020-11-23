@@ -4,7 +4,7 @@
 	"displayName": "Content Navigator",
 	"description": "Content Navigator helps security content authors to create content for https://github.com/ComplianceAsCode/content",
 	"icon": "icon.png",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"license" : "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.34.0"
