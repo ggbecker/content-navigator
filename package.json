@@ -4,7 +4,7 @@
 	"displayName": "Content Navigator",
 	"description": "Content Navigator helps security content authors to create content for https://github.com/ComplianceAsCode/content",
 	"icon": "icon.png",
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"license" : "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.34.0"
@@ -27,6 +27,8 @@
 		"onCommand:content-navigator.openKubernetes",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
+		"onCommand:content-navigator.copyProfileId",
+		"onCommand:content-navigator.copyFullPrefixedProfileId",
 		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
@@ -82,10 +84,44 @@
 			{
 				"command": "content-navigator.copyFullPrefixedRuleId",
 				"title": "Copy Full Prefixed Rule ID"
+			},
+			{
+				"command": "content-navigator.copyProfileId",
+				"title": "Copy Profile ID"
+			},
+			{
+				"command": "content-navigator.copyFullPrefixedProfileId",
+				"title": "Copy Full Prefixed Profile ID"
 			}
 		],
 		"menus": {
 			"editor/context": [
+				{
+					"submenu": "content-navigator"
+				}
+			],
+			"content-navigator": [
+				{
+					"command": "content-navigator.copyRuleId",
+					"group": "1_rule"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedRuleId",
+					"group": "1_rule"
+				},
+				{
+					"command": "content-navigator.copyProfileId",
+					"group": "2_profile"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedProfileId",
+					"group": "2_profile"
+				},
+				{
+					"submenu": "content-navigator.openContent"
+				}
+			],
+			"content-navigator.openContent": [
 				{
 					"command": "content-navigator.openRule"
 				},
@@ -109,31 +145,52 @@
 				},
 				{
 					"command": "content-navigator.openKubernetes"
-				},
-				{
-					"command": "content-navigator.copyRuleId"
-				},
-				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
 				}
 			],
-			"editor/title/context": [
+			"content-navigator.explorer_menu": [
 				{
-					"command": "content-navigator.copyRuleId"
+					"command": "content-navigator.copyRuleId",
+					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
+					"command": "content-navigator.copyFullPrefixedRuleId",
+					"group": "1_rule"
+				},
+				{
+					"command": "content-navigator.copyProfileId",
+					"group": "2_profile"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedProfileId",
+					"group": "2_profile"
 				}
 			],
 			"explorer/context": [
 				{
-					"command": "content-navigator.copyRuleId"
-				},
+					"submenu": "content-navigator.explorer_menu"
+				}
+			],
+			"editor/title/context": [
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
+					"submenu": "content-navigator.explorer_menu"
 				}
 			]
 		},
+		"submenus": [
+			{
+				"id": "content-navigator",
+				"label": "Content Navigator"
+			},
+			{
+				"id": "content-navigator.openContent",
+				"label": "Open Content"
+			},
+			{
+				"id": "content-navigator.explorer_menu",
+				"label": "Content Navigator"
+			}
+		],
+
 		"keybindings": [
 			{
 				"command": "content-navigator.openRule",

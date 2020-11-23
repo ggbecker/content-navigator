@@ -40,6 +40,17 @@ function _getRuleId(uri: vscode.Uri): string
 	return "";
 }
 
+function _getProfileId(uri: vscode.Uri): string
+{
+	let uri_str = uri.toString()
+
+	if (uri_str.indexOf('.profile') >= 0) {
+		let paths: string[] = uri_str.split("/")
+		return paths[paths.length - 1].split(".")[0]
+	}
+	return "";
+}
+
 function anacondaAvailable(): boolean {
 	return false;
 
@@ -64,6 +75,14 @@ function anacondaAvailable(): boolean {
 	// }
 }
 
+function getPreviewProperty() : boolean {
+	const workbenchConfig = vscode.workspace.getConfiguration('workbench')
+	if(workbenchConfig.has('editor.enablePreview'))
+		return workbenchConfig.get('editor.enablePreview') as boolean;
+	else
+		return true
+}
+
 async function openFile(rule_id : string, location : string) : Promise<boolean> {
 	let uries = await vscode.workspace.findFiles('**/' + rule_id + "/" + location);
 	if(uries.length > 0)
@@ -71,7 +90,7 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 		// vscode.window.showInformationMessage("Resource: " + location + " found", rule_id);
 		let doc = vscode.workspace.openTextDocument(uries[0]);
 		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
-		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
+		vscode.window.showTextDocument(uries[0], { preview: getPreviewProperty(), selection: range });
 		return true;
 	}
 	else
@@ -84,7 +103,7 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 			for (i = 0; i < text.lineCount; i++) {
 				if(text.lineAt(i).text.startsWith("template:")){
 					let range = new vscode.Range(new vscode.Position(i, 0), new vscode.Position(i, 0));
-					vscode.window.showTextDocument(uries[0], { preview: false, selection: range })
+					vscode.window.showTextDocument(uries[0], { preview: getPreviewProperty(), selection: range })
 					return true
 				}
 			}
@@ -187,6 +206,15 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	let copy_profile_id_command = vscode.commands.registerCommand('content-navigator.copyProfileId', async (fileUri) => {
+		if(fileUri != null) {
+			let word = _getProfileId(fileUri);
+			if (word != "") {
+				vscode.window.showInformationMessage("Profile ID copied to Clipboard: " + word)
+				vscode.env.clipboard.writeText(word)
+			}
+		}
+	});
 
 	let copy_full_prefixed_rule_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedRuleId', async (fileUri) => {
 		if(fileUri != null) {
@@ -194,6 +222,16 @@ export function activate(context: vscode.ExtensionContext) {
 			if (word != "") {
 				vscode.window.showInformationMessage("Rule ID copied to Clipboard: xccdf_org.ssgproject.content_rule_" + word)
 				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_rule_" + word)
+			}
+		}
+	});
+
+	let copy_full_prefixed_profile_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedProfileId', async (fileUri) => {
+		if(fileUri != null) {
+			let word = _getProfileId(fileUri);
+			if (word != "") {
+				vscode.window.showInformationMessage("Profile ID copied to Clipboard: xccdf_org.ssgproject.content_profile_" + word)
+				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_profile_" + word)
 			}
 		}
 	});
@@ -211,7 +249,9 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(open_kubernetes_command);
 	context.subscriptions.push(copy_rule_id_command);
+	context.subscriptions.push(copy_profile_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);
+	context.subscriptions.push(copy_full_prefixed_profile_id_command);
 	context.subscriptions.push(get_rule_id);
 
 	let completionList: vscode.CompletionItem[] = [];
