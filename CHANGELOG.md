@@ -2,7 +2,8 @@
 
 ## [0.0.15] - 2020-11-23
 ### Added
-- New submenu items to organize menu items
+- New submenu items to organize menu items.
+- Reuse workbench.editor.preview property when opening content files.
 ### Fixed
 - Template snippet `yamlfile_value` now contains all parameters from official documentation.
 

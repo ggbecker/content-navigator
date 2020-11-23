@@ -64,6 +64,14 @@ function anacondaAvailable(): boolean {
 	// }
 }
 
+function getPreviewProperty() : boolean {
+	const workbenchConfig = vscode.workspace.getConfiguration('workbench')
+	if(workbenchConfig.has('editor.enablePreview'))
+		return workbenchConfig.get('editor.enablePreview') as boolean;
+	else
+		return true
+}
+
 async function openFile(rule_id : string, location : string) : Promise<boolean> {
 	let uries = await vscode.workspace.findFiles('**/' + rule_id + "/" + location);
 	if(uries.length > 0)
@@ -71,7 +79,7 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 		// vscode.window.showInformationMessage("Resource: " + location + " found", rule_id);
 		let doc = vscode.workspace.openTextDocument(uries[0]);
 		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
-		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
+		vscode.window.showTextDocument(uries[0], { preview: getPreviewProperty(), selection: range });
 		return true;
 	}
 	else
@@ -84,7 +92,7 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 			for (i = 0; i < text.lineCount; i++) {
 				if(text.lineAt(i).text.startsWith("template:")){
 					let range = new vscode.Range(new vscode.Position(i, 0), new vscode.Position(i, 0));
-					vscode.window.showTextDocument(uries[0], { preview: false, selection: range })
+					vscode.window.showTextDocument(uries[0], { preview: getPreviewProperty(), selection: range })
 					return true
 				}
 			}
