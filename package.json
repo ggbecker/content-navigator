@@ -87,6 +87,22 @@
 		"menus": {
 			"editor/context": [
 				{
+					"submenu": "content-navigator"
+				}
+			],
+			"content-navigator": [
+				{
+					"command": "content-navigator.copyRuleId"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedRuleId"
+				},
+				{
+					"submenu": "content-navigator.openContent"
+				}
+			],
+			"content-navigator.openContent": [
+				{
 					"command": "content-navigator.openRule"
 				},
 				{
@@ -109,15 +125,9 @@
 				},
 				{
 					"command": "content-navigator.openKubernetes"
-				},
-				{
-					"command": "content-navigator.copyRuleId"
-				},
-				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
 				}
 			],
-			"editor/title/context": [
+			"content-navigator.explorer_menu": [
 				{
 					"command": "content-navigator.copyRuleId"
 				},
@@ -127,13 +137,30 @@
 			],
 			"explorer/context": [
 				{
-					"command": "content-navigator.copyRuleId"
-				},
+					"submenu": "content-navigator.explorer_menu"
+				}
+			],
+			"editor/title/context": [
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
+					"submenu": "content-navigator.explorer_menu"
 				}
 			]
 		},
+		"submenus": [
+			{
+				"id": "content-navigator",
+				"label": "Content Navigator"
+			},
+			{
+				"id": "content-navigator.openContent",
+				"label": "Open Content"
+			},
+			{
+				"id": "content-navigator.explorer_menu",
+				"label": "Content Navigator"
+			}
+		],
+
 		"keybindings": [
 			{
 				"command": "content-navigator.openRule",
