@@ -4,6 +4,7 @@
 ### Added
 - New submenu items to organize menu items.
 - Reuse workbench.editor.preview property when opening content files.
+- New options to copy the profile ID and full prefixed profile ID.
 ### Fixed
 - Template snippet `yamlfile_value` now contains all parameters from official documentation.
 

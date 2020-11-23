@@ -27,6 +27,8 @@
 		"onCommand:content-navigator.openKubernetes",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
+		"onCommand:content-navigator.copyProfileId",
+		"onCommand:content-navigator.copyFullPrefixedProfileId",
 		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
@@ -82,6 +84,14 @@
 			{
 				"command": "content-navigator.copyFullPrefixedRuleId",
 				"title": "Copy Full Prefixed Rule ID"
+			},
+			{
+				"command": "content-navigator.copyProfileId",
+				"title": "Copy Profile ID"
+			},
+			{
+				"command": "content-navigator.copyFullPrefixedProfileId",
+				"title": "Copy Full Prefixed Profile ID"
 			}
 		],
 		"menus": {
@@ -92,10 +102,20 @@
 			],
 			"content-navigator": [
 				{
-					"command": "content-navigator.copyRuleId"
+					"command": "content-navigator.copyRuleId",
+					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
+					"command": "content-navigator.copyFullPrefixedRuleId",
+					"group": "1_rule"
+				},
+				{
+					"command": "content-navigator.copyProfileId",
+					"group": "2_profile"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedProfileId",
+					"group": "2_profile"
 				},
 				{
 					"submenu": "content-navigator.openContent"
@@ -129,10 +149,20 @@
 			],
 			"content-navigator.explorer_menu": [
 				{
-					"command": "content-navigator.copyRuleId"
+					"command": "content-navigator.copyRuleId",
+					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId"
+					"command": "content-navigator.copyFullPrefixedRuleId",
+					"group": "1_rule"
+				},
+				{
+					"command": "content-navigator.copyProfileId",
+					"group": "2_profile"
+				},
+				{
+					"command": "content-navigator.copyFullPrefixedProfileId",
+					"group": "2_profile"
 				}
 			],
 			"explorer/context": [
