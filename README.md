@@ -12,9 +12,9 @@ VSCodium:
 
 ## Features
 
-### Load Content
+### Open Content
 
-Load content by activating a hotkey or selecting the option through right clicking.
+Open content by activating a hotkey or selecting the option through right clicking.
 
 Press a key combination when the cursor is selecting a rule ID or when the clipboard contains a rule ID. It is also possible to navigate between content types when a content is opened. For example: if Ansible content is opened in the current editor and `Ctrl+Alt+R` is pressed, then the rule.yml file associated to the Ansible content will open.
 
@@ -54,7 +54,11 @@ Note: When using clipboard, the extension is able to handle rule prefixes such a
 
 ### Copy Rule ID
 
-When editing a file (Rule, Ansible, Bash, Anaconda, Puppet) you can right click and activate `Copy Rule ID` to copy the corresponding rule's ID. There is also an option to copy the full prefixed rule ID. You can right click and activate `Copy Full Prefixed Rule ID` to copy the rule's ID prefixed with `xccdf_org.ssgproject.content_rule_`.
+When editing a file (Rule, Ansible, Bash, Anaconda, Puppet, Kubernetes, Ignition) you can right click and activate `Content Navigator->Copy Rule ID` to copy the corresponding rule's ID. There is also an option to copy the full prefixed rule ID. You can right click and activate `Content Navigator->Copy Full Prefixed Rule ID` to copy the rule's ID prefixed with `xccdf_org.ssgproject.content_rule_`.
+
+### Copy Profile ID
+
+When editing `*.profile` files you can right click and activate `Content Navigator->Copy Profile ID` to copy the corresponding rule's ID. There is also an option to copy the full prefixed rule ID. You can right click and activate `Content Navigator->Copy Full Prefixed Profile ID` to copy the rule's ID prefixed with `xccdf_org.ssgproject.content_rule_`.
 
 ### Auto completion of available rules
 
@@ -100,7 +104,7 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
   - t_timer_enabled
   - t_yamlfile_value
 
-More details on templates you can find by activating the respective snippet on VSCode/VSCodium or on [ComplianceAsCode/content Templates Section of Developer Guide](https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#732-list-of-available-templates)
+More details on templates you can find by activating the respective snippet on VSCode/VSCodium or on [ComplianceAsCode/content Templates Section of Developer Guide](https://complianceascode.readthedocs.io/en/latest/manual/developer/06_contributing_with_content.html#available-templates)
 
 ### Test Suite Launch Configuration
 
@@ -110,4 +114,4 @@ When editing a `launch.json` configuration file, you can hit `Ctrl+Space` and se
 
 Those configuration items can be updated under VSCode/VSCodium preferences. Go to `File->Preferences->Settings` and search for Content Navigator. Configure the fields with desired information and now you can run desired test scenarios by simply launching the newly created configuration when editing a resource of a rule. If the resource you are editing belongs to a [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) rule then it will automatically detect the rule id and run the existent test scenarios for it.
 
-A Virtual Machine is required to use this feature. For more information on how to setup your own testing Virtual Machine, check the official documentation on: [How to prepare a backend for testing](https://github.com/ComplianceAsCode/content/tree/master/tests#how-to-prepare-a-backend-for-testing)
+A Virtual Machine is required to use this feature. For more information on how to setup your own testing Virtual Machine, check the official documentation on: [How to prepare a backend for testing](https://complianceascode.readthedocs.io/en/latest/tests/README.html#how-to-prepare-a-backend-for-testing)
