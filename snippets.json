@@ -405,8 +405,9 @@
 			"\t\tvalues: # a list of dictionaries with values to check, where:",
 			"\t\t\tkey: ${6:# the yaml key to check, optional. Used when the yamlpath expression yields a map.}",
 			"\t\t\tvalue: ${7:# the value to check.}",
-			"\t\ttype: ${8:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---simpledatatypeenumeration---) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'. Most common datatypes are string and int. For complete list check reference link.}",
-			"\t\toperation: ${9:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---operationenumeration---) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'. Most common operations are 'equals', 'not equal', 'pattern match', 'greater than or equal' and 'less than or equal'. For complete list of operations check the reference link.}"
+			"\t\t\ttype: ${8:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---simpledatatypeenumeration---) - datatype for state's value_of, optional. If omitted, datatype would be treated as OVAL's default 'string'. Most common datatypes are string and int. For complete list check reference link.}",
+			"\t\t\toperation: ${9:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#---operationenumeration---) - operation value for state's value_of, optional. If omitted, operation attribute would not be set. OVAL's default operation is 'equals'. Most common operations are 'equals', 'not equal', 'pattern match', 'greater than or equal' and 'less than or equal'. For complete list of operations check the reference link.}",
+			"\t\t\tcheck_existence: ${10:# (https://github.com/OVALProject/Language/blob/master/docs/oval-common-schema.md#ExistenceEnumeration) - 'check_existence' value for the 'yamlfilecontent_test', optional. If omitted, check_existence attribute will default to 'only_one_exists'. Possible options are 'all_exist', 'any_exist', 'at_least_one_exists', 'none_exist', 'only_one_exists'.}"
 		],
 		"description": "Check if value(s) of certain type is (are) present in a YAML (or JSON) file at a given path.\n\nLanguages: OVAL\n\n"
 	}
