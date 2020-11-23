@@ -1,10 +1,16 @@
 # Change Log
 
+## [0.0.15] - 2020-11-23
+### Added
+- New submenu items to organize menu items
+### Fixed
+- Template snippet `yamlfile_value` now contains all parameters from official documentation.
+
 ## [0.0.14] - 2020-11-02
 ### Fixed
-- Template snippet yamlfile_value is updated to latest documentation.
+- Template snippet `yamlfile_value` is updated to latest documentation.
 - Template snippets now use "_t" prefix instead of "_template".
-- Template snippets now suggest text as comments.
+- Template snippets now suggests doc text as Ansible comments.
 
 ## [0.0.13] - 2020-09-30
 ### Added
