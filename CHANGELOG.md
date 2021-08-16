@@ -1,5 +1,9 @@
 # Change Log
 
+## [Unreleased]
+### Fixed
+- Building and packaging
+
 ## [0.0.15] - 2020-11-23
 ### Added
 - New submenu items to organize menu items.
