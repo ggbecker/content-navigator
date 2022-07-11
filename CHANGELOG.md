@@ -8,7 +8,8 @@
 - Copy rule and profile ID options are now merged into copy content ID.
 - Copy content ID has now shortcut support.
 ### Fixed
-- Building and packaging
+- Building and packaging.
+- Fix launch configuration template.
 
 ## [0.0.15] - 2020-11-23
 ### Added
