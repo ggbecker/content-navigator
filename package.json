@@ -86,6 +86,10 @@
 				"title": "Open Kubernetes"
 			},
 			{
+				"command": "content-navigator.openBlueprint",
+				"title": "Open Blueprint"
+			},
+			{
 				"command": "content-navigator.openBuiltRule",
 				"title": "Open Built Rule"
 			},
@@ -116,6 +120,10 @@
 			{
 				"command": "content-navigator.openBuiltKubernetes",
 				"title": "Open Built Kubernetes"
+			},
+			{
+				"command": "content-navigator.openBuiltBlueprint",
+				"title": "Open Built Blueprint"
 			},
 			{
 				"command": "content-navigator.copyRuleId",
@@ -188,6 +196,9 @@
 				},
 				{
 					"command": "content-navigator.openKubernetes"
+				},
+				{
+					"command": "content-navigator.openBlueprint"
 				}
 			],
 			"content-navigator.openBuiltContent": [
@@ -214,6 +225,9 @@
 				},
 				{
 					"command": "content-navigator.openBuiltKubernetes"
+				},
+				{
+					"command": "content-navigator.openBuiltBlueprint"
 				}
 			],
 			"content-navigator.explorer_menu": [
@@ -295,6 +309,10 @@
 			{
 				"command": "content-navigator.openKubernetes",
 				"key": "ctrl+alt+k"
+			},
+			{
+				"command": "content-navigator.openBlueprint",
+				"key": "ctrl+alt+l"
 			}
 		],
 		"debuggers": [

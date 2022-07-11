@@ -167,6 +167,12 @@ async function openBuiltFile(rule_id : string, location : string) : Promise<bool
 			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/puppet/' + rule_id + ".pp");
 		}
 	}
+	else if(location == 'blueprint/shared.toml') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/blueprint/' + rule_id + ".toml");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/blueprint/' + rule_id + ".toml");
+		}
+	}
 	else {
 		uries = await vscode.workspace.findFiles('build/' + product + '/rules/' + rule_id + ".yml");
 	}
@@ -282,6 +288,9 @@ export function activate(context: vscode.ExtensionContext) {
 	let open_kubernetes_command = vscode.commands.registerCommand('content-navigator.openKubernetes', () => {
 		return openContent("kubernetes/shared.yml", false);
 	});
+	let open_blueprint_command = vscode.commands.registerCommand('content-navigator.openBlueprint', () => {
+		return openContent("blueprint/shared.yml", false);
+	});
 
 
 	let open_built_rule_command = vscode.commands.registerCommand('content-navigator.openBuiltRule', () => {
@@ -307,6 +316,9 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 	let open_built_kubernetes_command = vscode.commands.registerCommand('content-navigator.openBuiltKubernetes', () => {
 		return openContent("kubernetes/shared.yml", true);
+	});
+	let open_built_blueprint_command = vscode.commands.registerCommand('content-navigator.openBuiltBlueprint', () => {
+		return openContent("blueprint/shared.toml", true);
 	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
@@ -361,6 +373,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_anaconda_command);
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(open_kubernetes_command);
+	context.subscriptions.push(open_blueprint_command);
 	context.subscriptions.push(open_built_rule_command);
 	context.subscriptions.push(open_built_oval_command);
 	context.subscriptions.push(open_built_bash_command);
@@ -369,6 +382,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_built_anaconda_command);
 	context.subscriptions.push(open_built_puppet_command);
 	context.subscriptions.push(open_built_kubernetes_command);
+	context.subscriptions.push(open_built_blueprint_command);
 	context.subscriptions.push(copy_rule_id_command);
 	context.subscriptions.push(copy_profile_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);
