@@ -25,6 +25,8 @@
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.openKubernetes",
+		"onCommand:content-navigator.openBlueprint",
+		"onCommand:content-navigator.openVariable",
 		"onCommand:content-navigator.openBuiltRule",
 		"onCommand:content-navigator.openBuiltOVAL",
 		"onCommand:content-navigator.openBuiltBash",
@@ -33,6 +35,8 @@
 		"onCommand:content-navigator.openBuiltAnaconda",
 		"onCommand:content-navigator.openBuiltPuppet",
 		"onCommand:content-navigator.openBuiltKubernetes",
+		"onCommand:content-navigator.openBuiltBlueprint",
+		"onCommand:content-navigator.openBuiltVariable",
 		"onCommand:content-navigator.copyContentId",
 		"onCommand:content-navigator.copyFullPrefixedContentId",
 		"onCommand:content-navigator.getRuleId",
@@ -88,6 +92,10 @@
 				"title": "Open Blueprint"
 			},
 			{
+				"command": "content-navigator.openVariable",
+				"title": "Open Variable"
+			},
+			{
 				"command": "content-navigator.openBuiltRule",
 				"title": "Open Built Rule"
 			},
@@ -122,6 +130,10 @@
 			{
 				"command": "content-navigator.openBuiltBlueprint",
 				"title": "Open Built Blueprint"
+			},
+			{
+				"command": "content-navigator.openBuiltVariable",
+				"title": "Open Built Variable"
 			},
 			{
 				"command": "content-navigator.copyContentId",
@@ -181,6 +193,9 @@
 				},
 				{
 					"command": "content-navigator.openBlueprint"
+				},
+				{
+					"command": "content-navigator.openVariable"
 				}
 			],
 			"content-navigator.openBuiltContent": [
@@ -210,6 +225,9 @@
 				},
 				{
 					"command": "content-navigator.openBuiltBlueprint"
+				},
+				{
+					"command": "content-navigator.openBuiltVariable"
 				}
 			],
 			"content-navigator.explorer_menu": [
@@ -287,6 +305,10 @@
 			{
 				"command": "content-navigator.openBlueprint",
 				"key": "ctrl+alt+l"
+			},
+			{
+				"command": "content-navigator.openVariable",
+				"key": "ctrl+alt+v"
 			},
 			{
 				"command": "content-navigator.copyContentId",

@@ -34,6 +34,9 @@ function _getRuleId(uri: vscode.Uri): string
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
 		return paths[paths.length - 3];
+	} else if (uri_str.indexOf('.var') >= 0){
+		let paths: string[] = uri_str.split("/")
+		return paths[paths.length - 1].split(".")[0]
 	}
 	// no rule was found with current opened file
 	return "";
@@ -111,6 +114,85 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 	return false
 }
 
+async function __openFile(file : string) : Promise<boolean> {
+
+	let uries = await vscode.workspace.findFiles('**/' + file);
+	if(uries.length > 0)
+	{
+		let doc = vscode.workspace.openTextDocument(uries[0]);
+		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
+		vscode.window.showTextDocument(uries[0], { preview: false, selection: range });
+		return true;
+	}
+	return false
+}
+
+export async function openVariableFile(built_content: boolean) {
+	// Get the active text editor
+
+	let selectedText: string;
+
+	const config = vscode.workspace.getConfiguration('content-navigator')
+
+	// content from clipboard
+	if(config.get('useClipboard'))
+	{
+		// content from clipboard
+		selectedText = await vscode.env.clipboard.readText();
+		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+		if(selectedText.length > 0 && selectedText.length < 120)
+		{
+			if(built_content){
+				if(await openBuiltFile(selectedText, "variable")){
+					return;
+				}
+			} else {
+				if(await __openFile(selectedText + ".var")){
+					return;
+				}
+			}
+		}
+	}
+
+	let editor = vscode.window.activeTextEditor;
+
+	if (editor) {
+		let document = editor.document;
+		let selection = editor.selection;
+
+		// rule id from current opened file
+		selectedText = _getRuleId(document.uri);
+		if(selectedText != "")
+		{
+			if(built_content){
+				if(await openBuiltFile(selectedText, "variable")){
+					return;
+				}
+			} else {
+				if(await __openFile(selectedText + ".var")){
+					return;
+				}
+			}
+		}
+
+		// selected word
+		selectedText = document.getText(document.getWordRangeAtPosition(selection.active, RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)")));
+		if(selectedText.length > 0 && selectedText.length < 120)
+		{
+			if(built_content){
+				if(await openBuiltFile(selectedText, "variable")){
+					return;
+				}
+			} else {
+				if(await __openFile(selectedText + ".var")){
+					return;
+				}
+			}
+		}
+	}
+
+	vscode.window.showInformationMessage("Could not find any variable file with the input provided");
+}
 
 async function openBuiltFile(rule_id : string, location : string) : Promise<boolean> {
 	const config = vscode.workspace.getConfiguration('content-navigator')
@@ -171,6 +253,12 @@ async function openBuiltFile(rule_id : string, location : string) : Promise<bool
 		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/blueprint/' + rule_id + ".toml");
 		if(uries.length == 0) {
 			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/blueprint/' + rule_id + ".toml");
+		}
+	}
+	else if(location == 'variable') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/values/' + rule_id + ".yml");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/values/' + rule_id + ".toml");
 		}
 	}
 	else {
@@ -292,6 +380,10 @@ export function activate(context: vscode.ExtensionContext) {
 		return openContent("blueprint/shared.yml", false);
 	});
 
+	let open_variable_command = vscode.commands.registerCommand('content-navigator.openVariable', () => {
+		return openVariableFile(false);
+	});
+
 
 	let open_built_rule_command = vscode.commands.registerCommand('content-navigator.openBuiltRule', () => {
 		return openContent("rule.yml", true);
@@ -321,6 +413,10 @@ export function activate(context: vscode.ExtensionContext) {
 		return openContent("blueprint/shared.toml", true);
 	});
 
+	let open_built_variable_command = vscode.commands.registerCommand('content-navigator.openBuiltVariable', () => {
+		return openVariableFile(true);
+	});
+
 	let copy_content_id_command = vscode.commands.registerCommand('content-navigator.copyContentId', async (fileUri) => {
 		let uri = fileUri
 		if(uri == null) {
@@ -332,7 +428,12 @@ export function activate(context: vscode.ExtensionContext) {
 		if(uri != null) {
 			let word = _getRuleId(uri);
 			if (word != "") {
-				vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
+				let uri_str = uri.toString()
+				if(uri_str.indexOf('.var') >= 0){
+					vscode.window.showInformationMessage("Variable ID copied to Clipboard: " + word)
+				} else {
+					vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
+				}
 				vscode.env.clipboard.writeText(word)
 			}
 			else{
@@ -357,8 +458,14 @@ export function activate(context: vscode.ExtensionContext) {
 		if(uri != null) {
 			let word = _getRuleId(uri);
 			if (word != "") {
-				vscode.window.showInformationMessage("Rule ID copied to Clipboard: xccdf_org.ssgproject.content_rule_" + word)
-				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_rule_" + word)
+				let uri_str = uri.toString()
+				if(uri_str.indexOf('.var') >= 0){
+					vscode.window.showInformationMessage("Variable ID copied to Clipboard: xccdf_org.ssgproject.content_value_" + word)
+					vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_value_" + word)
+				} else {
+					vscode.window.showInformationMessage("Rule ID copied to Clipboard: xccdf_org.ssgproject.content_rule_" + word)
+					vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_rule_" + word)
+				}
 			}
 			else{
 				let word = _getProfileId(uri);
@@ -383,6 +490,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(open_kubernetes_command);
 	context.subscriptions.push(open_blueprint_command);
+	context.subscriptions.push(open_variable_command);
 	context.subscriptions.push(open_built_rule_command);
 	context.subscriptions.push(open_built_oval_command);
 	context.subscriptions.push(open_built_bash_command);
@@ -392,6 +500,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_built_puppet_command);
 	context.subscriptions.push(open_built_kubernetes_command);
 	context.subscriptions.push(open_built_blueprint_command);
+	context.subscriptions.push(open_built_variable_command);
 	context.subscriptions.push(copy_content_id_command);
 	context.subscriptions.push(copy_full_prefixed_content_id_command);
 	context.subscriptions.push(get_rule_id);
