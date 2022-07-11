@@ -30,7 +30,6 @@ function _getRuleId(uri: vscode.Uri): string
 			uri_str.indexOf('.fail.sh') >= 0 ||
 			uri_str.indexOf('.notapplicable.sh') >= 0 ||
 			uri_str.indexOf('.error.sh') >= 0 ||
-			uri_str.indexOf('anaconda/shared.anaconda') >= 0 ||
 			uri_str.indexOf('kubernetes/shared.yml') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
