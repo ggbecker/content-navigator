@@ -1,6 +1,12 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Option to open built content files.
+- Support to new type of content called Blueprint.
+### Changed
+- Copy rule and profile ID options are now merged into copy content ID.
+- Copy content ID has now shortcut support.
 ### Fixed
 - Building and packaging
 
@@ -15,7 +21,7 @@
 ## [0.0.14] - 2020-11-02
 ### Fixed
 - Template snippet `yamlfile_value` is updated to latest documentation.
-- Template snippets now use "_t" prefix instead of "_template".
+- Template snippets now use "t_" prefix instead of "template_".
 - Template snippets now suggests doc text as Ansible comments.
 
 ## [0.0.13] - 2020-09-30
