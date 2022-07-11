@@ -321,42 +321,51 @@ export function activate(context: vscode.ExtensionContext) {
 		return openContent("blueprint/shared.toml", true);
 	});
 
-	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
-		if(fileUri != null) {
-			let word = _getRuleId(fileUri);
+	let copy_content_id_command = vscode.commands.registerCommand('content-navigator.copyContentId', async (fileUri) => {
+		let uri = fileUri
+		if(uri == null) {
+			let editor = vscode.window.activeTextEditor;
+			if (editor) {
+				uri = editor.document.uri;
+			}
+		}
+		if(uri != null) {
+			let word = _getRuleId(uri);
 			if (word != "") {
 				vscode.window.showInformationMessage("Rule ID copied to Clipboard: " + word)
 				vscode.env.clipboard.writeText(word)
 			}
-		}
-	});
-
-	let copy_profile_id_command = vscode.commands.registerCommand('content-navigator.copyProfileId', async (fileUri) => {
-		if(fileUri != null) {
-			let word = _getProfileId(fileUri);
-			if (word != "") {
-				vscode.window.showInformationMessage("Profile ID copied to Clipboard: " + word)
-				vscode.env.clipboard.writeText(word)
+			else{
+				let word = _getProfileId(uri);
+				if (word != "") {
+					vscode.window.showInformationMessage("Profile ID copied to Clipboard: " + word)
+					vscode.env.clipboard.writeText(word)
+				}
 			}
 		}
+		
 	});
 
-	let copy_full_prefixed_rule_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedRuleId', async (fileUri) => {
-		if(fileUri != null) {
-			let word = _getRuleId(fileUri);
+	let copy_full_prefixed_content_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedContentId', async (fileUri) => {
+		let uri = fileUri
+		if(uri == null) {
+			let editor = vscode.window.activeTextEditor;
+			if (editor) {
+				uri = editor.document.uri;
+			}
+		}
+		if(uri != null) {
+			let word = _getRuleId(uri);
 			if (word != "") {
 				vscode.window.showInformationMessage("Rule ID copied to Clipboard: xccdf_org.ssgproject.content_rule_" + word)
 				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_rule_" + word)
 			}
-		}
-	});
-
-	let copy_full_prefixed_profile_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedProfileId', async (fileUri) => {
-		if(fileUri != null) {
-			let word = _getProfileId(fileUri);
-			if (word != "") {
-				vscode.window.showInformationMessage("Profile ID copied to Clipboard: xccdf_org.ssgproject.content_profile_" + word)
-				vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_profile_" + word)
+			else{
+				let word = _getProfileId(uri);
+				if (word != "") {
+					vscode.window.showInformationMessage("Profile ID copied to Clipboard: xccdf_org.ssgproject.content_profile_" + word)
+					vscode.env.clipboard.writeText("xccdf_org.ssgproject.content_profile_" + word)
+				}
 			}
 		}
 	});
@@ -383,10 +392,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_built_puppet_command);
 	context.subscriptions.push(open_built_kubernetes_command);
 	context.subscriptions.push(open_built_blueprint_command);
-	context.subscriptions.push(copy_rule_id_command);
-	context.subscriptions.push(copy_profile_id_command);
-	context.subscriptions.push(copy_full_prefixed_rule_id_command);
-	context.subscriptions.push(copy_full_prefixed_profile_id_command);
+	context.subscriptions.push(copy_content_id_command);
+	context.subscriptions.push(copy_full_prefixed_content_id_command);
 	context.subscriptions.push(get_rule_id);
 
 	let completionList: vscode.CompletionItem[] = [];

@@ -33,10 +33,8 @@
 		"onCommand:content-navigator.openBuiltAnaconda",
 		"onCommand:content-navigator.openBuiltPuppet",
 		"onCommand:content-navigator.openBuiltKubernetes",
-		"onCommand:content-navigator.copyRuleId",
-		"onCommand:content-navigator.copyFullPrefixedRuleId",
-		"onCommand:content-navigator.copyProfileId",
-		"onCommand:content-navigator.copyFullPrefixedProfileId",
+		"onCommand:content-navigator.copyContentId",
+		"onCommand:content-navigator.copyFullPrefixedContentId",
 		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
@@ -126,20 +124,12 @@
 				"title": "Open Built Blueprint"
 			},
 			{
-				"command": "content-navigator.copyRuleId",
-				"title": "Copy Rule ID"
+				"command": "content-navigator.copyContentId",
+				"title": "Copy Content ID"
 			},
 			{
-				"command": "content-navigator.copyFullPrefixedRuleId",
-				"title": "Copy Full Prefixed Rule ID"
-			},
-			{
-				"command": "content-navigator.copyProfileId",
-				"title": "Copy Profile ID"
-			},
-			{
-				"command": "content-navigator.copyFullPrefixedProfileId",
-				"title": "Copy Full Prefixed Profile ID"
+				"command": "content-navigator.copyFullPrefixedContentId",
+				"title": "Copy Full Prefixed Content ID"
 			}
 		],
 		"menus": {
@@ -150,20 +140,12 @@
 			],
 			"content-navigator": [
 				{
-					"command": "content-navigator.copyRuleId",
+					"command": "content-navigator.copyContentId",
 					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId",
+					"command": "content-navigator.copyFullPrefixedContentId",
 					"group": "1_rule"
-				},
-				{
-					"command": "content-navigator.copyProfileId",
-					"group": "2_profile"
-				},
-				{
-					"command": "content-navigator.copyFullPrefixedProfileId",
-					"group": "2_profile"
 				},
 				{
 					"submenu": "content-navigator.openContent"
@@ -232,20 +214,12 @@
 			],
 			"content-navigator.explorer_menu": [
 				{
-					"command": "content-navigator.copyRuleId",
-					"group": "1_rule"
+					"command": "content-navigator.copyContentId",
+					"group": "1_content"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId",
-					"group": "1_rule"
-				},
-				{
-					"command": "content-navigator.copyProfileId",
-					"group": "2_profile"
-				},
-				{
-					"command": "content-navigator.copyFullPrefixedProfileId",
-					"group": "2_profile"
+					"command": "content-navigator.copyFullPrefixedContentId",
+					"group": "1_content"
 				}
 			],
 			"explorer/context": [
@@ -313,6 +287,14 @@
 			{
 				"command": "content-navigator.openBlueprint",
 				"key": "ctrl+alt+l"
+			},
+			{
+				"command": "content-navigator.copyContentId",
+				"key": "ctrl+alt+h"
+			},
+			{
+				"command": "content-navigator.copyFullPrefixedContentId",
+				"key": "ctrl+alt+j"
 			}
 		],
 		"debuggers": [
