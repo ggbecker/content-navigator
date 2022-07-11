@@ -112,7 +112,77 @@ async function openFile(rule_id : string, location : string) : Promise<boolean> 
 	return false
 }
 
-export async function openContent(location: string) {
+
+async function openBuiltFile(rule_id : string, location : string) : Promise<boolean> {
+	const config = vscode.workspace.getConfiguration('content-navigator')
+	let uries;
+
+	// product name - defaults to rhel8 if the build/product folder is not found
+	let product = config.get('testSuite.productName')
+	let uri = vscode.Uri.file("build/"+product);
+	try {
+		await vscode.workspace.fs.stat(uri);
+	} catch {
+		product = "rhel8"
+	}
+
+	if(location == "rule.yml") {
+		uries = await vscode.workspace.findFiles('build/' + product + '/rules/' + rule_id + ".yml");
+	}
+	else if(location == 'oval/shared.xml') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/checks/oval/' + rule_id + ".xml");
+	}
+	else if(location == 'bash/shared.sh') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/bash/' + rule_id + ".sh");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/bash/' + rule_id + ".sh");
+		}
+	}
+	else if(location == 'ansible/shared.yml') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/ansible/' + rule_id + ".yml");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/ansible/' + rule_id + ".yml");
+		}
+	}
+	else if(location == 'ignition/shared.yml') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/ignition/' + rule_id + ".yml");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/ignition/' + rule_id + ".yml");
+		}
+	}
+	else if(location == 'anaconda/shared.anaconda') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/anaconda/' + rule_id + ".anaconda");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/anaconda/' + rule_id + ".anaconda");
+		}
+	}
+	else if(location == 'kubernetes/shared.yml') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/kubernetes/' + rule_id + ".yml");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/kubernetes/' + rule_id + ".yml");
+		}
+	}
+	else if(location == 'puppet/shared.pp') {
+		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/puppet/' + rule_id + ".pp");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/fixes_from_templates/puppet/' + rule_id + ".pp");
+		}
+	}
+	else {
+		uries = await vscode.workspace.findFiles('build/' + product + '/rules/' + rule_id + ".yml");
+	}
+
+	if(uries.length > 0)
+	{
+		let doc = vscode.workspace.openTextDocument(uries[0]);
+		let range = new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 0));
+		vscode.window.showTextDocument(uries[0], { preview: getPreviewProperty(), selection: range });
+		return true;
+	}
+	return false
+}
+
+export async function openContent(location: string, built_content: boolean) {
 	// Get the active text editor
 
 	let rule_id: string;
@@ -136,8 +206,14 @@ export async function openContent(location: string) {
 			{
 				rule_id = rule_id.slice('content_rule_'.length)
 			}
-			if(await openFile(rule_id, location)){
-				return;
+			if(built_content){
+				if(await openBuiltFile(rule_id, location)){
+					return;
+				}
+			} else {
+				if(await openFile(rule_id, location)){
+					return;
+				}
 			}
 		}
 	}
@@ -152,8 +228,14 @@ export async function openContent(location: string) {
 		rule_id = _getRuleId(document.uri);
 		if(rule_id != "")
 		{
-			if(await openFile(rule_id, location)){
-				return;
+			if(built_content){
+				if(await openBuiltFile(rule_id, location)){
+					return;
+				}
+			} else {
+				if(await openFile(rule_id, location)){
+					return;
+				}
 			}
 		}
 
@@ -161,8 +243,14 @@ export async function openContent(location: string) {
 		rule_id = document.getText(document.getWordRangeAtPosition(selection.active, RegExp("(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)")));
 		if(rule_id.length > 0 && rule_id.length < 120)
 		{
-			if(await openFile(rule_id, location)){
-				return;
+			if(built_content){
+				if(await openBuiltFile(rule_id, location)){
+					return;
+				}
+			} else {
+				if(await openFile(rule_id, location)){
+					return;
+				}
 			}
 		}
 	}
@@ -172,28 +260,54 @@ export async function openContent(location: string) {
 
 export function activate(context: vscode.ExtensionContext) {
 	let open_rule_command = vscode.commands.registerCommand('content-navigator.openRule', () => {
-		return openContent("rule.yml");
+		return openContent("rule.yml", false);
 	});
 	let open_oval_command = vscode.commands.registerCommand('content-navigator.openOVAL', () => {
-		return openContent("oval/shared.xml");
+		return openContent("oval/shared.xml", false);
 	});
 	let open_bash_command = vscode.commands.registerCommand('content-navigator.openBash', () => {
-		return openContent("bash/shared.sh");
+		return openContent("bash/shared.sh", false);
 	});
 	let open_ansible_command = vscode.commands.registerCommand('content-navigator.openAnsible', () => {
-		return openContent("ansible/shared.yml");
+		return openContent("ansible/shared.yml", false);
 	});
 	let open_ignition_command = vscode.commands.registerCommand('content-navigator.openIgnition', () => {
-		return openContent("ignition/shared.yml");
+		return openContent("ignition/shared.yml", false);
 	});
 	let open_anaconda_command = vscode.commands.registerCommand('content-navigator.openAnaconda', () => {
-		return openContent("anaconda/shared.anaconda");
+		return openContent("anaconda/shared.anaconda", false);
 	});
 	let open_puppet_command = vscode.commands.registerCommand('content-navigator.openPuppet', () => {
-		return openContent("puppet/shared.pp");
+		return openContent("puppet/shared.pp", false);
 	});
 	let open_kubernetes_command = vscode.commands.registerCommand('content-navigator.openKubernetes', () => {
-		return openContent("kubernetes/shared.yml");
+		return openContent("kubernetes/shared.yml", false);
+	});
+
+
+	let open_built_rule_command = vscode.commands.registerCommand('content-navigator.openBuiltRule', () => {
+		return openContent("rule.yml", true);
+	});
+	let open_built_oval_command = vscode.commands.registerCommand('content-navigator.openBuiltOVAL', () => {
+		return openContent("oval/shared.xml", true);
+	});
+	let open_built_bash_command = vscode.commands.registerCommand('content-navigator.openBuiltBash', () => {
+		return openContent("bash/shared.sh", true);
+	});
+	let open_built_ansible_command = vscode.commands.registerCommand('content-navigator.openBuiltAnsible', () => {
+		return openContent("ansible/shared.yml", true);
+	});
+	let open_built_ignition_command = vscode.commands.registerCommand('content-navigator.openBuiltIgnition', () => {
+		return openContent("ignition/shared.yml", true);
+	});
+	let open_built_anaconda_command = vscode.commands.registerCommand('content-navigator.openBuiltAnaconda', () => {
+		return openContent("anaconda/shared.anaconda", true);
+	});
+	let open_built_puppet_command = vscode.commands.registerCommand('content-navigator.openBuiltPuppet', () => {
+		return openContent("puppet/shared.pp", true);
+	});
+	let open_built_kubernetes_command = vscode.commands.registerCommand('content-navigator.openBuiltKubernetes', () => {
+		return openContent("kubernetes/shared.yml", true);
 	});
 
 	let copy_rule_id_command = vscode.commands.registerCommand('content-navigator.copyRuleId', async (fileUri) => {
@@ -248,6 +362,14 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_anaconda_command);
 	context.subscriptions.push(open_puppet_command);
 	context.subscriptions.push(open_kubernetes_command);
+	context.subscriptions.push(open_built_rule_command);
+	context.subscriptions.push(open_built_oval_command);
+	context.subscriptions.push(open_built_bash_command);
+	context.subscriptions.push(open_built_ansible_command);
+	context.subscriptions.push(open_built_ignition_command);
+	context.subscriptions.push(open_built_anaconda_command);
+	context.subscriptions.push(open_built_puppet_command);
+	context.subscriptions.push(open_built_kubernetes_command);
 	context.subscriptions.push(copy_rule_id_command);
 	context.subscriptions.push(copy_profile_id_command);
 	context.subscriptions.push(copy_full_prefixed_rule_id_command);

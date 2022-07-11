@@ -25,6 +25,14 @@
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.openKubernetes",
+		"onCommand:content-navigator.openBuiltRule",
+		"onCommand:content-navigator.openBuiltOVAL",
+		"onCommand:content-navigator.openBuiltBash",
+		"onCommand:content-navigator.openBuiltAnsible",
+		"onCommand:content-navigator.openBuiltIgnition",
+		"onCommand:content-navigator.openBuiltAnaconda",
+		"onCommand:content-navigator.openBuiltPuppet",
+		"onCommand:content-navigator.openBuiltKubernetes",
 		"onCommand:content-navigator.copyRuleId",
 		"onCommand:content-navigator.copyFullPrefixedRuleId",
 		"onCommand:content-navigator.copyProfileId",
@@ -78,6 +86,38 @@
 				"title": "Open Kubernetes"
 			},
 			{
+				"command": "content-navigator.openBuiltRule",
+				"title": "Open Built Rule"
+			},
+			{
+				"command": "content-navigator.openBuiltOVAL",
+				"title": "Open Built OVAL"
+			},
+			{
+				"command": "content-navigator.openBuiltBash",
+				"title": "Open Built Bash"
+			},
+			{
+				"command": "content-navigator.openBuiltAnsible",
+				"title": "Open Built Ansible"
+			},
+			{
+				"command": "content-navigator.openBuiltIgnition",
+				"title": "Open Built Ignition"
+			},
+			{
+				"command": "content-navigator.openBuiltAnaconda",
+				"title": "Open Built Anaconda"
+			},
+			{
+				"command": "content-navigator.openBuiltPuppet",
+				"title": "Open Built Puppet"
+			},
+			{
+				"command": "content-navigator.openBuiltKubernetes",
+				"title": "Open Built Kubernetes"
+			},
+			{
 				"command": "content-navigator.copyRuleId",
 				"title": "Copy Rule ID"
 			},
@@ -119,6 +159,9 @@
 				},
 				{
 					"submenu": "content-navigator.openContent"
+				},
+				{
+					"submenu": "content-navigator.openBuiltContent"
 				}
 			],
 			"content-navigator.openContent": [
@@ -145,6 +188,32 @@
 				},
 				{
 					"command": "content-navigator.openKubernetes"
+				}
+			],
+			"content-navigator.openBuiltContent": [
+				{
+					"command": "content-navigator.openBuiltRule"
+				},
+				{
+					"command": "content-navigator.openBuiltOVAL"
+				},
+				{
+					"command": "content-navigator.openBuiltBash"
+				},
+				{
+					"command": "content-navigator.openBuiltAnsible"
+				},
+				{
+					"command": "content-navigator.openBuiltIgnition"
+				},
+				{
+					"command": "content-navigator.openBuiltAnaconda"
+				},
+				{
+					"command": "content-navigator.openBuiltPuppet"
+				},
+				{
+					"command": "content-navigator.openBuiltKubernetes"
 				}
 			],
 			"content-navigator.explorer_menu": [
@@ -184,6 +253,10 @@
 			{
 				"id": "content-navigator.openContent",
 				"label": "Open Content"
+			},
+			{
+				"id": "content-navigator.openBuiltContent",
+				"label": "Open Built Content"
 			},
 			{
 				"id": "content-navigator.explorer_menu",
