@@ -43,6 +43,12 @@ function _getRuleId(uri: vscode.Uri): string
 	return "";
 }
 
+function _getRuleIdFromString(path: string): string
+{
+	let uri = vscode.Uri.file(path);
+	return _getRuleId(uri);
+}
+
 function _getProfileId(uri: vscode.Uri): string
 {
 	let uri_str = uri.toString()
@@ -142,8 +148,12 @@ export async function openVariableFile(built_content: boolean) {
 		selectedText = await vscode.env.clipboard.readText();
 
 		var re = /\:/gi;
-		selectedText = selectedText.replace(re, "") // remove any colon character from the clipboard content
+		selectedText = selectedText.replace(re, "").toLowerCase() // remove any colon character from the clipboard content
 
+		let variable_id_from_clipboard = _getRuleIdFromString(selectedText);
+		if(variable_id_from_clipboard != "") {
+			selectedText = variable_id_from_clipboard
+		}
 
 		var accepted_chars = /^[a-zA-Z0-9-_\.]+$/;
 		if (accepted_chars.test(selectedText)) {
@@ -299,13 +309,17 @@ export async function openContent(location: string, built_content: boolean) {
 		rule_id = await vscode.env.clipboard.readText();
 
 		var re = /\:/gi;
-		rule_id = rule_id.replace(re, "") // remove any colon character from the clipboard content
-		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+		rule_id = rule_id.replace(re, "").toLowerCase() // remove any colon character from the clipboard content
 
+		let rule_id_from_clipboard = _getRuleIdFromString(rule_id);
+		if(rule_id_from_clipboard != "") {
+			rule_id = rule_id_from_clipboard
+		}
 
 		var accepted_chars = /^[a-zA-Z0-9-_\.]+$/;
 		if (accepted_chars.test(rule_id)) {
 
+			// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
 			if(rule_id.length > 0 && rule_id.length < 120)
 			{
 				let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');

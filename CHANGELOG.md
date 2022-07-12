@@ -13,6 +13,8 @@
 - Copy content ID has now shortcut support.
 - Update run configurations with latest data.
 - The clipboard content now ignores colon characters.
+- The clipboard content must now match alphanumeric, dash, underscore, dot and colon characters.
+- A rule filepath can now be used when matching content from the clipboard.
 ### Fixed
 - Building and packaging.
 - Fix launch configuration template.
