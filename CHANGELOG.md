@@ -8,6 +8,7 @@
 - Variable ID is now supported by the copy content ID option.
 - New run Automatus configuration snippet for container backend.
 - Auto completion of rule IDs into Control files context.
+- Latest templates documentation.
 ### Changed
 - Copy rule and profile ID options are now merged into copy content ID.
 - Copy content ID has now shortcut support.
