@@ -528,7 +528,15 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
+	let provider2 = vscode.languages.registerCompletionItemProvider({pattern: '**/controls/*'}, {
+
+		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+			return completionList;
+		}
+	});
+
 	context.subscriptions.push(provider1);
+	context.subscriptions.push(provider2);
 }
 
 // this method is called when your extension is deactivated

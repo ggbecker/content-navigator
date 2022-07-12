@@ -4,9 +4,14 @@
 ### Added
 - Option to open built content files.
 - Support to new type of content called Blueprint.
+- Option to open variable content.
+- Variable ID is now supported by the copy content ID option.
+- New run Automatus configuration snippet for container backend.
+- Auto completion of rule IDs into Control files context.
 ### Changed
 - Copy rule and profile ID options are now merged into copy content ID.
 - Copy content ID has now shortcut support.
+- Update run configurations with latest data.
 ### Fixed
 - Building and packaging.
 - Fix launch configuration template.
