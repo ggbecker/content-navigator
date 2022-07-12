@@ -328,10 +328,10 @@
 				],
 				"configurationSnippets": [
 					{
-						"label": "Content Navigator Automatus Setup",
-						"description": "A new configuration to setup of ComplianceAsCode/content Automatus using properties",
+						"label": "Automatus Setup - Virtual Machine",
+						"description": "A new configuration to setup of ComplianceAsCode/content Automatus using properties and a Virtual Machine as backend",
 						"body": {
-							"name": "ComplianceAsCode/content Automatus using properties",
+							"name": "Virtual Machine - Automatus using properties",
 							"type": "python",
 							"request": "launch",
 							"console": "integratedTerminal",
@@ -348,6 +348,29 @@
 								"^\"\\${command:content-navigator.getRuleId}\""
 							]
 						}
+					},
+					{
+						"label": "Automatus Setup - Container",
+						"description": "A new configuration to setup of ComplianceAsCode/content Automatus using properties and a Container as backend",
+						"body": {
+							"name": "Container - Automatus using properties",
+							"type": "python",
+							"request": "launch",
+							"console": "integratedTerminal",
+							"program": "^\"\\${workspaceFolder}/tests/automatus.py\"",
+							"args": [
+								"rule",
+								"--container",
+								"^\"\\${config:content-navigator.testSuite.domainName}\"",
+								"--datastream",
+								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
+								"--remediate-using",
+								"^\"\\${config:content-navigator.testSuite.remediationType}\"",
+								"--remove-machine-only",
+								"--remove-ocp4-only",
+								"^\"\\${command:content-navigator.getRuleId}\""
+							]
+						}
 					}
 				]
 			}
@@ -359,7 +382,7 @@
 				"content-navigator.testSuite.domainName": {
 					"type": "string",
 					"default": "",
-					"description": "Virtual Machine's Domain Name",
+					"description": "Automatus Backend Domain Name",
 					"scope": "application"
 				},
 				"content-navigator.testSuite.remediationType": {
