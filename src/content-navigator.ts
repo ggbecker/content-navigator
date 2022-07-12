@@ -144,18 +144,24 @@ export async function openVariableFile(built_content: boolean) {
 		var re = /\:/gi;
 		selectedText = selectedText.replace(re, "") // remove any colon character from the clipboard content
 
-		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
-		if(selectedText.length > 0 && selectedText.length < 120)
-		{
-			if(built_content){
-				if(await openBuiltFile(selectedText, "variable")){
-					return;
-				}
-			} else {
-				if(await __openFile(selectedText + ".var")){
-					return;
+
+		var accepted_chars = /^[a-zA-Z0-9-_\.]+$/;
+		if (accepted_chars.test(selectedText)) {
+			// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
+			if(selectedText.length > 0 && selectedText.length < 120)
+			{
+				if(built_content){
+					if(await openBuiltFile(selectedText, "variable")){
+						return;
+					}
+				} else {
+					if(await __openFile(selectedText + ".var")){
+						return;
+					}
 				}
 			}
+		} else {
+		vscode.window.showInformationMessage("Ignoring clipboard input as it contains invalid data.");
 		}
 	}
 
@@ -295,27 +301,35 @@ export async function openContent(location: string, built_content: boolean) {
 		var re = /\:/gi;
 		rule_id = rule_id.replace(re, "") // remove any colon character from the clipboard content
 		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
-		if(rule_id.length > 0 && rule_id.length < 120)
-		{
-			let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');
-			let index_short_prefix = rule_id.indexOf('content_rule_');
-			if(index_full_prefix == 0)
+
+
+		var accepted_chars = /^[a-zA-Z0-9-_\.]+$/;
+		if (accepted_chars.test(rule_id)) {
+
+			if(rule_id.length > 0 && rule_id.length < 120)
 			{
-				rule_id = rule_id.slice('xccdf_org.ssgproject.content_rule_'.length)
-			}
-			else if(index_short_prefix == 0)
-			{
-				rule_id = rule_id.slice('content_rule_'.length)
-			}
-			if(built_content){
-				if(await openBuiltFile(rule_id, location)){
-					return;
+				let index_full_prefix = rule_id.indexOf('xccdf_org.ssgproject.content_rule_');
+				let index_short_prefix = rule_id.indexOf('content_rule_');
+				if(index_full_prefix == 0)
+				{
+					rule_id = rule_id.slice('xccdf_org.ssgproject.content_rule_'.length)
 				}
-			} else {
-				if(await openFile(rule_id, location)){
-					return;
+				else if(index_short_prefix == 0)
+				{
+					rule_id = rule_id.slice('content_rule_'.length)
+				}
+				if(built_content){
+					if(await openBuiltFile(rule_id, location)){
+						return;
+					}
+				} else {
+					if(await openFile(rule_id, location)){
+						return;
+					}
 				}
 			}
+		} else {
+			vscode.window.showInformationMessage("Ignoring clipboard input as it contains invalid data.");
 		}
 	}
 
