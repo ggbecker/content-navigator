@@ -322,20 +322,20 @@
 		"debuggers": [
 			{
 				"type": "content-navigator",
-				"label": "ComplianceAsCode/content test suite",
+				"label": "ComplianceAsCode/content Automatus",
 				"languages": [
 					"python"
 				],
 				"configurationSnippets": [
 					{
-						"label": "Content Navigator Test Suite Setup",
-						"description": "A new configuration for setup of ComplianceAsCode/content test suite using VSCode properties",
+						"label": "Content Navigator Automatus Setup",
+						"description": "A new configuration to setup of ComplianceAsCode/content Automatus using properties",
 						"body": {
-							"name": "ComplianceAsCode/content Test Suite using VSCode properties",
+							"name": "ComplianceAsCode/content Automatus using properties",
 							"type": "python",
 							"request": "launch",
 							"console": "integratedTerminal",
-							"program": "^\"\\${workspaceFolder}/tests/test_suite.py\"",
+							"program": "^\"\\${workspaceFolder}/tests/automatus.py\"",
 							"args": [
 								"rule",
 								"--libvirt",
