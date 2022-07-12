@@ -12,6 +12,7 @@
 - Copy rule and profile ID options are now merged into copy content ID.
 - Copy content ID has now shortcut support.
 - Update run configurations with latest data.
+- The clipboard content now ignores colon characters.
 ### Fixed
 - Building and packaging.
 - Fix launch configuration template.

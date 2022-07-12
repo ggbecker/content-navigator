@@ -1,5 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
+import { runInContext } from 'vm';
 import * as vscode from 'vscode';
 
 export function getRuleId(): string
@@ -139,6 +140,10 @@ export async function openVariableFile(built_content: boolean) {
 	{
 		// content from clipboard
 		selectedText = await vscode.env.clipboard.readText();
+
+		var re = /\:/gi;
+		selectedText = selectedText.replace(re, "") // remove any colon character from the clipboard content
+
 		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
 		if(selectedText.length > 0 && selectedText.length < 120)
 		{
@@ -286,6 +291,9 @@ export async function openContent(location: string, built_content: boolean) {
 	if(config.get('useClipboard'))
 	{
 		rule_id = await vscode.env.clipboard.readText();
+
+		var re = /\:/gi;
+		rule_id = rule_id.replace(re, "") // remove any colon character from the clipboard content
 		// sometimes huge amount of nonsense text can be in the clipboard so lets reduce the scope here with length < 120
 		if(rule_id.length > 0 && rule_id.length < 120)
 		{
