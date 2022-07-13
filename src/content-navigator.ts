@@ -483,7 +483,7 @@ export function activate(context: vscode.ExtensionContext) {
 		
 	});
 
-	let copy_full_prefixed_content_id_command = vscode.commands.registerCommand('content-navigator.copyFullPrefixedContentId', async (fileUri) => {
+	let copy_full_prefixed_content_id_command = vscode.commands.registerCommand('content-navigator.copyPrefixedContentId', async (fileUri) => {
 		let uri = fileUri
 		if(uri == null) {
 			let editor = vscode.window.activeTextEditor;

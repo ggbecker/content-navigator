@@ -24,12 +24,12 @@
 			""
 
 		],
-		"description": "Rule stub. Reference: https://github.com/ComplianceAsCode/content/blob/master/docs/manual/developer_guide.adoc#711-rules"
+		"description": "Rule stub. Reference: https://complianceascode.readthedocs.io/en/latest/manual/developer/06_contributing_with_content.html#rules"
 	},
 	"Identifier": {
 		"prefix": "ident",
 		"body": [
-			"${1|cce,cce@rhel6,cce@rhel7,cce@rhel8|}: $2"
+			"${1|cce@rhel7,cce@rhel8,cce@rhel9|}: $2"
 
 		],
 		"description": "Identifier"

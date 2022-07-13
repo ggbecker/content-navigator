@@ -38,7 +38,7 @@
 		"onCommand:content-navigator.openBuiltBlueprint",
 		"onCommand:content-navigator.openBuiltVariable",
 		"onCommand:content-navigator.copyContentId",
-		"onCommand:content-navigator.copyFullPrefixedContentId",
+		"onCommand:content-navigator.copyPrefixedContentId",
 		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
@@ -140,8 +140,8 @@
 				"title": "Copy Content ID"
 			},
 			{
-				"command": "content-navigator.copyFullPrefixedContentId",
-				"title": "Copy Full Prefixed Content ID"
+				"command": "content-navigator.copyPrefixedContentId",
+				"title": "Copy Prefixed Content ID"
 			}
 		],
 		"menus": {
@@ -156,7 +156,7 @@
 					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedContentId",
+					"command": "content-navigator.copyPrefixedContentId",
 					"group": "1_rule"
 				},
 				{
@@ -236,7 +236,7 @@
 					"group": "1_content"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedContentId",
+					"command": "content-navigator.copyPrefixedContentId",
 					"group": "1_content"
 				}
 			],
@@ -315,7 +315,7 @@
 				"key": "ctrl+alt+h"
 			},
 			{
-				"command": "content-navigator.copyFullPrefixedContentId",
+				"command": "content-navigator.copyPrefixedContentId",
 				"key": "ctrl+alt+j"
 			}
 		],
