@@ -144,9 +144,9 @@ When editing a Rule file (`rule.yml`), code snippets are available. You can simp
 
 More details on templates you can find by activating the respective snippet on VSCode/VSCodium or on [ComplianceAsCode/content Templates Section of Developer Guide](https://complianceascode.readthedocs.io/en/latest/templates/template_reference.html)
 
-### Test Suite Launch Configuration
+### Automatus Launch Configuration
 
-Content-Navigator provides a launch configuration template for the [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) Test Suite.
+Content-Navigator provides a launch configuration template for the ComplianceAsCode/content [Automatus](https://complianceascode.readthedocs.io/en/latest/tests/README.html).
 
 When editing a `launch.json` configuration file, you can hit `Ctrl+Space` and select the item `Automatus Setup - Virtual Machine` or `Automatus Setup - Container`. It will create a launch configuration which can be used to run test scenarios using a Virtual Machine or a Container. After creating the launch configuration, you need to set Content Navigator properties, such as Domain Name of the Virtual Machine or Container you are using for testing, remediation type and which product is desired to be tested (it will select the appropriated datastream automatically).
 
