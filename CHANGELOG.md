@@ -1,6 +1,5 @@
 # Change Log
-
-## [Unreleased]
+## [1.0.0] - 2022-07-14
 ### Added
 - Option to open built content files.
 - Support to new type of content called Blueprint.
