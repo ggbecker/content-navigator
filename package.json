@@ -157,18 +157,20 @@
 			],
 			"content-navigator": [
 				{
+					"submenu": "content-navigator.openContent",
+					"group": "1_openContent"
+				},
+				{
+					"submenu": "content-navigator.openBuiltContent",
+					"group": "2_openBuiltContent"
+				},
+				{
 					"command": "content-navigator.copyContentId",
-					"group": "1_copycontent"
+					"group": "3_copycontent"
 				},
 				{
 					"command": "content-navigator.copyPrefixedContentId",
-					"group": "1_copycontent"
-				},
-				{
-					"submenu": "content-navigator.openContent"
-				},
-				{
-					"submenu": "content-navigator.openBuiltContent"
+					"group": "3_copycontent"
 				}
 			],
 			"content-navigator.openContent": [
@@ -190,27 +192,27 @@
 				},
 				{
 					"command": "content-navigator.openIgnition",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openAnaconda",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openPuppet",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openKubernetes",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openBlueprint",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openVariable",
-					"group": "3_variable"
+					"group": "4_variable"
 				}
 			],
 			"content-navigator.openBuiltContent": [
@@ -232,31 +234,31 @@
 				},
 				{
 					"command": "content-navigator.openBuiltIgnition",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openBuiltAnaconda",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openBuiltPuppet",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openBuiltKubernetes",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openBuiltBlueprint",
-					"group": "2_automated_content"
+					"group": "3_automated_content"
 				},
 				{
 					"command": "content-navigator.openBuiltVariable",
-					"group": "3_variable"
+					"group": "4_variable"
 				},
 				{
 					"command": "content-navigator.openBuiltProfile",
-					"group": "4_profile"
+					"group": "5_profile"
 				}
 			],
 			"content-navigator.explorer_menu": [
