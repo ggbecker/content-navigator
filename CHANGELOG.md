@@ -1,8 +1,24 @@
 # Change Log
-
-## [Unreleased]
+## [1.0.0] - 2022-07-14
+### Added
+- Option to open built content files.
+- Support to new type of content called Blueprint.
+- Option to open variable content.
+- Variable ID is now supported by the copy content ID option.
+- New run Automatus configuration snippet for container backend.
+- Auto completion of rule IDs into Control files context.
+- Latest templates documentation.
+- Support to open built profile files.
+### Changed
+- Copy rule and profile ID options are now merged into copy content ID.
+- Copy content ID has now shortcut support.
+- Update run configurations with latest data.
+- The clipboard content now ignores colon characters.
+- The clipboard content must now match alphanumeric, dash, underscore, dot and colon characters.
+- A rule filepath can now be used when matching content from the clipboard.
 ### Fixed
-- Building and packaging
+- Building and packaging.
+- Fix launch configuration template.
 
 ## [0.0.15] - 2020-11-23
 ### Added
@@ -15,7 +31,7 @@
 ## [0.0.14] - 2020-11-02
 ### Fixed
 - Template snippet `yamlfile_value` is updated to latest documentation.
-- Template snippets now use "_t" prefix instead of "_template".
+- Template snippets now use "t_" prefix instead of "template_".
 - Template snippets now suggests doc text as Ansible comments.
 
 ## [0.0.13] - 2020-09-30

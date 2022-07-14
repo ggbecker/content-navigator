@@ -4,7 +4,7 @@
 	"displayName": "Content Navigator",
 	"description": "Content Navigator helps security content authors to create content for https://github.com/ComplianceAsCode/content",
 	"icon": "icon.png",
-	"version": "0.0.16",
+	"version": "1.0.0",
 	"license": "BSD-3-Clause",
 	"engines": {
 		"vscode": "^1.59.0"
@@ -25,10 +25,21 @@
 		"onCommand:content-navigator.openAnaconda",
 		"onCommand:content-navigator.openPuppet",
 		"onCommand:content-navigator.openKubernetes",
-		"onCommand:content-navigator.copyRuleId",
-		"onCommand:content-navigator.copyFullPrefixedRuleId",
-		"onCommand:content-navigator.copyProfileId",
-		"onCommand:content-navigator.copyFullPrefixedProfileId",
+		"onCommand:content-navigator.openBlueprint",
+		"onCommand:content-navigator.openVariable",
+		"onCommand:content-navigator.openBuiltRule",
+		"onCommand:content-navigator.openBuiltOVAL",
+		"onCommand:content-navigator.openBuiltBash",
+		"onCommand:content-navigator.openBuiltAnsible",
+		"onCommand:content-navigator.openBuiltIgnition",
+		"onCommand:content-navigator.openBuiltAnaconda",
+		"onCommand:content-navigator.openBuiltPuppet",
+		"onCommand:content-navigator.openBuiltKubernetes",
+		"onCommand:content-navigator.openBuiltBlueprint",
+		"onCommand:content-navigator.openBuiltVariable",
+		"onCommand:content-navigator.openBuiltProfile",
+		"onCommand:content-navigator.copyContentId",
+		"onCommand:content-navigator.copyPrefixedContentId",
 		"onCommand:content-navigator.getRuleId",
 		"*"
 	],
@@ -78,20 +89,64 @@
 				"title": "Open Kubernetes"
 			},
 			{
-				"command": "content-navigator.copyRuleId",
-				"title": "Copy Rule ID"
+				"command": "content-navigator.openBlueprint",
+				"title": "Open Blueprint"
 			},
 			{
-				"command": "content-navigator.copyFullPrefixedRuleId",
-				"title": "Copy Full Prefixed Rule ID"
+				"command": "content-navigator.openVariable",
+				"title": "Open Variable"
 			},
 			{
-				"command": "content-navigator.copyProfileId",
-				"title": "Copy Profile ID"
+				"command": "content-navigator.openBuiltRule",
+				"title": "Open Built Rule"
 			},
 			{
-				"command": "content-navigator.copyFullPrefixedProfileId",
-				"title": "Copy Full Prefixed Profile ID"
+				"command": "content-navigator.openBuiltOVAL",
+				"title": "Open Built OVAL"
+			},
+			{
+				"command": "content-navigator.openBuiltBash",
+				"title": "Open Built Bash"
+			},
+			{
+				"command": "content-navigator.openBuiltAnsible",
+				"title": "Open Built Ansible"
+			},
+			{
+				"command": "content-navigator.openBuiltIgnition",
+				"title": "Open Built Ignition"
+			},
+			{
+				"command": "content-navigator.openBuiltAnaconda",
+				"title": "Open Built Anaconda"
+			},
+			{
+				"command": "content-navigator.openBuiltPuppet",
+				"title": "Open Built Puppet"
+			},
+			{
+				"command": "content-navigator.openBuiltKubernetes",
+				"title": "Open Built Kubernetes"
+			},
+			{
+				"command": "content-navigator.openBuiltBlueprint",
+				"title": "Open Built Blueprint"
+			},
+			{
+				"command": "content-navigator.openBuiltVariable",
+				"title": "Open Built Variable"
+			},
+			{
+				"command": "content-navigator.openBuiltProfile",
+				"title": "Open Built Profile"
+			},
+			{
+				"command": "content-navigator.copyContentId",
+				"title": "Copy Content ID"
+			},
+			{
+				"command": "content-navigator.copyPrefixedContentId",
+				"title": "Copy Prefixed Content ID"
 			}
 		],
 		"menus": {
@@ -102,67 +157,118 @@
 			],
 			"content-navigator": [
 				{
-					"command": "content-navigator.copyRuleId",
-					"group": "1_rule"
+					"submenu": "content-navigator.openContent",
+					"group": "1_openContent"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId",
-					"group": "1_rule"
+					"submenu": "content-navigator.openBuiltContent",
+					"group": "2_openBuiltContent"
 				},
 				{
-					"command": "content-navigator.copyProfileId",
-					"group": "2_profile"
+					"command": "content-navigator.copyContentId",
+					"group": "3_copycontent"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedProfileId",
-					"group": "2_profile"
-				},
-				{
-					"submenu": "content-navigator.openContent"
+					"command": "content-navigator.copyPrefixedContentId",
+					"group": "3_copycontent"
 				}
 			],
 			"content-navigator.openContent": [
 				{
-					"command": "content-navigator.openRule"
+					"command": "content-navigator.openRule",
+					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.openOVAL"
+					"command": "content-navigator.openOVAL",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBash"
+					"command": "content-navigator.openBash",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openAnsible"
+					"command": "content-navigator.openAnsible",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openIgnition"
+					"command": "content-navigator.openIgnition",
+					"group": "3_automated_content"
 				},
 				{
-					"command": "content-navigator.openAnaconda"
+					"command": "content-navigator.openAnaconda",
+					"group": "3_automated_content"
 				},
 				{
-					"command": "content-navigator.openPuppet"
+					"command": "content-navigator.openPuppet",
+					"group": "3_automated_content"
 				},
 				{
-					"command": "content-navigator.openKubernetes"
+					"command": "content-navigator.openKubernetes",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openBlueprint",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openVariable",
+					"group": "4_variable"
+				}
+			],
+			"content-navigator.openBuiltContent": [
+				{
+					"command": "content-navigator.openBuiltRule",
+					"group": "1_rule"
+				},
+				{
+					"command": "content-navigator.openBuiltOVAL",
+					"group": "2_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltBash",
+					"group": "2_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltAnsible",
+					"group": "2_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltIgnition",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltAnaconda",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltPuppet",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltKubernetes",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltBlueprint",
+					"group": "3_automated_content"
+				},
+				{
+					"command": "content-navigator.openBuiltVariable",
+					"group": "4_variable"
+				},
+				{
+					"command": "content-navigator.openBuiltProfile",
+					"group": "5_profile"
 				}
 			],
 			"content-navigator.explorer_menu": [
 				{
-					"command": "content-navigator.copyRuleId",
-					"group": "1_rule"
+					"command": "content-navigator.copyContentId",
+					"group": "1_content"
 				},
 				{
-					"command": "content-navigator.copyFullPrefixedRuleId",
-					"group": "1_rule"
-				},
-				{
-					"command": "content-navigator.copyProfileId",
-					"group": "2_profile"
-				},
-				{
-					"command": "content-navigator.copyFullPrefixedProfileId",
-					"group": "2_profile"
+					"command": "content-navigator.copyPrefixedContentId",
+					"group": "1_content"
 				}
 			],
 			"explorer/context": [
@@ -184,6 +290,10 @@
 			{
 				"id": "content-navigator.openContent",
 				"label": "Open Content"
+			},
+			{
+				"id": "content-navigator.openBuiltContent",
+				"label": "Open Built Content"
 			},
 			{
 				"id": "content-navigator.explorer_menu",
@@ -222,34 +332,73 @@
 			{
 				"command": "content-navigator.openKubernetes",
 				"key": "ctrl+alt+k"
+			},
+			{
+				"command": "content-navigator.openBlueprint",
+				"key": "ctrl+alt+l"
+			},
+			{
+				"command": "content-navigator.openVariable",
+				"key": "ctrl+alt+v"
+			},
+			{
+				"command": "content-navigator.copyContentId",
+				"key": "ctrl+alt+h"
+			},
+			{
+				"command": "content-navigator.copyPrefixedContentId",
+				"key": "ctrl+alt+j"
 			}
 		],
 		"debuggers": [
 			{
 				"type": "content-navigator",
-				"label": "ComplianceAsCode/content test suite",
+				"label": "ComplianceAsCode/content Automatus",
 				"languages": [
 					"python"
 				],
 				"configurationSnippets": [
 					{
-						"label": "Content Navigator Test Suite Setup",
-						"description": "A new configuration for setup of ComplianceAsCode/content test suite using VSCode properties",
+						"label": "Automatus Setup - Virtual Machine",
+						"description": "A new configuration to setup of ComplianceAsCode/content Automatus using properties and a Virtual Machine as backend",
 						"body": {
-							"name": "ComplianceAsCode/content Test Suite using VSCode properties",
+							"name": "Virtual Machine - Automatus using properties",
 							"type": "python",
 							"request": "launch",
 							"console": "integratedTerminal",
-							"program": "^\"\\${workspaceFolder}/tests/test_suite.py\"",
+							"program": "^\"\\${workspaceFolder}/tests/automatus.py\"",
 							"args": [
 								"rule",
 								"--libvirt",
-								"session",
+								"qemu:///session",
 								"^\"\\${config:content-navigator.testSuite.domainName}\"",
 								"--datastream",
 								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
 								"--remediate-using",
 								"^\"\\${config:content-navigator.testSuite.remediationType}\"",
+								"^\"\\${command:content-navigator.getRuleId}\""
+							]
+						}
+					},
+					{
+						"label": "Automatus Setup - Container",
+						"description": "A new configuration to setup of ComplianceAsCode/content Automatus using properties and a Container as backend",
+						"body": {
+							"name": "Container - Automatus using properties",
+							"type": "python",
+							"request": "launch",
+							"console": "integratedTerminal",
+							"program": "^\"\\${workspaceFolder}/tests/automatus.py\"",
+							"args": [
+								"rule",
+								"--container",
+								"^\"\\${config:content-navigator.testSuite.domainName}\"",
+								"--datastream",
+								"^\"\\${workspaceFolder}/build/ssg-\\${config:content-navigator.testSuite.productName}-ds.xml\"",
+								"--remediate-using",
+								"^\"\\${config:content-navigator.testSuite.remediationType}\"",
+								"--remove-machine-only",
+								"--remove-ocp4-only",
 								"^\"\\${command:content-navigator.getRuleId}\""
 							]
 						}
@@ -264,7 +413,7 @@
 				"content-navigator.testSuite.domainName": {
 					"type": "string",
 					"default": "",
-					"description": "Virtual Machine's Domain Name",
+					"description": "Automatus Backend Domain Name",
 					"scope": "application"
 				},
 				"content-navigator.testSuite.remediationType": {
@@ -282,36 +431,37 @@
 					"type": "string",
 					"default": "fedora",
 					"enum": [
+						"alinux2",
+						"alinux3",
 						"chromium",
-						"debian8",
 						"debian9",
 						"debian10",
-						"eap6",
-						"example",
+						"debian11",
+						"eks",
 						"fedora",
 						"firefox",
 						"fuse6",
 						"jre",
 						"macos1015",
-						"ocp3",
 						"ocp4",
 						"ol7",
 						"ol8",
+						"ol9",
 						"opensuse",
-						"rhel6",
+						"rhcos4",
 						"rhel7",
 						"rhel8",
+						"rhel9",
 						"rhosp10",
 						"rhosp13",
 						"rhv4",
-						"sle11",
 						"sle12",
 						"sle15",
-						"ubuntu1404",
 						"ubuntu1604",
 						"ubuntu1804",
-						"wrlinux8",
-						"wrlinux1019"
+						"ubuntu2004",
+						"uos20",
+						"vsel"
 					],
 					"description": "Product to be Tested",
 					"scope": "application"
