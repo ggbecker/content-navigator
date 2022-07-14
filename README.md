@@ -74,6 +74,8 @@ After building the ComplianceAsCode/content project, compiled files are generate
 When you activate this option, it will try to find the built content for the product that is defined in Content Navigator settings.
 If the built content cannot be found for this product, it will try to find content for RHEL8 product.
 
+Profile files can also be opened from that menu, if the profile was built then the rendered file should open when the option is activated.
+
 ### Copy Content ID
 
 When editing content files, for example, rules, remediations, tests, profiles or variables you can activate the option `Content Navigator->Copy Content ID` or hit `Ctrl+Alt+H` to copy the

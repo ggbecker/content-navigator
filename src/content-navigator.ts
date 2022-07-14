@@ -34,10 +34,16 @@ function _getRuleId(uri: vscode.Uri): string
 			uri_str.indexOf('kubernetes/shared.yml') >= 0 ||
 			uri_str.indexOf('puppet/shared.pp') >= 0){
 		let paths: string[] = uri_str.split("/");
+		// returns the rule id
 		return paths[paths.length - 3];
 	} else if (uri_str.indexOf('.var') >= 0){
 		let paths: string[] = uri_str.split("/")
+		// returns something like var_variable_1 without the .var extension
 		return paths[paths.length - 1].split(".")[0]
+	} else if (uri_str.indexOf('.profile') >= 0){
+		let paths: string[] = uri_str.split("/")
+		// returns something like rhel8/profiles/stig.profile
+		return paths[paths.length - 3]+"/"+paths[paths.length - 2]+"/"+paths[paths.length - 1]
 	}
 	// no rule was found with current opened file
 	return "";
@@ -282,6 +288,9 @@ async function openBuiltFile(rule_id : string, location : string) : Promise<bool
 			uries = await vscode.workspace.findFiles('build/' + product + '/values/' + rule_id + ".toml");
 		}
 	}
+	else if(location == 'profile') {
+		uries = await vscode.workspace.findFiles('build/' + rule_id);
+	}
 	else {
 		uries = await vscode.workspace.findFiles('build/' + product + '/rules/' + rule_id + ".yml");
 	}
@@ -453,6 +462,10 @@ export function activate(context: vscode.ExtensionContext) {
 		return openVariableFile(true);
 	});
 
+	let open_built_profile_command = vscode.commands.registerCommand('content-navigator.openBuiltProfile', () => {
+		return openContent("profile", true);
+	});
+
 	let copy_content_id_command = vscode.commands.registerCommand('content-navigator.copyContentId', async (fileUri) => {
 		let uri = fileUri
 		if(uri == null) {
@@ -537,6 +550,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(open_built_kubernetes_command);
 	context.subscriptions.push(open_built_blueprint_command);
 	context.subscriptions.push(open_built_variable_command);
+	context.subscriptions.push(open_built_profile_command);
 	context.subscriptions.push(copy_content_id_command);
 	context.subscriptions.push(copy_full_prefixed_content_id_command);
 	context.subscriptions.push(get_rule_id);

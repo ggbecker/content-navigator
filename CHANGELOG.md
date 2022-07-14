@@ -9,6 +9,7 @@
 - New run Automatus configuration snippet for container backend.
 - Auto completion of rule IDs into Control files context.
 - Latest templates documentation.
+- Support to open built profile files.
 ### Changed
 - Copy rule and profile ID options are now merged into copy content ID.
 - Copy content ID has now shortcut support.

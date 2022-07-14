@@ -37,6 +37,7 @@
 		"onCommand:content-navigator.openBuiltKubernetes",
 		"onCommand:content-navigator.openBuiltBlueprint",
 		"onCommand:content-navigator.openBuiltVariable",
+		"onCommand:content-navigator.openBuiltProfile",
 		"onCommand:content-navigator.copyContentId",
 		"onCommand:content-navigator.copyPrefixedContentId",
 		"onCommand:content-navigator.getRuleId",
@@ -136,6 +137,10 @@
 				"title": "Open Built Variable"
 			},
 			{
+				"command": "content-navigator.openBuiltProfile",
+				"title": "Open Built Profile"
+			},
+			{
 				"command": "content-navigator.copyContentId",
 				"title": "Copy Content ID"
 			},
@@ -153,11 +158,11 @@
 			"content-navigator": [
 				{
 					"command": "content-navigator.copyContentId",
-					"group": "1_rule"
+					"group": "1_copycontent"
 				},
 				{
 					"command": "content-navigator.copyPrefixedContentId",
-					"group": "1_rule"
+					"group": "1_copycontent"
 				},
 				{
 					"submenu": "content-navigator.openContent"
@@ -168,66 +173,90 @@
 			],
 			"content-navigator.openContent": [
 				{
-					"command": "content-navigator.openRule"
+					"command": "content-navigator.openRule",
+					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.openOVAL"
+					"command": "content-navigator.openOVAL",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBash"
+					"command": "content-navigator.openBash",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openAnsible"
+					"command": "content-navigator.openAnsible",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openIgnition"
+					"command": "content-navigator.openIgnition",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openAnaconda"
+					"command": "content-navigator.openAnaconda",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openPuppet"
+					"command": "content-navigator.openPuppet",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openKubernetes"
+					"command": "content-navigator.openKubernetes",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBlueprint"
+					"command": "content-navigator.openBlueprint",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openVariable"
+					"command": "content-navigator.openVariable",
+					"group": "3_variable"
 				}
 			],
 			"content-navigator.openBuiltContent": [
 				{
-					"command": "content-navigator.openBuiltRule"
+					"command": "content-navigator.openBuiltRule",
+					"group": "1_rule"
 				},
 				{
-					"command": "content-navigator.openBuiltOVAL"
+					"command": "content-navigator.openBuiltOVAL",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltBash"
+					"command": "content-navigator.openBuiltBash",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltAnsible"
+					"command": "content-navigator.openBuiltAnsible",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltIgnition"
+					"command": "content-navigator.openBuiltIgnition",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltAnaconda"
+					"command": "content-navigator.openBuiltAnaconda",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltPuppet"
+					"command": "content-navigator.openBuiltPuppet",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltKubernetes"
+					"command": "content-navigator.openBuiltKubernetes",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltBlueprint"
+					"command": "content-navigator.openBuiltBlueprint",
+					"group": "2_automated_content"
 				},
 				{
-					"command": "content-navigator.openBuiltVariable"
+					"command": "content-navigator.openBuiltVariable",
+					"group": "3_variable"
+				},
+				{
+					"command": "content-navigator.openBuiltProfile",
+					"group": "4_profile"
 				}
 			],
 			"content-navigator.explorer_menu": [
