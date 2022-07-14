@@ -239,6 +239,9 @@ async function openBuiltFile(rule_id : string, location : string) : Promise<bool
 	}
 	else if(location == 'oval/shared.xml') {
 		uries = await vscode.workspace.findFiles('build/' + product + '/checks/oval/' + rule_id + ".xml");
+		if(uries.length == 0) {
+			uries = await vscode.workspace.findFiles('build/' + product + '/checks_from_templates/oval/' + rule_id + ".xml");
+		}
 	}
 	else if(location == 'bash/shared.sh') {
 		uries = await vscode.workspace.findFiles('build/' + product + '/fixes/bash/' + rule_id + ".sh");
