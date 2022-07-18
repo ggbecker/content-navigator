@@ -1,6 +1,5 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import { runInContext } from 'vm';
 import * as vscode from 'vscode';
 
 export function getRuleId(): string
@@ -222,17 +221,11 @@ export async function openVariableFile(built_content: boolean) {
 }
 
 async function openBuiltFile(rule_id : string, location : string) : Promise<boolean> {
-	const config = vscode.workspace.getConfiguration('content-navigator')
 	let uries;
 
-	// product name - defaults to rhel8 if the build/product folder is not found
+	// get product name
+	const config = vscode.workspace.getConfiguration('content-navigator')
 	let product = config.get('testSuite.productName')
-	let uri = vscode.Uri.file("build/"+product);
-	try {
-		await vscode.workspace.fs.stat(uri);
-	} catch {
-		product = "rhel8"
-	}
 
 	if(location == "rule.yml") {
 		uries = await vscode.workspace.findFiles('build/' + product + '/rules/' + rule_id + ".yml");
