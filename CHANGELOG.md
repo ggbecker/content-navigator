@@ -1,4 +1,7 @@
 # Change Log
+## [1.0.1] - 2022-07-18
+### Fixed
+- Open Built content: only the fallback (RHEL8) built content was being opened. The fallback option was removed.
 ## [1.0.0] - 2022-07-14
 ### Added
 - Option to open built content files.
