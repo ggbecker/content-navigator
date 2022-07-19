@@ -1,4 +1,7 @@
 # Change Log
+## [1.0.2] - 2022-07-19
+### Added
+- Enable web extension.
 ## [1.0.1] - 2022-07-18
 ### Fixed
 - Open Built content: only the fallback (RHEL8) built content was being opened. The fallback option was removed.
