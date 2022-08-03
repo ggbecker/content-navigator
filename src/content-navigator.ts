@@ -143,8 +143,12 @@ export async function openVariableFile(built_content: boolean) {
 	// Get the active text editor
 
 	let selectedText: string;
+	let product;
 
 	const config = vscode.workspace.getConfiguration('content-navigator')
+
+	if(built_content)
+		product = getProduct();
 
 	// content from clipboard
 	if(config.get('useClipboard'))
@@ -166,7 +170,7 @@ export async function openVariableFile(built_content: boolean) {
 			if(selectedText.length > 0 && selectedText.length < 120)
 			{
 				if(built_content){
-					if(await openBuiltFile(selectedText, "variable")){
+					if(await openBuiltFile(selectedText, "variable", product as any)){
 						return;
 					}
 				} else {
@@ -191,7 +195,7 @@ export async function openVariableFile(built_content: boolean) {
 		if(selectedText != "")
 		{
 			if(built_content){
-				if(await openBuiltFile(selectedText, "variable")){
+				if(await openBuiltFile(selectedText, "variable", product as any)){
 					return;
 				}
 			} else {
@@ -206,7 +210,7 @@ export async function openVariableFile(built_content: boolean) {
 		if(selectedText.length > 0 && selectedText.length < 120)
 		{
 			if(built_content){
-				if(await openBuiltFile(selectedText, "variable")){
+				if(await openBuiltFile(selectedText, "variable", product as any)){
 					return;
 				}
 			} else {
@@ -220,12 +224,9 @@ export async function openVariableFile(built_content: boolean) {
 	vscode.window.showInformationMessage("Could not find any variable file with the input provided");
 }
 
-async function openBuiltFile(rule_id : string, location : string) : Promise<boolean> {
-	let uries;
 
-	// get product name
-	const config = vscode.workspace.getConfiguration('content-navigator')
-	let product = config.get('testSuite.productName')
+async function openBuiltFile(rule_id : string, location : string, product : string) : Promise<boolean> {
+	let uries;
 
 	if(location == "rule.yml") {
 		uries = await vscode.workspace.findFiles('build/' + product + '/rules/' + rule_id + ".yml");
@@ -301,12 +302,62 @@ async function openBuiltFile(rule_id : string, location : string) : Promise<bool
 	return false
 }
 
+function getProduct() {
+	const config = vscode.workspace.getConfiguration('content-navigator')
+	if(config.get('openBuiltContent.showListOfProducts'))
+	{
+		let products = [
+			"alinux2",
+			"alinux3",
+			"chromium",
+			"debian9",
+			"debian10",
+			"debian11",
+			"eks",
+			"fedora",
+			"firefox",
+			"fuse6",
+			"jre",
+			"macos1015",
+			"ocp4",
+			"ol7",
+			"ol8",
+			"ol9",
+			"opensuse",
+			"rhcos4",
+			"rhel7",
+			"rhel8",
+			"rhel9",
+			"rhosp10",
+			"rhosp13",
+			"rhv4",
+			"sle12",
+			"sle15",
+			"ubuntu1604",
+			"ubuntu1804",
+			"ubuntu2004",
+			"uos20",
+			"vsel"
+		]
+		return vscode.window.showQuickPick(products, { placeHolder: 'Select the product for the built content you would like to display'});
+	}
+	else
+	{
+		// get product name
+		return config.get('testSuite.productName')
+	}
+}
+
 export async function openContent(location: string, built_content: boolean) {
 	// Get the active text editor
 
 	let rule_id: string;
+	let product;
 
 	const config = vscode.workspace.getConfiguration('content-navigator')
+
+	if(built_content)
+		product = await getProduct();
 
 	// content from clipboard
 	if(config.get('useClipboard'))
@@ -338,11 +389,11 @@ export async function openContent(location: string, built_content: boolean) {
 					rule_id = rule_id.slice('content_rule_'.length)
 				}
 				if(built_content){
-					if(await openBuiltFile(rule_id, location)){
+					if(await openBuiltFile(rule_id, location, product as any)){
 						return;
 					}
 				} else {
-					if(await openFile(rule_id, location)){
+					if(await openFile(rule_id, location,)){
 						return;
 					}
 				}
@@ -363,7 +414,7 @@ export async function openContent(location: string, built_content: boolean) {
 		if(rule_id != "")
 		{
 			if(built_content){
-				if(await openBuiltFile(rule_id, location)){
+				if(await openBuiltFile(rule_id, location, product as any)){
 					return;
 				}
 			} else {
@@ -378,7 +429,7 @@ export async function openContent(location: string, built_content: boolean) {
 		if(rule_id.length > 0 && rule_id.length < 120)
 		{
 			if(built_content){
-				if(await openBuiltFile(rule_id, location)){
+				if(await openBuiltFile(rule_id, location, product as any)){
 					return;
 				}
 			} else {

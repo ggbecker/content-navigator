@@ -343,6 +343,50 @@
 				"key": "ctrl+alt+v"
 			},
 			{
+				"command": "content-navigator.openBuiltRule",
+				"key": "ctrl+k ctrl+alt+r"
+			},
+			{
+				"command": "content-navigator.openBuiltOVAL",
+				"key": "ctrl+k ctrl+alt+o"
+			},
+			{
+				"command": "content-navigator.openBuiltBash",
+				"key": "ctrl+k ctrl+alt+b"
+			},
+			{
+				"command": "content-navigator.openBuiltAnsible",
+				"key": "ctrl+k ctrl+alt+a"
+			},
+			{
+				"command": "content-navigator.openBuiltIgnition",
+				"key": "ctrl+k ctrl+alt+i"
+			},
+			{
+				"command": "content-navigator.openBuiltAnaconda",
+				"key": "ctrl+k ctrl+alt+n"
+			},
+			{
+				"command": "content-navigator.openBuiltPuppet",
+				"key": "ctrl+k ctrl+alt+p"
+			},
+			{
+				"command": "content-navigator.openBuiltKubernetes",
+				"key": "ctrl+k ctrl+alt+k"
+			},
+			{
+				"command": "content-navigator.openBuiltProfile",
+				"key": "ctrl+k ctrl+alt+f"
+			},
+			{
+				"command": "content-navigator.openBuiltBlueprint",
+				"key": "ctrl+k ctrl+alt+l"
+			},
+			{
+				"command": "content-navigator.openBuiltVariable",
+				"key": "ctrl+k ctrl+alt+v"
+			},
+			{
 				"command": "content-navigator.copyContentId",
 				"key": "ctrl+alt+h"
 			},
@@ -471,6 +515,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Use data from clipboard when opening content files",
+					"scope": "application"
+				},
+				"content-navigator.openBuiltContent.showListOfProducts": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show a list of products when opening built content instead of using the Product Name property",
 					"scope": "application"
 				}
 			}

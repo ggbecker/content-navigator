@@ -1,4 +1,8 @@
 # Change Log
+## [unreleased]
+### Added
+- Shortcuts for Opening Built Content based.
+- Option to show a list of products when opening built content.
 ## [1.0.2] - 2022-07-19
 ### Added
 - Enable web extension.
