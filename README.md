@@ -72,9 +72,15 @@ Sometimes the content can be difficult to read as it uses Jinja Macros and what 
 After building the ComplianceAsCode/content project, compiled files are generated and they can be inspected.
 
 When you activate this option, it will try to find the built content for the product that is defined in Content Navigator settings.
-If the built content cannot be found for this product, it will try to find content for RHEL8 product.
+
+In the extension settings there is a configuration called `Show List Of Products` that list all the products before opening the built
+content. It serves the purpose of having built multiple products and the user can select which of the products targets the built content.
 
 Profile files can also be opened from that menu, if the profile was built then the rendered file should open when the option is activated.
+
+Use the modifier `Ctrl+K` shortcut combined with shortcuts from Open Content shortcuts to activate Open Built Content:
+
+- For example: `Ctrl+K` + `Ctrl+Alt+O` will open the built OVAL content.
 
 ### Copy Content ID
 
