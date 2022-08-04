@@ -1,4 +1,12 @@
-Content Navigator is a VSCode/VSCodium extension which helps security content authors to create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files, by providing awareness of existent content and snippets to reduce boilerplate. Check this [post](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html) out in the official ComplianceAsCode/content [blog](https://complianceascode.github.io/).
+<p align="center">
+  <a href="https://content-navigator.net/"><img src="https://raw.githubusercontent.com/ggbecker/content-navigator/master/icon.png" height="130"></a>
+</p>
+
+**Content Navigator** is a VSCode/VSCodium extension which helps security content authors to create content for [ComplianceAsCode/content](https://github.com/ComplianceAsCode/content/) by enabling faster navigation between content files, by providing awareness of existent content and snippets to reduce boilerplate. Check the [website](https://content-navigator.net/) and this [blogpost](https://complianceascode.github.io/template/2019/12/19/content-navigator-a-vscode-extension.html).
+
+<p align="center">
+  <a href="https://content-navigator.net/"><img src="https://raw.githubusercontent.com/ggbecker/content-navigator/gh-pages/img/gif/open_built_content.gif" height="600"></a>
+</p>
 
 ## How to install
 
@@ -9,6 +17,12 @@ VSCode:
 
 VSCodium:
   - [VSCodium Content Navigator Page](https://open-vsx.org/extension/ggbecker/content-navigator).
+
+### Try Online
+
+  - [Github.dev](https://github.dev/ComplianceAsCode/content)
+  - [VSCode.dev](https://vscode.dev/github/ComplianceAsCode/content)
+  - [Gitpod.io (Ready-to-Code Environment)](https://gitpod.io/#https://github.com/ComplianceAsCode/content)
 
 ## Features
 
