@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.5] - 2025-03-13
+### Fixed
+- Refresh List of Supported Products.
+
 ## [1.0.4] - 2022-08-04
 ### Fixed
 - Changelog format.
